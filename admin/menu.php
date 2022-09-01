@@ -40,41 +40,45 @@
 				<li class="nav-item">
 					<a href="manufacturers">
 						<i class="fa-solid fa-city"></i>
-						<span>Manufacturers</span>
+						<p>
+							Manufacturers
+						</p>
 					</a>
 				</li>
 				<li class="nav-item">
 					<a href="products">
 						<i class="fa-solid fa-dumpster-fire"></i>
-						<span>Products</span>
+						<p>Products</p>
 					</a>
 				</li>
 				<li class="nav-item">
-					<i class="fa-solid fa-rectangle-list"></i>
-					<a href="orders"><span>Orders</span></a>
+					<a href="orders">
+						<i class="fa-solid fa-rectangle-list"></i>
+						<p>Orders</p>
+					</a>
 				</li>
 				<li class="nav-item">
 					<a href="contacts">
 					<i class="fa-solid fa-message"></i>
-						<span>Messages</span>
+						<p>Messages</p>
 					</a>
 				</li>
 				<li class="nav-item">
 					<a href="customers">
 						<i class="fa-solid fa-users"></i>
-						<span>Customers</span>
+						<p>Customers</p>
 					</a>
 				</li>
 				<li class="nav-item">
 					<a href="news">
 						<i class="fa-solid fa-newspaper"></i>
-						<span>News</span>
+						<p>News</p>
 					</a>
 				</li>
 				<li class="nav-item">
 					<a href="staffs">
 						<i class="fa-solid fa-people-group"></i>
-						<span>Staffs</span>
+						<p>Staffs</p>
 					</a>
 				</li>
 			</ul>
