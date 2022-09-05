@@ -6,11 +6,16 @@
 	<title></title>
 </head>
 <body>
-
-	<div id="dashboard">
-		<?php require_once '../root/header.php' ?>
-		<?php require_once '../root/content.php' ?>
-		<?php require_once '../root/footer.php' ?>
+	<div class="header">
+		<div class="left">
+			<p>Dashboard</p>
+		</div>
+		<div class="right">
+			<p>huyviet / </p>
+			<a href="sign_out.php">
+				Sign out
+			</a>
+		</div>
 	</div>
 </body>
 </html>

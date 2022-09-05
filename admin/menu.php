@@ -10,7 +10,7 @@
 <body>
 	<div id="sidebar">
 		<div class="dashboard-logo">
-			<a href="index.php">
+			<a href="admin">
 				<i class="fa-solid fa-gauge-high"></i>
 				<span>Dashboard</span>
 			</a>
@@ -38,7 +38,7 @@
 		<div class="nav-bar">
 			<ul>
 				<li class="nav-item">
-					<a href="../manufacturers">
+					<a href="manufacturers">
 						<i class="fa-solid fa-city"></i>
 						<p>
 							Manufacturers
@@ -46,7 +46,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="../products">
+					<a href="products">
 						<i class="fa-solid fa-dumpster-fire"></i>
 						<p>
 							Products
@@ -54,7 +54,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="../orders">
+					<a href="orders">
 						<i class="fa-solid fa-rectangle-list"></i>
 						<p>
 							Orders
@@ -62,7 +62,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="../contacts">
+					<a href="contacts">
 					<i class="fa-solid fa-message"></i>
 						<p>
 							Messages
@@ -70,7 +70,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="../customers">
+					<a href="customers">
 						<i class="fa-solid fa-users"></i>
 						<p>
 							Customers
@@ -78,7 +78,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="../news">
+					<a href="news">
 						<i class="fa-solid fa-newspaper"></i>
 						<p>
 							News
@@ -86,7 +86,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="../staffs">
+					<a href="staffs">
 						<i class="fa-solid fa-people-group"></i>
 						<p>
 							Staffs

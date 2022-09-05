@@ -6,11 +6,15 @@
 	<title></title>
 
 	<link rel="stylesheet" type="text/css" href="../css/menu.css">
+	<link rel="stylesheet" type="text/css" href="../css/dashboard.css">
+	<link rel="stylesheet" type="text/css" href="../css/header.css">
+	<link rel="stylesheet" type="text/css" href="../css/content.css">
+	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 </head>
 <body>
 	<?php 
-		include '../menu.php';
-		include 'dashboard.php';
+		include '../root/menu.php';
+		include '../root/dashboard.php';
 	?>
 </body>
 </html>

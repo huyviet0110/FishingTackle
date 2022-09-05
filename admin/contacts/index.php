@@ -13,8 +13,8 @@
 </head>
 <body>
 	<?php 
-		require_once '../menu.php';
-		require_once '../dashboard.php';
+		require_once '../root/menu.php';
+		require_once '../root/dashboard.php';
 	?>
 </body>
 </html>
