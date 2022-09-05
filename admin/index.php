@@ -6,6 +6,7 @@
 	<title></title>
 
 	<link rel="stylesheet" type="text/css" href="css/menu.css">
+	<link rel="stylesheet" type="text/css" href="css/dashboard.css">
 </head>
 <body>
 	<?php 

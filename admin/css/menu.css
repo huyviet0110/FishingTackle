@@ -1,13 +1,14 @@
 * {
 	margin: 0;
 	padding: 0;
-	color: #FFFFFFCC;
 }
 
 #sidebar{
 	width: 19%;
 	height: 768px;
 	background-color: #343A40;
+	float: left;
+	font-family: "Source Sans Pro";
 }
 
 .dashboard-logo {
@@ -16,6 +17,10 @@
 }
 .dashboard-logo a {
 	text-decoration: none;
+	color: #FFFFFFCC;
+}
+.dashboard-logo a:hover {
+	color: #F9FFFF;
 }
 .dashboard-logo a span, .dashboard-logo a i {
 	font-size: 24px;
@@ -34,6 +39,10 @@
 }
 .profile a {
 	text-decoration: none;
+	color: #C2C7D0;
+}
+.profile a:hover {
+	color: #F9FFFF;
 }
 .profile a i, .profile a span {
 	font-size: 24px;
@@ -50,6 +59,7 @@
 	width: 100%;
 	height: 8%;
 	text-align: center;
+	color: #FFFFFFCC;
 }
 .search-box [type='search'][name='search'] {
 	width: 70%;
@@ -69,10 +79,17 @@
 	cursor: pointer;
 	border-radius: 4px;
 }
+.search-box [type='submit']:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
 .search-box [type='submit'] i {
 	font-size: 15px;
 }
 
+.nav-bar {
+	width: 100%;
+	height: calc(100% - 8%*3);
+}
 .nav-bar .nav-item {
 	font-size: 16px;
 }
@@ -83,6 +100,7 @@
 .nav-bar ul li a {
 	display: block;
 	text-decoration: none;
+	color: #C2C7D0;
 	padding: calc((40px - 17px) / 2) 30px;
 }
 .nav-bar ul li i {
@@ -90,4 +108,8 @@
 }
 .nav-bar ul li a p {
 	display: inline;
+}
+.nav-bar ul li a:hover {
+	color: #F9FFFF;
+	background-color: rgb(255, 255, 255, 0.1);
 }

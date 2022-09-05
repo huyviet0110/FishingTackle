@@ -9,26 +9,54 @@
 	<div id="dashboard">
 		<div class="header">
 			<div class="left">
-				<span>Dashboard</span>
+				<p>Dashboard</p>
 			</div>
 			<div class="right">
-				<span>Huyviet / </span>
+				<p>huyviet / </p>
 				<a href="sign_out.php">
 					Sign out
 				</a>
 			</div>
 		</div>
 
-		<div class="statistics">
+		<div class="content">
 			<ul>
-				<a href=""><li>New Orders</li></a>
-				<li>Cancellation Rate</li>
-				<li>User Registrations</li>
-				<li>Unique Visitors</li>
+				<li>
+					<a href="orders.php">
+						<i></i>
+						<p>
+							New Orders
+						</p>
+					</a>
+				</li>
+				<li>
+					<a href="cancellationrate.php">
+						<i></i>
+						<p>
+							Cancellation Rate
+						</p>
+					</a>
+				</li>
+				<li>
+					<a href="orders.php">
+						<i></i>
+						<p>
+							User Registrations
+						</p>
+					</a>
+				</li>
+				<li>
+					<a href="orders.php">
+						<i></i>
+						<p>
+							Unique Visitors
+						</p>
+					</a>
+				</li>
 			</ul>
 		</div>
 
-		<div class="below">
+		<div class="footer">
 			
 		</div>
 	</div>
