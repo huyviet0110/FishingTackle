@@ -1,0 +1,113 @@
+.content {
+	width: 100%;
+	height: calc(100% - 8% - 50px);
+	padding-left: 20px;
+}
+.content .above {
+	width: 100%;
+	height: 120px;
+}
+.content .above ul li {
+	width: calc(100% / 4.8);
+	box-sizing: border-box;
+	margin-right: 40px;
+	float: left;
+	list-style-type: none;
+}
+.content .above ul li a {
+	display: block;
+	text-decoration: none;
+	height: 120px;
+	color: white;
+	border-radius: 5px;
+}
+.content .above ul li [href='new_orders.php'] {
+	background-color: #17A2B8;
+}
+.content .above ul li [href='cancellationrate.php'] {
+	background-color: #28A745;
+}
+.content .above ul li [href='user_registrastrions.php'] {
+	background-color: #FFC107;
+}
+.content .above ul li [href='unique_visitors.php'] {
+	background-color: #DC3545;
+}
+ .above .statistics {
+	font-size: 40px;
+	margin-bottom: 20px;
+}
+.content .above ul li a p {
+	margin-left: 10px;
+}
+.content .above ul li a {
+	position: relative;
+}
+.content .above ul li a i {
+	position: absolute;
+	right: 10px;
+	top: 40px;
+	font-size: 40px;
+}
+.content .above ul li a:hover i {
+	font-size: 55px;
+	top: 30px;
+	right: 20px;
+}
+
+.content .card {
+	width: 100%;
+	height: calc(100% - 120px);
+	box-sizing: border-box;
+}
+table, tr {
+	border: 1px solid #DEE2E6;
+  	border-collapse: collapse;
+  	text-align: left;
+}
+th, td {
+	padding: 10px;
+}
+.content .card .card-header {
+	width: 100%;
+	height: 40px;
+	padding-top: 30px;
+}
+.content .card .card-header .card-title {
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+.h3-format {
+	font-weight: normal;
+}
+.content .card .card-header .card-search {
+	width: 25%;
+	height: 100%;
+	float: right;
+}
+.card-search .card-search-box {
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+.card-search .card-search-box input {
+	width: 100%;
+	line-height: 180%;
+	padding-left: 5px;	
+	box-sizing: border-box;
+}
+.card-search .card-search-button {
+	width: 10%;
+	height: 100%;
+	float: left;
+}
+.card-search .card-search-button button {
+	width: 100%;
+	line-height: 180%;
+	box-sizing: border-box;
+}
+
+.content .card .card-content {
+	width: 100%;
+}

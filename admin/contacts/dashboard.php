@@ -6,8 +6,10 @@
 	<title></title>
 </head>
 <body>
-	<?php 
-		include 'root';
+	<?php   
+		require_once '../header.php';
+		requrie_once '../content.php';
+		require_once '../footer.php';
 	?>
 </body>
 </html>
