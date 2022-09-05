@@ -28,7 +28,7 @@
 
 		<div class="search-box">
 			<form method="get" action="index.php">
-				<input type="search" name="search" placeholder="Search"> 
+				<input type="search" name="search_nav_item" placeholder="Search"> 
 				<button type="submit">
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</button>

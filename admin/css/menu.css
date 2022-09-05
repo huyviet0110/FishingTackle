@@ -61,7 +61,7 @@
 	text-align: center;
 	color: #FFFFFFCC;
 }
-.search-box [type='search'][name='search'] {
+.search-box [type='search'][name='search_nav_item'] {
 	width: 70%;
 	line-height: 30px;
 	margin-top: 6%;
