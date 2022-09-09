@@ -9,12 +9,13 @@
 	<link rel="stylesheet" type="text/css" href="../css/dashboard.css">
 	<link rel="stylesheet" type="text/css" href="../css/header.css">
 	<link rel="stylesheet" type="text/css" href="../css/content.css">
+	<link rel="stylesheet" type="text/css" href="../css/card_button.css">
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 </head>
 <body>
 	<?php 
 		require_once '../root/menu.php';
-		require_once '../root/dashboard.php';
+		require_once 'dashboard.php';
 	?>
 </body>
 </html>

@@ -12,7 +12,7 @@
 				Copyright
 				<i class="fa-regular fa-copyright"></i>
 				2021-2022 
-				<a href="index.php">FishingTackle.</a>
+				<a href="../admin">FishingTackle.</a>
 			</strong>
 			All rights reserved
 		</p>

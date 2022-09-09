@@ -51,21 +51,19 @@
 		<div class="card">
 			<div class="card-header">
 				<div class="card-title">
-					<h3 class="h3-format">Message from customer</h3>
+					<h3 class="h3-format">Contacts from customer</h3>
 				</div>
 				<div class="card-search">
-					<div class="card-search-box">
-						<form>
+					<form method="get" action="index.php">
+						<div class="card-search-box">
 							<input type="search" name="search" placeholder="Search">
-						</form>
-					</div>
-					<div class="card-search-button">
-						<form>
+						</div>
+						<div class="card-search-button">
 							<button type="submit">
 								<i class="fa-solid fa-magnifying-glass"></i>
 							</button>
-						</form>
-					</div>
+						</div>
+					</form>
 				</div>
 			</div>
 
@@ -74,19 +72,19 @@
 					<tr>
 						<th>ID</th>
 						<th>Created at</th>
-						<th>Message</th>
-						<th>Name</th>
-						<th>Email</th>
-						<th>Phone</th>
+						<th>Message (Short description)</th>
+						<th>Details</th>
+						<th>Status</th>
+						<th>Action</th>
 					</tr>
 
 					<tr>
-						<td>abc</td>
-						<td>abc</td>
-						<td>abc</td>
-						<td>abc</td>
-						<td>abc</td>
-						<td>abc</td>
+						<td>1</td>
+						<td>01-01-2022</td>
+						<td>fdsafa</td>
+						<td>view</td>
+						<td>Not answered</td>
+						<td>delete</td>
 					</tr>
 					<tr>
 						<td>abc</td>

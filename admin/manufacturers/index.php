@@ -9,12 +9,15 @@
 	<link rel="stylesheet" type="text/css" href="../css/dashboard.css">
 	<link rel="stylesheet" type="text/css" href="../css/header.css">
 	<link rel="stylesheet" type="text/css" href="../css/content.css">
+	<link rel="stylesheet" type="text/css" href="../css/card.css">
+	<link rel="stylesheet" type="text/css" href="../css/notification_crud.css">
+	<link rel="stylesheet" type="text/css" href="../css/pagination.css">
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 </head>
 <body>
 	<?php 
-		include '../root/menu.php';
-		include '../root/dashboard.php';
+		require_once '../root/menu.php';
+		require_once 'dashboard.php';
 	?>
 </body>
 </html>

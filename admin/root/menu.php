@@ -10,7 +10,7 @@
 <body>
 	<div id="sidebar">
 		<div class="dashboard-logo">
-			<a href="index.php">
+			<a href="../">
 				<i class="fa-solid fa-gauge-high"></i>
 				<span>Dashboard</span>
 			</a>
@@ -65,7 +65,7 @@
 					<a href="../contacts">
 					<i class="fa-solid fa-message"></i>
 						<p>
-							Messages
+							Contacts
 						</p>
 					</a>
 				</li>

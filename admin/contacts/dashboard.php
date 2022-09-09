@@ -6,10 +6,12 @@
 	<title></title>
 </head>
 <body>
-	<?php   
-		require_once '../header.php';
-		requrie_once '../content.php';
-		require_once '../footer.php';
-	?>
+	<div id="dashboard">
+		<?php   
+		require_once '../root/header.php';
+		require_once 'content.php';
+		require_once '../root/footer.php';
+		?>
+	</div>
 </body>
 </html>

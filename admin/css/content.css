@@ -2,6 +2,7 @@
 	width: 100%;
 	height: calc(100% - 8% - 50px);
 	padding-left: 20px;
+	box-sizing: border-box;
 }
 .content .above {
 	width: 100%;
@@ -58,7 +59,6 @@
 .content .card {
 	width: 100%;
 	height: calc(100% - 120px);
-	box-sizing: border-box;
 }
 table, tr {
 	border: 1px solid #DEE2E6;
@@ -85,9 +85,10 @@ th, td {
 	width: 25%;
 	height: 100%;
 	float: right;
+	box-sizing: border-box;
 }
 .card-search .card-search-box {
-	width: 50%;
+	width: 60%;
 	height: 100%;
 	float: left;
 }
@@ -98,7 +99,7 @@ th, td {
 	box-sizing: border-box;
 }
 .card-search .card-search-button {
-	width: 10%;
+	width: 16%;
 	height: 100%;
 	float: left;
 }
