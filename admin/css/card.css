@@ -1,18 +1,41 @@
-.card-insert {
+.card-insert, .card-update, .card-delete {
 	width: 100%;
 	height: 28px;
+}
+.card-insert {
 	margin-bottom: 20px;
 }
-.card-insert p {
+.card-insert p, .card-update p, .card-delete p {
 	display: inline;
 }
-.card-insert form button {
+.card-insert form button, .card-update form button, .card-delete form button {
 	font-size: 16px;
-	background-color: green;
 	color: white;
 	border: 1px solid white;
 	border-radius: 5px;
 	width: 84px;
 	height: 28px;
 	cursor: pointer;
+}
+.card-insert form button {
+	background-color: #28a745;
+}
+.card-insert form button:hover{
+	background-color: #218838;
+}
+.card-update form button {
+	font-size: 14px;
+	width: 90px;
+	background-color: #17a2b8;
+}
+.card-update form button:hover {
+	background-color: #138496;
+}
+.card-delete form button {
+	font-size: 14px;
+	width: 90px;
+	background-color: #dc3545;
+}
+.card-delete form button:hover {
+	background-color: #C82333;
 }

@@ -1,31 +1,7 @@
 <?php 
-	$search = '';
-	if(isset($_GET['search'])){
-		$search = $_GET['search'];
-	}
-
-	$current_page = 1;
-	if(isset($_GET['current_page']) && is_numeric($_GET['current_page'])){
-		$current_page = $_GET['current_page'];
-	}
-
 	require_once '../connect.php';
-
-	$sql = "select * from manufacturers
-			where name like '%$search%'";
-	$result = mysqli_query($connect, $sql);
-	$number_of_records = mysqli_num_rows($result);
-
-	$number_of_records_per_page = 4;
-	$number_of_pages = ceil($number_of_records / $number_of_records_per_page);
-	$number_of_records_to_skip = ($current_page - 1) * $number_of_records_per_page;
-
-	$sql = "select * from manufacturers
-			where name like '%$search%'
-			limit $number_of_records_per_page
-			offset $number_of_records_to_skip";
-	$result = mysqli_query($connect, $sql);
-	$result_num_rows = mysqli_num_rows($result);
+	$table_name = 'manufacturers';
+	require_once '../root/pagination.php';
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +14,7 @@
 <body>
 	<div class="content">
 
-		<?php require_once '../root/statistics.php' ?>
+		<!-- <?php require_once '../root/statistics.php' ?> -->
 
 		<div class="card">
 			<div class="card-header">
@@ -73,28 +49,18 @@
 							<tr>
 								<td><?php echo $each['id'] ?></td>
 								<td>
-									<img src="images/<?php echo $each['image'] ?>" height="100px">
+									<img src="images/<?php echo $each['image'] ?>" height="100px" width="100px">
 								</td>
 								<td><?php echo $each['name'] ?></td>
-								<td><?php echo $each['description'] ?></td>
+								<td><?php echo mb_substr($each['description'], 0, 100) ?></td>
 								<td><?php echo $each['phone_number'] ?></td>
 								<td><?php echo $each['address'] ?></td>
 								<td><?php echo $each['email'] ?></td>
 								<td>
-									<form action="form_update.php?id=<?php echo $each['id'] ?>">
-										<div class="card-update">
-											<i class="fa-solid fa-pen-to-square"></i>
-											<button>Update</button>
-										</div>
-									</form>
+									<?php include '../root/card_update.php' ?>
 								</td>
 								<td>
-									<form action="delete.php?id=<?php echo $each['id'] ?>">
-										<div class="card-delete">
-											<i class="fa-solid fa-trash"></i>
-											<button>Delete</button>
-										</div>
-									</form>
+									<?php include '../root/card_delete.php' ?>
 								</td>
 							</tr>
 						<?php endforeach ?>

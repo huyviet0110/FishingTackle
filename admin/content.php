@@ -1,3 +1,9 @@
+<?php 
+	require_once 'connect.php';
+	$table_name = 'contacts';
+	require_once 'root/pagination.php';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>

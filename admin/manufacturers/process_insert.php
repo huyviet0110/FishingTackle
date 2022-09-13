@@ -1,6 +1,6 @@
 <?php 
-	
-	if(empty($_FILES['image'])){
+
+	if(empty($_FILES['image']['tmp_name'])){
 		header('location:index.php?error=You must upload image file!');
 		exit();
 	}
@@ -10,31 +10,26 @@
 		exit();
 	}
 
-	$file = $_FILES['image'];
-	$folder = 'images/';
-	$file_element_array = explode('.', $file['name']);
-	$file_extension = end($file_element_array);
-	$file_name = time() . '.' . $file_extension;
-	$target_file = $folder . $file_name;
-	move_uploaded_file($file['tmp_name'], $target_file);
-
 	require_once '../connect.php';
-	$name = $_POST['name'];
-	$description = mysqli_real_escape_string($connect, $_POST['description']);
-	$phone_number = $_POST['phone_number'];
-	$address = $_POST['address'];
-	$email = $_POST['email'];
+
+	require_once '../form_validation/backend_check/check_image.php';
+	require_once '../form_validation/backend_check/check_name.php';
+	require_once '../form_validation/backend_check/check_description.php';
+	require_once '../form_validation/backend_check/check_phone_number.php';
+	require_once '../form_validation/backend_check/check_address.php';
+	require_once '../form_validation/backend_check/check_email.php';
+
+	$table_name = 'manufacturers';
+	require_once '../form_validation/backend_check/check_duplicates/name.php';
+	require_once '../form_validation/backend_check/check_duplicates/email.php';
 
 	$sql = "insert into manufacturers (name, image, description, phone_number, address, email)
 			values ('$name', '$file_name', '$description', '$phone_number', '$address', '$email')";
 	mysqli_query($connect, $sql);
-
-	$error = mysqli_error($connect);
-	if(!empty($error)){
-		header('location:index.php?error=Query error!');
-		exit();
-	}
+	require_once '../form_validation/check_query_error.php';
 
 	mysqli_close($connect);
 
-	header('location:index.php?success=Successfully added a manufacturer');
+	move_uploaded_file($file['tmp_name'], $target_file);
+	
+	header('location:index.php?success=Successfully added manufacturer!');

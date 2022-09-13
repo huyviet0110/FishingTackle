@@ -1,5 +1,5 @@
 .form-title {
-	width: 60%;
+	width: 90%;
 	height: 40px;
 	background-color: #007BFF;
 	color: white;
@@ -10,25 +10,42 @@
 }
 
 .form-content {
-	width: 60%;
+	width: 90%;
 	background-color: white;
 	padding-left: 10px;
 	padding-right: 10px;
 	box-sizing: border-box;
 }
-.form-content .form-input {
+.form-content .form-input, .form-content .form-old-image, .form-content .form-textarea {
 	width: 100%;
-	height: 60px;
-	padding-top: 10px;
+	height: 80px;
+	padding-top: 20px;
 	box-sizing: border-box;
 }
-.form-content .form-input input {
+.form-content .form-textarea {
+	width: 100%;
+	height: 200px;
+	box-sizing: border-box;
+}
+.form-content .form-old-image {
+	height: 230px;
+}
+.form-content .form-input input, .form-content .form-textarea textarea {
 	width: 100%;
 	line-height: 30px;
+	padding-left: 5px;
 	box-sizing: border-box;
 	font-size: 16px;
 }
-.form-content .create-button {
+.form-content .form-textarea textarea {
+	resize: none;
+	height: 160px;
+}
+.form-content .form-input p, .form-content .form-textarea p, .form-content .form-old-image p {
+	font-weight: bold;
+	padding-bottom: 5px;
+}
+.form-content .create-button, .form-content .save-button {
 	width: 100%;
 	height: 40px;
 	border: 1px solid white;
@@ -36,8 +53,8 @@
 	box-sizing: border-box;
 	margin-top: 20px;
 }
-.form-content .create-button button {
-	background-color: green;
+.form-content .create-button button, .form-content .save-button button {
+	background-color: #28a745;
 	color: white;
 	border: 0px solid white;
 	border-radius: 5px;
@@ -46,4 +63,10 @@
 	font-size: 16px;
 	cursor: pointer;
 	float: right;
+}
+.form-content .save-button button {
+	width: 135px;
+}
+.form-content .create-button button:hover, .form-content .save-button button:hover {
+	background-color: #218838;
 }

@@ -23,21 +23,22 @@
 		<div class="content">
 			<div class="form">
 				<div class="form-title">
-					<h3 class="h3-format">Add a new manufacturers</h3>
+					<h3 class="h3-format">Add a new manufacturer</h3>
 				</div>
 				<div class="form-content">
 					<form method="post" action="process_insert.php" enctype="multipart/form-data">
 						<div class="form-input">
-							<p>Image</p>
-							<input type="file" name="image">
+							<p>Image (Correct format: png, jpg, jpec, gif)</p>
+							<input type="file" name="image" id="input_image">
+							<div id="image_error"></div>
 						</div>
 						<div class="form-input">
 							<p>Name</p>
-							<input type="text" name="name">
+							<input type="text" name="name" id="input_name">
 						</div>
-						<div class="form-input">
+						<div class="form-textarea">
 							<p>Description</p>
-							<input type="text" name="description"> 
+							<textarea name="description"></textarea>
 						</div>
 						<div class="form-input">
 							<p>Phone number</p>
@@ -52,7 +53,9 @@
 							<input type="email" name="email"> 
 						</div>
 						<div class="create-button">
-							<button>Create</button>
+							<button type="submit" onclick="return check();">
+								Create
+							</button>
 						</div>
 					</form>
 				</div>
@@ -62,5 +65,30 @@
 		<?php require_once '../root/footer.php' ?>
 
 	</div>
+
+	<script src="../form_validation/frontend_check/check_image.js"></script><!-- 
+	<script src="../form_validation/frontend_check/check_name.js"></script>
+	<script src="../form_validation/frontend_check/check_description.js"></script>
+	<script src="../form_validation/frontend_check/check_phone_number.js"></script>
+	<script src="../form_validation/frontend_check/check_address.js"></script>
+	<script src="../form_validation/frontend_check/check_email.js"></script> -->
+
+	<script type="text/javascript">
+		function check() {
+
+			check_image();
+			// check_name();
+			// check_description();
+			// check_phone_number();
+			// check_address();
+			// check_email();
+
+			if(check_image() == true){
+				return true;
+			}
+
+		}
+	</script>
+	
 </body>
 </html>
