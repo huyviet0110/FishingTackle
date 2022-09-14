@@ -39,7 +39,7 @@
 }
 .form-content .form-textarea textarea {
 	resize: none;
-	height: 160px;
+	height: 150px;
 }
 .form-content .form-input p, .form-content .form-textarea p, .form-content .form-old-image p {
 	font-weight: bold;

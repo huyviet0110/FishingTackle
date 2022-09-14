@@ -1,5 +1,5 @@
 <?php 
-
+	
 	$sql = "select id from $table_name where id = '$id'";
 	$result = mysqli_query($connect, $sql);
 	$result_num_rows = mysqli_num_rows($result);

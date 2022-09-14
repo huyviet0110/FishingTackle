@@ -8,7 +8,7 @@
 	$current_page = 1;
 	if(isset($_GET['current_page']) && is_numeric($_GET['current_page'])){
 		$current_page = $_GET['current_page'];
-	} 
+	}
 
 	$sql = "select * from $table_name
 			where name like '%$search%'";

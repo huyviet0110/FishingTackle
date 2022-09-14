@@ -12,12 +12,12 @@
 
 	require_once '../connect.php';
 
-	require_once '../form_validation/backend_check/check_image.php';
-	require_once '../form_validation/backend_check/check_name.php';
-	require_once '../form_validation/backend_check/check_description.php';
-	require_once '../form_validation/backend_check/check_phone_number.php';
-	require_once '../form_validation/backend_check/check_address.php';
-	require_once '../form_validation/backend_check/check_email.php';
+	require_once '../form_validation/backend_check/image.php';
+	require_once '../form_validation/backend_check/name.php';
+	require_once '../form_validation/backend_check/description.php';
+	require_once '../form_validation/backend_check/phone_number.php';
+	require_once '../form_validation/backend_check/address.php';
+	require_once '../form_validation/backend_check/email.php';
 
 	$table_name = 'manufacturers';
 	require_once '../form_validation/backend_check/check_duplicates/name.php';
@@ -26,7 +26,7 @@
 	$sql = "insert into manufacturers (name, image, description, phone_number, address, email)
 			values ('$name', '$file_name', '$description', '$phone_number', '$address', '$email')";
 	mysqli_query($connect, $sql);
-	require_once '../form_validation/check_query_error.php';
+	require_once '../form_validation/backend_check/query_error.php';
 
 	mysqli_close($connect);
 
