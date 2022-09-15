@@ -8,7 +8,7 @@ function check_error(input, regex, error_id, input_name, number_characters_limit
 		document.getElementById(error_id).innerHTML = input_name + ' cannot exceed ' + number_characters_limit + ' characters!';
 		document.getElementById(error_id).style.color = 'red';
 		return false;
-	} else if(!regex.test(input)){
+	} else if(!regex.test(input.trim())){
 		document.getElementById(error_id).innerHTML = 'Wrong ' + input_name + ' format!';
 		document.getElementById(error_id).style.color = 'red';
 		return false;

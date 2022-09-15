@@ -1,26 +1,6 @@
 <?php 
 	
-	if(empty($_POST['id'])){
-		header('location:index.php?error=Invalid ID!');
-		exit();
-	}
-
-	require_once '../connect.php';
-
-	$id = $_POST['id'];
-	$table_name = 'manufacturers';
-	require_once '../form_validation/backend_check/check_empty/id.php';
-
-	$sql = "select * from manufacturers
-			where id = '$id'";
-	$result = mysqli_query($connect, $sql);
-	require_once '../form_validation/backend_check/query_error.php';
-	$result_num_rows = mysqli_num_rows($result);
-	if($result_num_rows !== 1){
-		header('location:index.php?error=Invalid ID!');
-		exit();
-	}
-	$each = mysqli_fetch_array($result);
+	require_once '../root/get_data_to_update.php';
 ?>
 
 <!DOCTYPE html>
@@ -102,7 +82,7 @@
 
 	</div>
 	
-	<script src="../form_validation/frontend_check/error.js"></script>
+	<script src="../form_validation/frontend_check/check_error.js"></script>
 	<script src="../form_validation/frontend_check/image.js"></script>
 	<script src="../form_validation/frontend_check/update_image.js"></script>
 	<script src="../form_validation/frontend_check/name.js"></script>
@@ -127,9 +107,11 @@
 					count++;
 				}
 			}
-			return (count === 6)?true:false;
+			return (count === 6) ? true : false;
 		}
 	</script>
+
+	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
 
 	<?php mysqli_close($connect) ?>
 

@@ -19,5 +19,10 @@
 		require_once '../root/menu.php';
 		require_once 'dashboard.php';
 	?>
+	
+	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
+	<script src="../form_validation/frontend_check/confirm_delete.js"></script>
+
+	<?php mysqli_close($connect) ?>
 </body>
 </html>

@@ -71,7 +71,7 @@
 
 	</div>
 
-	<script src="../form_validation/frontend_check/error.js"></script>
+	<script src="../form_validation/frontend_check/check_error.js"></script>
 	<script src="../form_validation/frontend_check/image.js"></script>
 	<script src="../form_validation/frontend_check/insert_image.js"></script>
 	<script src="../form_validation/frontend_check/name.js"></script>
@@ -96,9 +96,11 @@
 					count++;
 				}
 			}
-			return (count === 6)?true:false;
+			return (count === 6) ? true : false;
 		}
 	</script>
+
+	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
 	
 </body>
 </html>

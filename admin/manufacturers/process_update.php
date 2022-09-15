@@ -13,6 +13,7 @@
 	require_once '../connect.php';
 
 	$id = $_POST['id'];
+	$page = $_POST['page'];
 	$table_name = 'manufacturers';
 	require_once '../form_validation/backend_check/check_empty/id.php';
 
@@ -49,4 +50,4 @@
 		unlink($file_name_old);
 	}
 
-	header('location:index.php?success=Manufacturer update successful!');
+	header("location:index.php?success=Successfully updated manufacturer!&page=$page");

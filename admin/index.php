@@ -16,5 +16,7 @@
 		require_once 'menu.php';
 		require_once 'dashboard.php';
 	?>
+
+	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
 </body>
 </html>

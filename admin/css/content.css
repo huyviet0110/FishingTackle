@@ -68,6 +68,10 @@ table, tr {
 th, td {
 	padding: 10px;
 }
+.td-break {
+	word-break: break-all;
+}
+
 .content .card .card-header {
 	width: 100%;
 	height: 40px;
@@ -86,7 +90,6 @@ th, td {
 	width: 25%;
 	height: 100%;
 	float: right;
-	box-sizing: border-box;
 }
 .card-search .card-search-box {
 	width: 60%;
@@ -108,6 +111,12 @@ th, td {
 	width: 100%;
 	line-height: 180%;
 	box-sizing: border-box;
+}
+
+.content .card .empty-records {
+	color: red;
+	font-size: 20px;
+	margin-bottom: 10px;
 }
 
 .content .card .card-content {
