@@ -1,7 +1,7 @@
 <?php 
 
-	require_once '../root/get_data_to_update.php';
-	$page = 1;
+	require_once '../root/get_data_from_id.php';
+	require_once '../form_validation/backend_check/page.php';	
 ?>
 
 <!DOCTYPE html>
@@ -29,9 +29,6 @@
 		<?php require_once '../root/header.php' ?>
 
 		<div class="content">
-
-			<!-- <?php require_once '../root/statistics.php' ?> -->
-
 			<div class="card">
 				<div class="card-header" style="padding-top: 10px;">
 					<div class="card-title">

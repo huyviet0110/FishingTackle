@@ -1,5 +1,10 @@
 <?php 
 	
+	if(empty($_FILES['image']['tmp_name'])){
+		header('location:index.php?error=You must upload image file!');
+		exit();
+	}
+	
 	$file = $_FILES['image'];
 	$folder = 'images/';
 	$file_element_array = explode('.', $file['name']);

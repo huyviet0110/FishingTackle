@@ -1,6 +1,6 @@
 <?php 
 	
-	require_once '../root/get_data_to_update.php';
+	require_once '../root/get_data_from_id.php';
 ?>
 
 <!DOCTYPE html>
@@ -68,6 +68,7 @@
 							<input type="email" name="email" id="input_email" value="<?php echo $each['email'] ?>"> 
 							<div id="email_error"></div>
 						</div>
+						<input type="hidden" name="page" value="<?php echo $page ?>">
 						<div class="save-button">
 							<button type="submit" onclick="return check();">
 								Save Changes

@@ -1,13 +1,10 @@
 <?php 
 	
-	if(empty($_POST['id'])){
-		header('location:index.php?error=Invalid ID!');
-		exit();
-	}
+	require_once '../form_validation/backend_check/check_empty/post_id.php';
+	require_once '../form_validation/backend_check/page.php';
 
 	require_once '../connect.php';
 
-	$id = $_POST['id'];
 	$table_name = 'manufacturers';
 	require_once '../form_validation/backend_check/check_empty/id.php';
 

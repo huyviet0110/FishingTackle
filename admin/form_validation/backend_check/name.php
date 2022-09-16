@@ -1,4 +1,9 @@
 <?php 
+	
+	if(empty($_POST['name'])){
+		header('location:index.php?error=Name cannot be empty!');
+		exit();
+	}
 
 	$name = $_POST['name'];
 	$regex = "/^(?:[ ]?(?:\w{1,20}))+$/";

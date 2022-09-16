@@ -7,8 +7,6 @@
 
 <div class="content">
 
-	<!-- <?php require_once '../root/statistics.php' ?> -->
-
 	<div class="card">
 		<div class="card-header" style="padding-top: 10px">
 			<div class="card-title">
@@ -33,9 +31,6 @@
 					<th>Image</th>
 					<th>Name</th>
 					<th>Short description</th>
-					<th>Phone number</th>
-					<th>Address</th>
-					<th>Email</th>
 					<th>Action</th>
 				</tr>
 
@@ -48,9 +43,6 @@
 							</td>
 							<td><?php echo $each['name'] ?></td>
 							<td><?php echo mb_substr($each['description'], 0, 50) ?></td>
-							<td><?php echo $each['phone_number'] ?></td>
-							<td><?php echo $each['address'] ?></td>
-							<td class="td-break"><?php echo $each['email'] ?></td>
 							<td>
 								<?php include '../root/card_view.php' ?>
 							</td>

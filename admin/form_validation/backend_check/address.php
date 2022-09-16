@@ -1,4 +1,9 @@
 <?php 
+	
+	if(empty($_POST['address'])){
+		header('location:index.php?error=Address cannot be empty!');
+		exit();
+	}
 
 	$address = $_POST['address'];
 	$regex = "/^(?:[A-Za-z]{1,15}|\d{1,10})+(?:[,]?(?: (?:[A-Za-z]{1,15}|\d{1,10}))+)*[.]?$/";

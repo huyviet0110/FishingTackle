@@ -1,17 +1,8 @@
 <?php 
 
-	if(empty($_FILES['image']['tmp_name'])){
-		header('location:index.php?error=You must upload image file!');
-		exit();
-	}
-
-	if(empty($_POST['name']) || empty($_POST['description']) || empty($_POST['phone_number'])|| empty($_POST['address']) || empty($_POST['email'])){
-		header('location:index.php?error=You must fill in all the information!');
-		exit();
-	}
-
 	require_once '../connect.php';
 
+	require_once '../form_validation/backend_check/page.php';
 	require_once '../form_validation/backend_check/image.php';
 	require_once '../form_validation/backend_check/name.php';
 	require_once '../form_validation/backend_check/description.php';
@@ -32,4 +23,4 @@
 
 	move_uploaded_file($file['tmp_name'], $target_file);
 	
-	header('location:index.php?success=Successfully added manufacturer!');
+	header("location:index.php?success=Successfully added manufacturer!&page=$page");

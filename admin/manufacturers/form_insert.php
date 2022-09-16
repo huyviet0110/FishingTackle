@@ -1,3 +1,7 @@
+<?php 
+	require_once '../form_validation/backend_check/page.php';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,6 +61,7 @@
 							<input type="email" name="email" id="input_email">
 							<div id="email_error"></div>
 						</div>
+						<input type="hidden" name="page" value="<?php echo $page ?>">
 						<div class="create-button">
 							<button type="submit" onclick="return check();">
 								Create
