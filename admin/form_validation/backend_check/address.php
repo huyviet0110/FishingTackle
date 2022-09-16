@@ -1,19 +1,10 @@
 <?php 
 	
-	if(empty($_POST['address'])){
-		header('location:index.php?error=Address cannot be empty!');
-		exit();
-	}
+	$input = 'address';
+	$input_name = 'Address';
+	$regex = "/^(?:[A-Za-z]{1,15}|\d{1,10})(?:[,]?(?: (?:[A-Za-z]{1,15}|\d{1,10}))+)*[.]?$/";
+	$number_of_characters = 200;
 
-	$address = $_POST['address'];
-	$regex = "/^(?:[A-Za-z]{1,15}|\d{1,10})+(?:[,]?(?: (?:[A-Za-z]{1,15}|\d{1,10}))+)*[.]?$/";
+	check_error($form_file_name, $input, $input_name, $regex, $number_of_characters);
 
-	if(!preg_match($regex, $address)){
-		header('location:index.php?error=Wrong address format!');
-		exit();
-	}
-
-	if(strlen($address) > 200){
-		header('location:index.php?error=Address cannot exceed 200 characters!');
-		exit();
-	}
+	$address = $_POST[$input];

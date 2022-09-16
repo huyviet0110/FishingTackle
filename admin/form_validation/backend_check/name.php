@@ -1,19 +1,10 @@
 <?php 
-	
-	if(empty($_POST['name'])){
-		header('location:index.php?error=Name cannot be empty!');
-		exit();
-	}
 
-	$name = $_POST['name'];
-	$regex = "/^(?:[ ]?(?:\w{1,20}))+$/";
+	$input = 'name';
+	$input_name = 'Name';
+	$regex = "/^(?:\w{1,20})(?: \w{1,20})*$/";
+	$number_of_characters = 100;
 
-	if(!preg_match($regex, $name)){
-		header('location:index.php?error=Wrong name format!');
-		exit();
-	}
+	check_error($form_file_name, $input, $input_name, $regex, $number_of_characters);
 
-	if(strlen($name) > 100){
-		header('location:index.php?error=Name cannot exceed 100 characters!');
-		exit();
-	}
+	$name = $_POST[$input];

@@ -1,13 +1,10 @@
 <?php 
 	
-	if(empty($_POST['phone_number'])){
-		header('location:index.php?error=Phone number cannot be empty!');
-		exit();
-	}
+	$input = 'phone_number';
+	$input_name = 'Phone_number';
+	$regex = "/^[+]?\d+$/";
+	$number_of_characters = 20;
 
-	$phone_number = $_POST['phone_number'];
-	$regex = "/^[+]?\d{5,19}$/";
-	if(!preg_match($regex, $phone_number)){
-		header('location:index.php?error=Wrong phone number format!');
-		exit();
-	}
+	check_error($form_file_name, $input, $input_name, $regex, $number_of_characters);
+
+	$phone_number = $_POST[$input];

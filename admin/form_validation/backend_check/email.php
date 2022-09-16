@@ -1,13 +1,10 @@
 <?php 
 	
-	if(empty($_POST['email'])){
-		header('location:index.php?error=Email cannot be empty!');
-		exit();
-	}
+	$input = 'email';
+	$input_name = 'Email';
+	$regex = "/^\w+@\w+(?:.\w+)*$/";
+	$number_of_characters = 100;
 
-	$email = $_POST['email'];
+	check_error($form_file_name, $input, $input_name, $regex, $number_of_characters);
 
-	if(strlen($email) > 100){
-		header('location:index.php?error=Email cannot exceed 100 characters!');
-		exit();
-	}
+	$email = $_POST[$input];

@@ -2,6 +2,8 @@
 	
 	require_once '../connect.php';
 
+	$form_file_name = 'form_update.php';
+	require_once ' ./form_validation/backend_check/check_error.php';
 	require_once '../form_validation/backend_check/check_empty/post_id.php';
 	require_once '../form_validation/backend_check/page.php';
 	if(!empty($_FILES['image']['tmp_name'])){

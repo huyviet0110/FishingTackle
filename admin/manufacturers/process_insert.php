@@ -2,6 +2,8 @@
 
 	require_once '../connect.php';
 
+	$form_file_name = 'form_insert.php';
+	require_once '../form_validation/backend_check/check_error.php';
 	require_once '../form_validation/backend_check/page.php';
 	require_once '../form_validation/backend_check/image.php';
 	require_once '../form_validation/backend_check/name.php';

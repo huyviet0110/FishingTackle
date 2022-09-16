@@ -14,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/header.css">
 	<link rel="stylesheet" type="text/css" href="../css/content.css">
 	<link rel="stylesheet" type="text/css" href="../css/card.css">
+	<link rel="stylesheet" type="text/css" href="../css/notification.css">
 	<link rel="stylesheet" type="text/css" href="../css/form.css">
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 </head>
@@ -25,6 +26,9 @@
 		<?php require_once '../root/header.php' ?>
 
 		<div class="content">
+
+			<div id="notification" style="margin-bottom: 20px; font-size: 20px;"></div>
+
 			<div class="form">
 				<div class="form-title">
 					<h3 class="h3-format">Add a new manufacturer</h3>
@@ -89,11 +93,11 @@
 		function check() {
 			let count = 0;
 			const result_check = [
-				check_insert_image(), 
-				check_name(), 
-				check_description(), 
-				check_phone_number(), 
-				check_address(), 
+				check_insert_image(),
+				// check_name(),
+				// check_description(),
+				// check_phone_number(),
+				check_address(),
 				check_email()
 			];
 			for(let i = 0; i < result_check.length; i++){
@@ -101,11 +105,12 @@
 					count++;
 				}
 			}
-			return (count === 6) ? true : false;
+			return (count === 3) ? true : false;
 		}
 	</script>
 
 	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
+	<?php require_once '../root/notification.php' ?>
 	
 </body>
 </html>

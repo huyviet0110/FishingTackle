@@ -4,6 +4,6 @@
 	$result = mysqli_query($connect, $sql);
 	$result_num_rows = mysqli_num_rows($result);
 	if($result_num_rows > 0){
-		header('location:index.php?error=Manufacturer name already exists!');
+		header('location:' . $form_file_name . '?error=Manufacturer name already exists!');
 		exit();
 	}

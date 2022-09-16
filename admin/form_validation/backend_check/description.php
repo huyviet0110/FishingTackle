@@ -1,12 +1,10 @@
 <?php 
+	
+	$input = 'description';
+	$input_name = 'Description';
+	$regex = "/^(?:.{1,20})(?: .{1,20})*$/";
+	$number_of_characters = 500;
 
-	if(empty($_POST['description'])){
-		header('location:index.php?error=Description cannot be empty!');
-		exit();
-	}
+	check_error($form_file_name, $input, $input_name, $regex, $number_of_characters);
 
-	$description = mysqli_real_escape_string($connect, $_POST['description']);
-	if(strlen($description) > 500){
-		header('location:index.php?error=Description cannot exceed 500 characters!');
-		exit();
-	}
+	$description = $_POST[$input];
