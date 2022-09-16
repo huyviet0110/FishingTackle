@@ -37,12 +37,12 @@
 				<?php if($number_of_records > 0) { ?>
 					<?php foreach ($result as $each): ?>
 						<tr>
-							<td><?php echo $each['id'] ?></td>
+							<td><?php echo trim($each['id']) ?></td>
 							<td>
 								<img src="images/<?php echo $each['image'] ?>" height="100px" width="100px">
 							</td>
-							<td><?php echo $each['name'] ?></td>
-							<td><?php echo mb_substr($each['description'], 0, 50) ?></td>
+							<td><?php echo trim($each['name']) ?></td>
+							<td><?php echo mb_substr(trim($each['description']), 0, 50) ?></td>
 							<td>
 								<?php include '../root/card_view.php' ?>
 							</td>

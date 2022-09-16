@@ -94,9 +94,9 @@
 			let count = 0;
 			const result_check = [
 				check_insert_image(),
-				// check_name(),
-				// check_description(),
-				// check_phone_number(),
+				check_name(),
+				check_description(),
+				check_phone_number(),
 				check_address(),
 				check_email()
 			];
@@ -105,7 +105,7 @@
 					count++;
 				}
 			}
-			return (count === 3) ? true : false;
+			return (count === 6) ? true : false;
 		}
 	</script>
 

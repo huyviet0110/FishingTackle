@@ -2,22 +2,22 @@
 	
 	require_once '../connect.php';
 
+	$table_name = 'manufacturers';
 	$form_file_name = 'form_update.php';
-	require_once ' ./form_validation/backend_check/check_error.php';
 	require_once '../form_validation/backend_check/check_empty/post_id.php';
+	require_once '../form_validation/backend_check/check_empty/id.php';
+	require_once '../form_validation/backend_check/old_image.php';
 	require_once '../form_validation/backend_check/page.php';
 	if(!empty($_FILES['image']['tmp_name'])){
 		require_once '../form_validation/backend_check/image.php';
 	}
+	require_once '../form_validation/backend_check/check_error.php';
 	require_once '../form_validation/backend_check/name.php';
 	require_once '../form_validation/backend_check/description.php';
 	require_once '../form_validation/backend_check/phone_number.php';
 	require_once '../form_validation/backend_check/address.php';
 	require_once '../form_validation/backend_check/email.php';
 
-	$table_name = 'manufacturers';
-	require_once '../form_validation/backend_check/check_empty/id.php';
-	require_once '../form_validation/backend_check/old_image.php';
 	require_once '../form_validation/backend_check/check_duplicates/name.php';
 	require_once '../form_validation/backend_check/check_duplicates/email.php';
 

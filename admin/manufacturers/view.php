@@ -57,11 +57,11 @@
 								<td>
 									<img src="images/<?php echo $each['image'] ?>" height="100px" width="100px">
 								</td>
-								<td><?php echo $each['name'] ?></td>
-								<td><?php echo $each['description'] ?></td>
-								<td><?php echo $each['phone_number'] ?></td>
-								<td><?php echo $each['address'] ?></td>
-								<td class="td-break"><?php echo $each['email'] ?></td>
+								<td><?php echo trim($each['name']) ?></td>
+								<td><?php echo trim($each['description']) ?></td>
+								<td><?php echo trim($each['phone_number']) ?></td>
+								<td><?php echo trim($each['address']) ?></td>
+								<td class="td-break"><?php echo trim($each['email']) ?></td>
 								<td>
 									<?php include '../root/card_update.php' ?>
 								</td>
