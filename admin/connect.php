@@ -4,3 +4,8 @@
 	mysqli_set_charset($connect, 'utf8');
 
 	require_once 'test.php';
+	require_once 'test.php';
+	require_once 'test.php';
+	require_once 'test.php';
+	require_once 'test.php';
+	require_once 'test.php';
