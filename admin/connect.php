@@ -4,3 +4,6 @@
 	mysqli_set_charset($connect, 'utf8');
 
 	test;
+	
+	test;
+	test;
