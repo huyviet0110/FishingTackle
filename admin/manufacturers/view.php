@@ -41,14 +41,14 @@
 				<div class="card-content">
 					<table width="97%">
 						<tr>
-							<th>ID</th>
-							<th>Image</th>
-							<th>Name</th>
-							<th>Description</th>
-							<th>Phone number</th>
-							<th>Address</th>
-							<th>Email</th>
-							<th>Action</th>
+							<th class="th-td-id">ID</th>
+							<th class="th-td-image">Image</th>
+							<th class="th-td-normal">Name</th>
+							<th class="th-td-description">Description</th>
+							<th class="th-td-normal">Phone number</th>
+							<th class="th-td-normal">Address</th>
+							<th class="th-td-normal">Email</th>
+							<th class="th-td-action">Action</th>
 						</tr>
 						
 						<?php foreach ($result as $each): ?>
@@ -62,10 +62,10 @@
 								<td><?php echo trim($each['phone_number']) ?></td>
 								<td><?php echo trim($each['address']) ?></td>
 								<td class="td-break"><?php echo trim($each['email']) ?></td>
-								<td>
+								<td class="th-td-action">
 									<?php include '../root/card_update.php' ?>
 								</td>
-								<td>
+								<td class="th-td-action">
 									<?php include '../root/card_delete.php' ?>
 								</td>
 							</tr>

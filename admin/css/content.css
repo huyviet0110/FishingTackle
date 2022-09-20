@@ -71,6 +71,19 @@ th, td {
 .td-break {
 	word-break: break-all;
 }
+.th-td-id {
+	width: 20px;
+}
+.th-td-normal {
+	width: 100px;
+}
+.td-description {
+	width: 420px;
+}
+.th-td-action {
+	width: 100px;
+	padding: 10px 0 10px 0;
+}
 
 .content .card .card-header {
 	width: 100%;
