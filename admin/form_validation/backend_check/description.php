@@ -1,7 +1,7 @@
 <?php 
 	
 	if(empty($_POST['description'])){
-		header('Location:' . $form_file_name . '?error=Description cannot be empty!');
+		header('Location:' . $form_file_name . 'error=Description cannot be empty!');
 		exit();
 	}
 

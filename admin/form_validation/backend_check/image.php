@@ -1,7 +1,7 @@
 <?php 
 	
 	if(empty($_FILES['image']['tmp_name'])){
-		header('Location:' . $form_file_name . '?error=You must upload image file!');
+		header('Location:' . $form_file_name . 'error=You must upload image file!');
 		exit();
 	}
 	
@@ -12,7 +12,7 @@
 
 	$images_extensions_allowed = array('png', 'jpg', 'jpec', 'gif');
 	if(!in_array($file_extension, $images_extensions_allowed)) {
-		header('Location:' . $form_file_name . '?error=The image file is not in the correct format!');
+		header('Location:' . $form_file_name . '&error=The image file is not in the correct format!');
 		exit();
 	}
 	

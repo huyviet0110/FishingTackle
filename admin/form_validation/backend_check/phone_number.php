@@ -1,7 +1,7 @@
 <?php 
 	
 	if(empty($_POST['phone_number'])){
-		header('Location:' . $form_file_name . '?error=Phone_number cannot be empty!');
+		header('Location:' . $form_file_name . 'error=Phone_number cannot be empty!');
 		exit();
 	}
 

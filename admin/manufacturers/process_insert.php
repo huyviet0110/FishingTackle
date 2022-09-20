@@ -2,8 +2,8 @@
 
 	require_once '../connect.php';
 	
-	$form_file_name = 'form_insert.php';
-	require_once '../form_validation/backend_check/page.php';
+	$form_file_name = 'form_insert.php?';
+	require_once '../form_validation/backend_check/page_post.php';
 	require_once '../form_validation/backend_check/image.php';
 	require_once '../form_validation/backend_check/check_error.php';
 	require_once '../form_validation/backend_check/name.php';
@@ -13,10 +13,11 @@
 	require_once '../form_validation/backend_check/email.php';
 
 	$table_name = 'manufacturers';
+	$table_name_display = 'manufacturer';
 	require_once '../form_validation/backend_check/check_duplicates/name.php';
 	require_once '../form_validation/backend_check/check_duplicates/email.php';
 
-	$sql = "insert into manufacturers (name, image, description, phone_number, address, email)
+	$sql = "insert into $table_name (name, image, description, phone_number, address, email)
 			values ('$name', '$file_name', '$description', '$phone_number', '$address', '$email')";
 	mysqli_query($connect, $sql);
 	require_once '../form_validation/backend_check/query_error.php';
@@ -25,4 +26,4 @@
 
 	move_uploaded_file($file['tmp_name'], $target_file);
 	
-	header("location:index.php?success=Successfully added manufacturer!&page=$page");
+	header("location:index.php?success=Successfully added $table_name_display!&page=$page");

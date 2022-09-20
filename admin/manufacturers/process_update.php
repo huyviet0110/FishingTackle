@@ -3,15 +3,17 @@
 	require_once '../connect.php';
 
 	$table_name = 'manufacturers';
-	$form_file_name = 'form_update.php';
-	require_once '../form_validation/backend_check/check_empty/post_id.php';
+	$table_name_display = 'manufacturer';
+	require_once '../form_validation/backend_check/check_empty/id_post.php';
 	require_once '../form_validation/backend_check/check_empty/id.php';
 	require_once '../form_validation/backend_check/old_image.php';
-	require_once '../form_validation/backend_check/page.php';
+	require_once '../form_validation/backend_check/page_post.php';
+	
+	$form_file_name = 'form_update.php?id=' . $id . '&';
+	require_once '../form_validation/backend_check/check_error.php';
 	if(!empty($_FILES['image']['tmp_name'])){
 		require_once '../form_validation/backend_check/image.php';
 	}
-	require_once '../form_validation/backend_check/check_error.php';
 	require_once '../form_validation/backend_check/name.php';
 	require_once '../form_validation/backend_check/description.php';
 	require_once '../form_validation/backend_check/phone_number.php';
@@ -21,7 +23,7 @@
 	require_once '../form_validation/backend_check/check_duplicates/name.php';
 	require_once '../form_validation/backend_check/check_duplicates/email.php';
 
-	$sql = "update manufacturers
+	$sql = "update $table_name
 			set
 				image = '$file_name',
 				name = '$name',
@@ -40,4 +42,4 @@
 		unlink($file_name_old);
 	}
 
-	header("location:index.php?success=Successfully updated manufacturer!&page=$page");
+	header("location:index.php?success=Successfully updated $table_name_display!&page=$page");

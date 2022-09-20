@@ -19,10 +19,15 @@
 				offset $number_of_records_to_skip";
 	} else if(strcmp($table_name, 'products') === 0){
 		$sql = "select 
-					products.*,
+					$table_name.*,
 					manufacturers.name as manufacturer_name 
-				from products
-				join manufacturers on manufacturers.id = products.manufacturer_id
+				from $table_name
+				join manufacturers on manufacturers.id = $table_name.manufacturer_id
+				where $table_name.name like '%$search%'
+				limit $number_of_records_per_page
+				offset $number_of_records_to_skip";
+	} else if(strcmp($table_name, 'types') === 0){
+		$sql = "select * from $table_name
 				where name like '%$search%'
 				limit $number_of_records_per_page
 				offset $number_of_records_to_skip";

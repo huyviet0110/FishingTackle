@@ -1,7 +1,7 @@
 <?php 
 
 	if(empty($_POST['name'])){
-		header('Location:' . $form_file_name . '?error=Name cannot be empty!');
+		header('Location:' . $form_file_name . 'error=Name cannot be empty!');
 		exit();
 	}
 

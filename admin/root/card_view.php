@@ -1,5 +1,5 @@
 <div class="card-view">
-	<form method="post" action="view.php">
+	<form method="get" action="view.php">
 		<input type="hidden" name="id" value="<?php echo $each['id'] ?>">
 		<input type="hidden" name="page" value="<?php echo $page ?>">
 		<button>

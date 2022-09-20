@@ -1,5 +1,5 @@
 <div class="card-update">
-	<form method="post" action="form_update.php">
+	<form method="get" action="form_update.php">
 		<input type="hidden" name="id" value="<?php echo $each['id'] ?>">
 		<input type="hidden" name="page" value="<?php echo $page ?>">
 		<button>

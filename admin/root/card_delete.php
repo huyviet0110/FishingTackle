@@ -1,5 +1,5 @@
 <div class="card-delete">
-	<form method="post" action="delete.php">
+	<form method="get" action="delete.php">
 		<input type="hidden" name="id" value="<?php echo $each['id'] ?>">
 		<input type="hidden" name="page" value="<?php echo $page ?>">
 		<button type="submit" onclick="return confirm_delete();">

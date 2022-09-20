@@ -1,5 +1,5 @@
 <?php 
-	require_once '../form_validation/backend_check/page.php';
+	require_once '../form_validation/backend_check/page_get.php';
 ?>
 
 <!DOCTYPE html>
@@ -105,12 +105,17 @@
 					count++;
 				}
 			}
-			return (count === 6) ? true : false;
+			return (count === result_check.length) ? true : false;
 		}
 	</script>
 
 	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
-	<?php require_once '../root/notification.php' ?>
+	
+	<?php 
+		require '../connect.php';
+		require_once '../root/notification.php';
+		mysqli_close($connect);
+	?>
 	
 </body>
 </html>
