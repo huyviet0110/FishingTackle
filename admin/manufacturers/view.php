@@ -43,11 +43,11 @@
 						<tr>
 							<th class="th-td-id">ID</th>
 							<th class="th-td-image">Image</th>
-							<th class="th-td-name">Name</th>
+							<th class="th-td-normal">Name</th>
 							<th class="th-td-description">Description</th>
-							<th class="th-td-phone">Phone number</th>
-							<th class="th-td-address">Address</th>
-							<th class="th-td-email">Email</th>
+							<th class="th-td-normal">Phone number</th>
+							<th class="th-td-normal">Address</th>
+							<th class="th-td-normal">Email</th>
 							<th class="th-td-action">Action</th>
 						</tr>
 						

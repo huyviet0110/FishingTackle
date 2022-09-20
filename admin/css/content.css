@@ -68,33 +68,21 @@ table, tr {
 th, td {
 	padding: 10px;
 }
+.td-break {
+	word-break: break-all;
+}
 .th-td-id {
 	width: 20px;
 }
-.th-td-image {
+.th-td-normal {
 	width: 100px;
 }
-.th-td-name {
-	width: 100px;
-}
-.th-td-description {
-	width: 400px;
-}
-.th-td-phone {
-	width: 120px;
-}
-.th-td-address {
-	width: 100px;
-}
-.th-td-email {
-	width: 120px;
+.td-description {
+	width: 420px;
 }
 .th-td-action {
 	width: 100px;
 	padding: 10px 0 10px 0;
-}
-.td-break {
-	word-break: break-all;
 }
 
 .content .card .card-header {

@@ -28,8 +28,8 @@
 			<table width="97%">
 				<tr>
 					<th class="th-td-id">ID</th>
-					<th class="th-td-image">Image</th>
-					<th class="th-td-name">Name</th>
+					<th class="th-td-normal">Image</th>
+					<th class="th-td-normal">Name</th>
 					<th class="th-td-description">Short description</th>
 					<th class="th-td-action">Action</th>
 				</tr>
