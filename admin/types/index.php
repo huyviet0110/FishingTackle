@@ -22,6 +22,8 @@
 	
 	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
 	<script src="../form_validation/frontend_check/confirm_delete.js"></script>
+	
+	<?php require_once '../root/notification.php' ?>
 
 	<?php mysqli_close($connect) ?>
 </body>

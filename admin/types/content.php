@@ -28,9 +28,7 @@
 			<table width="97%">
 				<tr>
 					<th class="th-td-id">ID</th>
-					<th class="th-td-normal">Image</th>
 					<th class="th-td-normal">Name</th>
-					<th class="th-td-description">Short description</th>
 					<th class="th-td-action">Action</th>
 				</tr>
 
@@ -38,14 +36,7 @@
 					<?php foreach ($result as $each): ?>
 						<tr>
 							<td><?php echo trim($each['id']) ?></td>
-							<td>
-								<img src="images/<?php echo $each['image'] ?>" height="100px" width="100px">
-							</td>
 							<td><?php echo trim($each['name']) ?></td>
-							<td><?php echo mb_substr(trim($each['description']), 0, 50) . '...' ?></td>
-							<td class="th-td-action">
-								<?php include '../root/card_view.php' ?>
-							</td>
 							<td class="th-td-action">
 								<?php include '../root/card_update.php' ?>
 							</td>
@@ -66,5 +57,3 @@
 		</div>
 	</div>
 </div>
-
-<?php require_once '../root/notification.php' ?>

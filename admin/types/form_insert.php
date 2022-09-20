@@ -56,13 +56,7 @@
 	</div>
 
 	<script src="../form_validation/frontend_check/check_error.js"></script>
-	<script src="../form_validation/frontend_check/image.js"></script>
-	<script src="../form_validation/frontend_check/insert_image.js"></script>
 	<script src="../form_validation/frontend_check/name.js"></script>
-	<script src="../form_validation/frontend_check/description.js"></script>
-	<script src="../form_validation/frontend_check/phone_number.js"></script>
-	<script src="../form_validation/frontend_check/address.js"></script>
-	<script src="../form_validation/frontend_check/email.js"></script>
 	
 	<script type="text/javascript">
 		function check() {
