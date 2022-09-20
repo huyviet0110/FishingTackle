@@ -2,6 +2,7 @@
 
 	require_once '../connect.php';
 	$table_name = 'types';
+	$number_of_records_per_page = 12;
 	require_once '../root/get_data.php';
 ?>
 
@@ -25,17 +26,17 @@
 		<?php require_once '../root/card_insert.php' ?>
 		
 		<div class="card-content">
-			<table width="97%">
+			<table width="64%">
 				<tr>
-					<th class="th-td-id">ID</th>
-					<th class="th-td-normal">Name</th>
-					<th class="th-td-action">Action</th>
+					<th style="width: 80px; padding-left: 20px;">ID</th>
+					<th style="width: 400px;">Name</th>
+					<th style="width: 80px;">Action</th>
 				</tr>
 
 				<?php if($number_of_records > 0) { ?>
 					<?php foreach ($result as $each): ?>
 						<tr>
-							<td><?php echo trim($each['id']) ?></td>
+							<td style="padding-left: 20px;"><?php echo trim($each['id']) ?></td>
 							<td><?php echo trim($each['name']) ?></td>
 							<td class="th-td-action">
 								<?php include '../root/card_update.php' ?>

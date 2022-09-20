@@ -1,6 +1,5 @@
 <?php
 
-	$number_of_records_per_page = 4;
 	$number_of_pages = ceil($number_of_records / $number_of_records_per_page);
 	$number_of_records_to_skip = ($page - 1) * $number_of_records_per_page;
 	
@@ -15,6 +14,7 @@
 	if(strcmp($table_name, 'manufacturers') === 0){
 		$sql = "select * from $table_name
 				where name like '%$search%'
+				order by id asc
 				limit $number_of_records_per_page
 				offset $number_of_records_to_skip";
 	} else if(strcmp($table_name, 'products') === 0){
@@ -24,11 +24,13 @@
 				from $table_name
 				join manufacturers on manufacturers.id = $table_name.manufacturer_id
 				where $table_name.name like '%$search%'
+				order by $table_name.id asc
 				limit $number_of_records_per_page
 				offset $number_of_records_to_skip";
 	} else if(strcmp($table_name, 'types') === 0){
 		$sql = "select * from $table_name
 				where name like '%$search%'
+				order by id asc
 				limit $number_of_records_per_page
 				offset $number_of_records_to_skip";
 	}

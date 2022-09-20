@@ -2,7 +2,6 @@
 
 	require_once '../connect.php';
 	$table_name = 'manufacturers';
-	$number_of_records_per_page = 4;
 	require_once '../root/get_data.php';
 ?>
 
