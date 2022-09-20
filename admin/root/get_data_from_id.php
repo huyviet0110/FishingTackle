@@ -7,8 +7,17 @@
 
 	require_once '../form_validation/backend_check/check_empty/id.php';
 
-	$sql = "select * from $table_name
-			where id = '$id'";
+	if(strcmp($table_name, 'manufacturers') === 0){
+		$sql = "select * from $table_name
+				where id = '$id'";
+	} else if(strcmp($table_name, 'products') === 0){
+		$sql = "select * from $table_name
+				where id = '$id'";
+	} else if(strcmp($table_name, 'types') === 0){
+		$sql = "select * from $table_name
+				where id = '$id'";
+	}
+	
 	$result = mysqli_query($connect, $sql);
 	require_once '../form_validation/backend_check/query_error.php';
 	$result_num_rows = mysqli_num_rows($result);
