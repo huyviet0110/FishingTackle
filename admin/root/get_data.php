@@ -10,8 +10,18 @@
 		$page = $_GET['page'];
 	}
 
-	$sql = "select * from $table_name
-			where name like '%$search%'";
+	if(strcmp($table_name, 'manufacturers') === 0){
+		$sql = "select * from manufacturers
+				where name like '%$search%'";
+	} else if (strcmp($table_name, 'products') === 0) {
+		$sql = "select 
+					products.*,
+					manufacturers.name as manufacturer_name 
+				from products
+				join manufacturers on manufacturers.id = products.manufacturer_id
+				where products.name like '%$search%'";
+	}
+
 	$result = mysqli_query($connect, $sql);
 	$number_of_records = mysqli_num_rows($result);
 	if($number_of_records > 0){
