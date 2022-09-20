@@ -1,7 +1,8 @@
 <?php 
 
 	require_once '../connect.php';
-	$table_name = 'manufacturers';
+	$table_name = 'colors';
+	$number_of_records_per_page = 4;
 	require_once '../root/get_data.php';
 ?>
 
@@ -10,7 +11,7 @@
 	<div class="card">
 		<div class="card-header" style="padding-top: 10px">
 			<div class="card-title">
-				<h3 class="h3-format">Manufacturers Management</h3>
+				<h3 class="h3-format">Types Management</h3>
 			</div>
 
 			<?php require_once '../root/card_search.php' ?>
@@ -25,27 +26,22 @@
 		<?php require_once '../root/card_insert.php' ?>
 		
 		<div class="card-content">
-			<table width="97%">
+			<table width="64%">
 				<tr>
-					<th class="th-td-id">ID</th>
-					<th class="th-td-normal">Image</th>
-					<th class="th-td-normal">Name</th>
-					<th class="th-td-description">Short description</th>
-					<th class="th-td-action">Action</th>
+					<th style="width: 30px; padding-left: 20px;">ID</th>
+					<th style="width: 100px;">image</th>
+					<th style="width: 300px;">Name</th>
+					<th style="width: 80px;">Action</th>
 				</tr>
 
 				<?php if($number_of_records > 0) { ?>
 					<?php foreach ($result as $each): ?>
 						<tr>
-							<td><?php echo trim($each['id']) ?></td>
+							<td style="padding-left: 20px;"><?php echo trim($each['id']) ?></td>
 							<td>
-								<img src="images/<?php echo $each['image'] ?>" height="100px" width="100px">
+								<img src="images/<?php echo $each['image'] ?>" width="100px" height="100px">
 							</td>
 							<td><?php echo trim($each['name']) ?></td>
-							<td><?php echo mb_substr(trim($each['description']), 0, 50) . '...' ?></td>
-							<td class="th-td-action">
-								<?php include '../root/card_view.php' ?>
-							</td>
 							<td class="th-td-action">
 								<?php include '../root/card_update.php' ?>
 							</td>
@@ -66,5 +62,3 @@
 		</div>
 	</div>
 </div>
-
-<?php require_once '../root/notification.php' ?>

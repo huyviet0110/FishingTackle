@@ -11,9 +11,16 @@
 		$sql = "select * from $table_name
 				where id = '$id'";
 	} else if(strcmp($table_name, 'products') === 0){
+		$sql = "select 
+					$table_name.*,
+					manufacturers.name
+				from $table_name
+				join manufacturers on manufacturers.id = $table_name.manufacturer_id
+				where $table_name.id = '$id'";
+	} else if(strcmp($table_name, 'types') === 0){
 		$sql = "select * from $table_name
 				where id = '$id'";
-	} else if(strcmp($table_name, 'types') === 0){
+	} else if(strcmp($table_name, 'colors') === 0){
 		$sql = "select * from $table_name
 				where id = '$id'";
 	}

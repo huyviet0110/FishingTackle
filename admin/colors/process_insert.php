@@ -3,22 +3,18 @@
 	require_once '../connect.php';
 	
 	$form_file_name = 'form_insert.php?';
+	$table_name = 'colors';
+	$table_name_display = 'color';
 	require_once '../form_validation/backend_check/page_post.php';
-	require_once '../form_validation/backend_check/image.php';
+	
 	require_once '../form_validation/backend_check/check_error.php';
+	require_once '../form_validation/backend_check/image.php';
 	require_once '../form_validation/backend_check/name.php';
-	require_once '../form_validation/backend_check/description.php';
-	require_once '../form_validation/backend_check/phone_number.php';
-	require_once '../form_validation/backend_check/address.php';
-	require_once '../form_validation/backend_check/email.php';
 
-	$table_name = 'manufacturers';
-	$table_name_display = 'manufacturer';
 	require_once '../form_validation/backend_check/check_duplicates/name.php';
-	require_once '../form_validation/backend_check/check_duplicates/email.php';
 
-	$sql = "insert into $table_name (name, image, description, phone_number, address, email)
-			values ('$name', '$file_name', '$description', '$phone_number', '$address', '$email')";
+	$sql = "insert into $table_name (image, name)
+			values ('$file_name','$name')";
 	mysqli_query($connect, $sql);
 	require_once '../form_validation/backend_check/query_error.php';
 

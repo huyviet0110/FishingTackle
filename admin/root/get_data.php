@@ -23,6 +23,9 @@
 	} else if(strcmp($table_name, 'types') === 0){
 		$sql = "select * from $table_name
 				where name like '%$search%'";
+	} else if(strcmp($table_name, 'colors') === 0){
+		$sql = "select * from $table_name
+				where name like '%$search%'";
 	}
 
 	$result = mysqli_query($connect, $sql);

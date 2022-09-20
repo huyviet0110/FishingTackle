@@ -31,10 +31,11 @@
 
 			<div class="form">
 				<div class="form-title">
-					<h3 class="h3-format">Add a new manufacturer</h3>
+					<h3 class="h3-format">Add a new color</h3>
 				</div>
 				<div class="form-content">
 					<form method="post" action="process_insert.php" enctype="multipart/form-data">
+						<input type="hidden" name="page" value="<?php echo $page ?>">
 						<div class="form-input">
 							<p>Image (Correct format: png, jpg, jpec, gif)</p>
 							<input type="file" name="image" id="input_image">
@@ -45,27 +46,6 @@
 							<input type="text" name="name" id="input_name">
 							<div id="name_error"></div>
 						</div>
-						<div class="form-textarea">
-							<p>Description</p>
-							<textarea name="description" id="input_description"></textarea>
-							<div id="description_error"></div>
-						</div>
-						<div class="form-input">
-							<p>Phone number</p>
-							<input type="number" name="phone_number" id="input_phone_number">
-							<div id="phone_number_error"></div> 
-						</div>
-						<div class="form-input">
-							<p>Address</p>
-							<input type="text" name="address" id="input_address"> 
-							<div id="address_error"></div>
-						</div>
-						<div class="form-input">
-							<p>Email</p>
-							<input type="email" name="email" id="input_email">
-							<div id="email_error"></div>
-						</div>
-						<input type="hidden" name="page" value="<?php echo $page ?>">
 						<div class="create-button">
 							<button type="submit" onclick="return check();">
 								Create
@@ -84,21 +64,13 @@
 	<script src="../form_validation/frontend_check/image.js"></script>
 	<script src="../form_validation/frontend_check/insert_image.js"></script>
 	<script src="../form_validation/frontend_check/name.js"></script>
-	<script src="../form_validation/frontend_check/description.js"></script>
-	<script src="../form_validation/frontend_check/phone_number.js"></script>
-	<script src="../form_validation/frontend_check/address.js"></script>
-	<script src="../form_validation/frontend_check/email.js"></script>
 	
 	<script type="text/javascript">
 		function check() {
 			let count = 0;
 			const result_check = [
 				check_insert_image(),
-				check_name(),
-				check_description(),
-				check_phone_number(),
-				check_address(),
-				check_email()
+				check_name()
 			];
 			for(let i = 0; i < result_check.length; i++){
 				if(result_check[i] === true){

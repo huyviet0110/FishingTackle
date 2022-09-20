@@ -33,6 +33,12 @@
 				order by id asc
 				limit $number_of_records_per_page
 				offset $number_of_records_to_skip";
+	} else if(strcmp($table_name, 'colors') === 0){
+		$sql = "select * from $table_name
+				where name like '%$search%'
+				order by id asc
+				limit $number_of_records_per_page
+				offset $number_of_records_to_skip";
 	}
 	
 	$result = mysqli_query($connect, $sql);
