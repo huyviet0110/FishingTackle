@@ -1,7 +1,7 @@
 <?php 
 
 	require_once '../connect.php';
-	$table_name = 'colors';
+	$table_name = 'styles';
 	$number_of_records_per_page = 4;
 	require_once '../root/get_data.php';
 ?>
@@ -11,7 +11,7 @@
 	<div class="card">
 		<div class="card-header" style="padding-top: 10px">
 			<div class="card-title">
-				<h3 class="h3-format">Colors Management</h3>
+				<h3 class="h3-format">Styles Management</h3>
 			</div>
 
 			<?php require_once '../root/card_search.php' ?>

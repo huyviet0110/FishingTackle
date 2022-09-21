@@ -11,21 +11,32 @@
 	}
 
 	if(strcmp($table_name, 'manufacturers') === 0){
+
 		$sql = "select * from $table_name
 				where name like '%$search%'";
+				
 	} else if (strcmp($table_name, 'products') === 0) {
+
 		$sql = "select 
 					$table_name.*,
 					manufacturers.name as manufacturer_name 
 				from $table_name
 				join manufacturers on manufacturers.id = $table_name.manufacturer_id
 				where $table_name.name like '%$search%'";
-	} else if(strcmp($table_name, 'types') === 0){
+
+	} else if(strcmp($table_name, 'types') === 0 ||
+			  strcmp($table_name, 'sizes') === 0){
+
 		$sql = "select * from $table_name
 				where name like '%$search%'";
-	} else if(strcmp($table_name, 'colors') === 0){
+
+	} else if(strcmp($table_name, 'colors') === 0 ||
+		      strcmp($table_name, 'styles') === 0 || 
+		      strcmp($table_name, 'options') === 0){
+
 		$sql = "select * from $table_name
 				where name like '%$search%'";
+
 	}
 
 	$result = mysqli_query($connect, $sql);

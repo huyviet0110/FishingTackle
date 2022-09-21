@@ -12,12 +12,15 @@
 	}
 
 	if(strcmp($table_name, 'manufacturers') === 0){
+
 		$sql = "select * from $table_name
 				where name like '%$search%'
 				order by id asc
 				limit $number_of_records_per_page
 				offset $number_of_records_to_skip";
+
 	} else if(strcmp($table_name, 'products') === 0){
+
 		$sql = "select 
 					$table_name.*,
 					manufacturers.name as manufacturer_name 
@@ -27,18 +30,26 @@
 				order by $table_name.id asc
 				limit $number_of_records_per_page
 				offset $number_of_records_to_skip";
-	} else if(strcmp($table_name, 'types') === 0){
+
+	} else if(strcmp($table_name, 'types') === 0 ||
+			  strcmp($table_name, 'sizes') === 0){
+
 		$sql = "select * from $table_name
 				where name like '%$search%'
 				order by id asc
 				limit $number_of_records_per_page
 				offset $number_of_records_to_skip";
-	} else if(strcmp($table_name, 'colors') === 0){
+
+	} else if(strcmp($table_name, 'colors') === 0 ||
+			  strcmp($table_name, 'styles') === 0 ||
+			  strcmp($table_name, 'options') === 0){
+
 		$sql = "select * from $table_name
 				where name like '%$search%'
 				order by id asc
 				limit $number_of_records_per_page
 				offset $number_of_records_to_skip";
+				
 	}
 	
 	$result = mysqli_query($connect, $sql);
