@@ -1,7 +1,8 @@
 <?php 
 
+	$table_name = 'manufacturers';
+	$number_of_records_per_page = 4;
 	require_once '../root/get_data_from_id.php';
-	require_once '../form_validation/backend_check/page.php';	
 ?>
 
 <!DOCTYPE html>
@@ -76,12 +77,12 @@
 				</div>
 			</div>
 		</div>
-
-		<?php require_once '../root/notification.php' ?>
 			 
 		<?php require_once '../root/footer.php' ?>
 
 	</div>
+	
+	<?php require_once '../root/notification.php' ?>
 	
 	<?php mysqli_close($connect) ?>
 

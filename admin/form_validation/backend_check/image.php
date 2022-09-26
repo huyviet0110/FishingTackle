@@ -1,6 +1,6 @@
 <?php 
 	
-	if(empty($_FILES['image']['tmp_name'])){
+	if(empty($_FILES['image']['name'])){
 		header('Location:' . $form_file_name . 'error=You must upload image file!');
 		exit();
 	}

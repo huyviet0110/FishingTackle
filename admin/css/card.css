@@ -8,7 +8,7 @@
 .card-insert p, .card-update p, .card-delete p, .card-view p {
 	display: inline;
 }
-.card-insert form button, .card-update form button, .card-delete form button, .card-view form button {
+.card-insert button, .card-update button, .card-delete button, .card-view button {
 	font-size: 16px;
 	color: white;
 	border: 1px solid white;
@@ -17,30 +17,30 @@
 	height: 28px;
 	cursor: pointer;
 }
-.card-insert form button {
+.card-insert button {
 	background-color: #28a745;
 }
-.card-insert form button:hover{
+.card-insert button:hover{
 	background-color: #218838;
 }
-.card-update form button, .card-delete form button, .card-view form button {
+.card-update button, .card-delete button, .card-view button {
 	font-size: 14px;
 	width: 90px;
-}.card-update form button {
+}.card-update button {
 	background-color: #17a2b8;
 }
-.card-update form button:hover {
+.card-update button:hover {
 	background-color: #138496;
 }
-.card-delete form button {
+.card-delete button {
 	background-color: #dc3545;
 }
-.card-delete form button:hover {
+.card-delete button:hover {
 	background-color: #C82333;
 }
-.card-view form button {
+.card-view button {
 	background-color: #007bff;
 }
-.card-view form button:hover {
+.card-view button:hover {
 	background-color: #0069D9;
 }

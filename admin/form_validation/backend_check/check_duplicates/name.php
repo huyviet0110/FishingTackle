@@ -1,5 +1,5 @@
 <?php 
-
+	
 	$sql = "select name from $table_name where name = '$name' and id <> '$id'";
 	$result = mysqli_query($connect, $sql);
 	require_once '../form_validation/backend_check/query_error.php';

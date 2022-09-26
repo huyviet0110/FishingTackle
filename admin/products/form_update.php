@@ -1,5 +1,6 @@
 <?php 
 	
+	$table_name = 'products';
 	require_once '../root/get_data_from_id.php';
 ?>
 
@@ -27,13 +28,17 @@
 		<?php require_once '../root/header.php' ?>
 
 		<div class="content">
+
+			<div id="notification" style="margin-bottom: 20px; font-size: 20px;"></div>
+
 			<div class="form">
 				<div class="form-title">
-					<h3 class="h3-format">Update this manufacturer</h3>
+					<h3 class="h3-format">Update this product</h3>
 				</div>
 				<div class="form-content">
 					<form method="post" action="process_update.php" enctype="multipart/form-data">
 						<input type="hidden" name="id" value="<?php echo $each['id'] ?>">
+						<input type="hidden" name="page" value="<?php echo $page ?>">
 						<div class="form-input">
 							<p>New image</p>
 							<input type="file" name="image" id="input_image">
@@ -68,7 +73,6 @@
 							<input type="email" name="email" id="input_email" value="<?php echo $each['email'] ?>"> 
 							<div id="email_error"></div>
 						</div>
-						<input type="hidden" name="page" value="<?php echo $page ?>">
 						<div class="save-button">
 							<button type="submit" onclick="return check();">
 								Save Changes
@@ -108,11 +112,12 @@
 					count++;
 				}
 			}
-			return (count === 6) ? true : false;
+			return (count === result_check.length) ? true : false;
 		}
 	</script>
 
 	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
+	<?php require_once '../root/notification.php' ?>
 
 	<?php mysqli_close($connect) ?>
 

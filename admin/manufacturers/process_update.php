@@ -20,6 +20,7 @@
 	require_once '../form_validation/backend_check/address.php';
 	require_once '../form_validation/backend_check/email.php';
 
+	$action = 'update';
 	require_once '../form_validation/backend_check/check_duplicates/name.php';
 	require_once '../form_validation/backend_check/check_duplicates/email.php';
 

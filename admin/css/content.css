@@ -1,6 +1,6 @@
 .content {
 	width: 100%;
-	height: calc(100% - 8% - 50px);
+	height: calc(100% - 50px - 67px);
 	padding-left: 20px;
 	box-sizing: border-box;
 }

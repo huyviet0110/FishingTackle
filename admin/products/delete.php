@@ -1,15 +1,16 @@
 <?php 
 
-	require_once '../form_validation/backend_check/check_empty/post_id.php';
+	require_once '../form_validation/backend_check/check_empty/id_get.php';
 	
 	require_once '../connect.php';
 
-	$table_name = 'manufacturers';
+	$table_name = 'products';
+	$table_name_display = 'product';
 	require_once '../form_validation/backend_check/check_empty/id.php';
-	require_once '../form_validation/backend_check/page.php';
+	require_once '../form_validation/backend_check/page_get.php';
 	require_once '../form_validation/backend_check/old_image.php';
 
-	$sql = "delete from manufacturers
+	$sql = "delete from $table_name
 			where id = '$id'";
 	mysqli_query($connect, $sql);
 	require_once '../form_validation/backend_check/query_error.php';
@@ -18,4 +19,4 @@
 
 	mysqli_close($connect);
 
-	header("location:index.php?success=Successfully deleted the manufacturer!&page=$page");
+	header("location:index.php?success=Successfully deleted the $table_name_display!&page=$page");
