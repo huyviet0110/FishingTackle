@@ -20,7 +20,7 @@
 	$sql = "insert into $table_name (name, image, description, phone_number, address, email)
 			values ('$name', '$file_name', '$description', '$phone_number', '$address', '$email')";
 	mysqli_query($connect, $sql);
-	require_once '../form_validation/backend_check/query_error.php';
+	require '../form_validation/backend_check/query_error.php';
 
 	require_once '../root/increase_page_after_insert_to_display.php';
 

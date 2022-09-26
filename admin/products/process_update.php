@@ -10,7 +10,7 @@
 	require_once '../form_validation/backend_check/page_post.php';
 	
 	$form_file_name = 'form_update.php?id=' . $id . '&';
-	require_once '../form_validation/backend_check/check_error.php';
+	require '../form_validation/backend_check/check_error.php';
 	if(!empty($_FILES['image']['tmp_name'])){
 		require_once '../form_validation/backend_check/image.php';
 	}

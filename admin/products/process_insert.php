@@ -110,7 +110,7 @@
 	}
 
 	
-
+	$table_name = 'products';
 	require_once '../root/increase_page_after_insert_to_display.php';
 
 	mysqli_close($connect);

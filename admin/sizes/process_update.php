@@ -19,7 +19,7 @@
 				name = '$name'
 			where id = '$id'";
 	mysqli_query($connect, $sql);
-	require_once '../form_validation/backend_check/query_error.php';
+	require '../form_validation/backend_check/query_error.php';
 
 	mysqli_close($connect);
 

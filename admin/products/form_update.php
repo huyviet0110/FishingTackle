@@ -11,13 +11,14 @@
 				products_detail.quantity
 			from products
 			join manufacturers on manufacturers.id = products.manufacturer_id
-			join products_detail on products_detail.product_id = products.manufacturer_id
+			join products_detail on products_detail.product_id = products.id
 			where products.id = $id
 			limit 1";
 	$result = mysqli_query($connect, $sql);
+	$each = mysqli_fetch_array($result);
 
-	// $sql = "select id,name from manufacturers";
-	// $manufacturers_result = mysqli_query($connect, $sql);
+	$sql = "select id,name from manufacturers";
+	$manufacturers_result = mysqli_query($connect, $sql);
 
 	// $sql = "select price, quantity from products_detail
 	// 		where product_id = $id
@@ -84,9 +85,13 @@
 							<p>Manufacturer</p>
 							<select name="manufacturer_id" style="font-size: 16px">
 
-								<?php foreach ($result as $each): ?>
-									<option value="<?php echo $each['manufacturer_id'] ?>">
-											<?php echo $each['manufacturer_name'] ?>
+								<?php foreach ($manufacturers_result as $each_manufacturer): ?>
+									<option value="<?php echo $each_manufacturer['id'] ?>"
+											<?php if($each_manufacturer['id'] === $each['manufacturer_id']) { ?>
+												selected
+											<?php } ?>
+										>
+											<?php echo $each_manufacturer['name'] ?>
 									</option>
 								<?php endforeach ?>
 

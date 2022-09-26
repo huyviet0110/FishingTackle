@@ -10,9 +10,9 @@
 	require_once '../form_validation/backend_check/page_post.php';
 	
 	$form_file_name = 'form_update.php?id=' . $id . '&';
-	require_once '../form_validation/backend_check/check_error.php';
+	require '../form_validation/backend_check/check_error.php';
 	if(!empty($_FILES['image']['tmp_name'])){
-		require_once '../form_validation/backend_check/image.php';
+		require '../form_validation/backend_check/image.php';
 	}
 	require_once '../form_validation/backend_check/name.php';
 	require_once '../form_validation/backend_check/description.php';
@@ -34,7 +34,7 @@
 				email = '$email'
 			where id = '$id'";
 	mysqli_query($connect, $sql);
-	require_once '../form_validation/backend_check/query_error.php';
+	require '../form_validation/backend_check/query_error.php';
 
 	mysqli_close($connect);
 

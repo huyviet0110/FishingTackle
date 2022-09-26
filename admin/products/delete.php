@@ -10,10 +10,20 @@
 	require_once '../form_validation/backend_check/page_get.php';
 	require_once '../form_validation/backend_check/old_image.php';
 
+	$sql = "delete from products_detail
+			where product_id = '$id'";
+	mysqli_query($connect, $sql);
+	require '../form_validation/backend_check/query_error.php';
+
+	$sql = "delete from products_types
+			where product_id = '$id'";
+	mysqli_query($connect, $sql);
+	require '../form_validation/backend_check/query_error.php';
+
 	$sql = "delete from $table_name
 			where id = '$id'";
 	mysqli_query($connect, $sql);
-	require_once '../form_validation/backend_check/query_error.php';
+	require '../form_validation/backend_check/query_error.php';
 
 	unlink($file_name_old);
 

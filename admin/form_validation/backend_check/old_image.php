@@ -3,7 +3,7 @@
 	$sql = "select image from $table_name
 			where id = '$id'";
 	$result = mysqli_query($connect, $sql);
-	require_once '../form_validation/backend_check/query_error.php';
+	require '../form_validation/backend_check/query_error.php';
 	$result_num_rows = mysqli_num_rows($result);
 	if($result_num_rows < 1){
 		header('Location:index.php?error=Cannot delete old image!');

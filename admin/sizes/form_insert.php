@@ -76,7 +76,7 @@
 	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
 	
 	<?php 
-		require '../connect.php';
+		require_once '../connect.php';
 		require_once '../root/notification.php';
 		mysqli_close($connect);
 	?>

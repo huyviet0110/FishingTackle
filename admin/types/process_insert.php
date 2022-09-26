@@ -15,7 +15,7 @@
 	$sql = "insert into $table_name (name)
 			values ('$name')";
 	mysqli_query($connect, $sql);
-	require_once '../form_validation/backend_check/query_error.php';
+	require '../form_validation/backend_check/query_error.php';
 
 	require_once '../root/increase_page_after_insert_to_display.php';
 
