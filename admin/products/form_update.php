@@ -1,7 +1,29 @@
 <?php 
 	
 	$table_name = 'products';
-	require_once '../root/get_data_from_id.php';
+	require '../root/get_data_from_id.php';
+
+	$sql = "select
+				products.*,
+				manufacturers.id as manufacturer_id,
+				manufacturers.name as manufacturer_name,
+				products_detail.price,
+				products_detail.quantity
+			from products
+			join manufacturers on manufacturers.id = products.manufacturer_id
+			join products_detail on products_detail.product_id = products.manufacturer_id
+			where products.id = $id
+			limit 1";
+	$result = mysqli_query($connect, $sql);
+
+	// $sql = "select id,name from manufacturers";
+	// $manufacturers_result = mysqli_query($connect, $sql);
+
+	// $sql = "select price, quantity from products_detail
+	// 		where product_id = $id
+	// 		limit 1";
+	// $price_quantity_result = mysqli_query($connect, $sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -40,12 +62,12 @@
 						<input type="hidden" name="id" value="<?php echo $each['id'] ?>">
 						<input type="hidden" name="page" value="<?php echo $page ?>">
 						<div class="form-input">
-							<p>New image</p>
+							<p>New main image</p>
 							<input type="file" name="image" id="input_image">
 							<div id="image_error"></div>
 						</div>
 						<div class="form-old-image">
-							<p>Old image</p>
+							<p>Old main image</p>
 							<img src="images/<?php echo $each['image'] ?>" height="180px">
 						</div>
 						<div class="form-input">
@@ -59,19 +81,27 @@
 							<div id="description_error"></div>
 						</div>
 						<div class="form-input">
-							<p>Phone number</p>
-							<input type="number" name="phone_number" id="input_phone_number" value="<?php echo $each['phone_number'] ?>"> 
-							<div id="phone_number_error"></div>
+							<p>Manufacturer</p>
+							<select name="manufacturer_id" style="font-size: 16px">
+
+								<?php foreach ($result as $each): ?>
+									<option value="<?php echo $each['manufacturer_id'] ?>">
+											<?php echo $each['manufacturer_name'] ?>
+									</option>
+								<?php endforeach ?>
+
+							</select>
+							<div id="manufacturer_error"></div>
 						</div>
 						<div class="form-input">
-							<p>Address</p>
-							<input type="text" name="address" id="input_address" value="<?php echo $each['address'] ?>"> 
-							<div id="address_error"></div>
+							<p>Price</p>
+							<input type="number" name="price" id="input_price" value="<?php echo $each['price'] ?>" step="any">
+							<div id="price_error"></div>
 						</div>
 						<div class="form-input">
-							<p>Email</p>
-							<input type="email" name="email" id="input_email" value="<?php echo $each['email'] ?>"> 
-							<div id="email_error"></div>
+							<p>Quantity</p>
+							<input type="number" name="quantity" id="input_quantity" value="<?php echo $each['quantity'] ?>">
+							<div id="quantity_error"></div>
 						</div>
 						<div class="save-button">
 							<button type="submit" onclick="return check();">
@@ -87,7 +117,7 @@
 
 	</div>
 	
-	<script src="../form_validation/frontend_check/check_error.js"></script>
+	<!-- <script src="../form_validation/frontend_check/check_error.js"></script>
 	<script src="../form_validation/frontend_check/image.js"></script>
 	<script src="../form_validation/frontend_check/update_image.js"></script>
 	<script src="../form_validation/frontend_check/name.js"></script>
@@ -114,7 +144,7 @@
 			}
 			return (count === result_check.length) ? true : false;
 		}
-	</script>
+	</script> -->
 
 	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
 	<?php require_once '../root/notification.php' ?>

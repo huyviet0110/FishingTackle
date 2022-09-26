@@ -101,7 +101,7 @@
 
 							<div class="form-input">
 								<p>Quantity (!Note: You can change the quantity for each style, size, ... in the update after adding the product)</p>
-								<input type="number" name="quantity" id="input_quantity" step="any">
+								<input type="number" name="quantity" id="input_quantity">
 								<div id="quantity_error"></div>
 							</div>
 

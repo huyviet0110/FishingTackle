@@ -89,34 +89,27 @@
 	$array_count = array(count($colors_id), count($styles_id), count($options_id), count($sizes_id));
 	$max_count = max($array_count);
 
-	for ($i_1 = 0; $i_1 < $max_count; $i_1++) { 
+	if($max_count < 1) {
+		$sql = "insert into products_detail (product_id, color_id, style_id, option_id, size_id, price, quantity)
+				values ('$product_id', null, null, null, null, '$price', '$quantity')";
+		mysqli_query($connect, $sql);
+	} else {
+		for ($i_1 = 0; $i_1 < $max_count; $i_1++) { 
+			for ($i_2 = 0; $i_2 < $max_count; $i_2++) { 
+				for ($i_3 = 0; $i_3 < $max_count; $i_3++) { 
+					for ($i_4 = 0; $i_4 < $max_count; $i_4++) { 
 
-		if($colors_id[$i_1] === null){
-			$colors_id[$i_1] = 0;
-		}
-
-		for ($i_2 = 0; $i_2 < $max_count; $i_2++) { 
-			if($styles_id[$i_2] === null){
-				$styles_id[$i_2] = 0;
-			}
-
-			for ($i_3 = 0; $i_3 < $max_count; $i_3++) { 
-				if($options_id[$i_3] === null){
-					$options_id[$i_3] = 0;
-				}
-
-				for ($i_4 = 0; $i_4 < $max_count; $i_4++) { 
-					if($sizes_id[$i_4] === null){
-						$sizes_id[$i_4] = 0;
+						$sql = "insert into products_detail (product_id, color_id, style_id, option_id, size_id, price, quantity)
+						values ('$product_id', '$colors_id[$i_1]', '$styles_id[$i_2]', '$options_id[$i_3]', '$sizes_id[$i_4]', '$price', '$quantity')";
+						mysqli_query($connect, $sql);
+						
 					}
-
-					$sql = "insert into products_detail (product_id, color_id, style_id, option_id, size_id, price, quantity)
-							values ('$product_id', '$colors_id[$i_1]', '$styles_id[$i_2]', '$options_id[$i_3]', '$sizes_id[$i_4]', '$price', '$quantity')";
-					mysqli_query($connect, $sql);
 				}
 			}
 		}
 	}
+
+	
 
 	require_once '../root/increase_page_after_insert_to_display.php';
 
