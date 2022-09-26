@@ -4,26 +4,21 @@
 	require '../root/get_data_from_id.php';
 
 	$sql = "select
-				products.*,
-				manufacturers.id as manufacturer_id,
-				manufacturers.name as manufacturer_name,
-				products_detail.price,
-				products_detail.quantity
-			from products
-			join manufacturers on manufacturers.id = products.manufacturer_id
-			join products_detail on products_detail.product_id = products.id
-			where products.id = $id
+				p.*,
+				m.id as manufacturer_id,
+				m.name as manufacturer_name,
+				d.price,
+				d.quantity
+			from products as p
+			join manufacturers as m on m.id = p.manufacturer_id
+			join products_detail as d on d.product_id = p.id
+			where p.id = $id
 			limit 1";
 	$result = mysqli_query($connect, $sql);
 	$each = mysqli_fetch_array($result);
 
 	$sql = "select id,name from manufacturers";
 	$manufacturers_result = mysqli_query($connect, $sql);
-
-	// $sql = "select price, quantity from products_detail
-	// 		where product_id = $id
-	// 		limit 1";
-	// $price_quantity_result = mysqli_query($connect, $sql);
 
 ?>
 
@@ -41,8 +36,26 @@
 	<link rel="stylesheet" type="text/css" href="../css/card.css">
 	<link rel="stylesheet" type="text/css" href="../css/form.css">
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
+	<style type="text/css">
+		#dashboard {
+			height: 100%;
+		}
+		.content {
+			height: calc(100% - 50px - 67px);
+		}
+		.choices__inner {
+			padding: 0;
+		}
+		.choices__input {
+			padding-top: 8px;
+		}
+	</style>
 </head>
 <body>
+
+<div id="layout">
 
 	<?php require_once '../root/menu.php' ?>
 
@@ -60,14 +73,14 @@
 				</div>
 				<div class="form-content">
 					<form method="post" action="process_update.php" enctype="multipart/form-data">
-						<input type="hidden" name="id" value="<?php echo $each['id'] ?>">
+						<!-- <input type="hidden" name="id" value="<?php echo $each['id'] ?>">
 						<input type="hidden" name="page" value="<?php echo $page ?>">
 						<div class="form-input">
 							<p>New main image</p>
 							<input type="file" name="image" id="input_image">
 							<div id="image_error"></div>
-						</div>
-						<div class="form-old-image">
+						</div> -->
+						<!-- <div class="form-old-image">
 							<p>Old main image</p>
 							<img src="images/<?php echo $each['image'] ?>" height="180px">
 						</div>
@@ -107,12 +120,42 @@
 							<p>Quantity</p>
 							<input type="number" name="quantity" id="input_quantity" value="<?php echo $each['quantity'] ?>">
 							<div id="quantity_error"></div>
+						</div> -->
+						<!-- <div class="form-input">
+							<p>Types</p>
+							<select id="choices-multiple-remove-button" placeholder="Select upto 7 tags      " name="types_id[]" multiple autocomplete="off">
+								<?php 
+									$table_name = 'types';
+									include '../root/get_all_records.php';
+								?>
+
+								<?php foreach ($result as $each): ?>
+
+									<option value="<?php echo $each['id'] ?>">
+										<?php echo $each['name'] ?>
+									</option>
+
+								<?php endforeach ?>
+							</select>
+
+							<div id="type_error"></div>
 						</div>
-						<div class="save-button">
-							<button type="submit" onclick="return check();">
+						<div class="form-input">
+							<p>Sizes</p>
+							<select id="choices-multiple-remove-button" placeholder="Select upto 7 tags      " name="sizes_id[]" multiple autocomplete="off">
+								<?php $table_name = 'sizes'; include '../root/get_all_records.php';?>
+								<?php foreach ($result as $each): ?>
+									<option value="<?php echo $each['id'] ?>">
+										<?php echo $each['name'] ?>
+									</option>
+								<?php endforeach ?>
+							</select>
+							<div id="type_error"></div>
+						</div> -->
+						<!-- <br> -->
+						<!-- <div class="save-button"><button type="submit" onclick="return check();">
 								Save Changes
-							</button>
-						</div>
+							</button></div> -->
 					</form>
 				</div>
 			</div>
@@ -121,6 +164,7 @@
 		<?php require_once '../root/footer.php' ?>
 
 	</div>
+</div>
 	
 	<!-- <script src="../form_validation/frontend_check/check_error.js"></script>
 	<script src="../form_validation/frontend_check/image.js"></script>
@@ -152,6 +196,23 @@
 	</script> -->
 
 	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+
+	<script>
+		$(document).ready(function(){
+
+			var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
+				removeItemButton: true,
+				maxItemCount:7,
+				searchResultLimit:5,
+				renderChoiceLimit:8
+			}); 
+
+		});
+	</script>
+
 	<?php require_once '../root/notification.php' ?>
 
 	<?php mysqli_close($connect) ?>
