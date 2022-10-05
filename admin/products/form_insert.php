@@ -35,6 +35,8 @@
 			padding-top: 8px;
 		}
 	</style>
+
+	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div id="layout">
@@ -143,7 +145,7 @@
 							</div>
 							<br>
 
-							<div class="form-input">
+							<div class="form-input input-color">
 								<p>Color 1</p>
 								<p style="font-weight: normal;">Name</p>
 								<input type="text" name="color[0]">
@@ -164,7 +166,7 @@
 							</div>
 							<br>
 
-							<div class="form-input">
+							<div class="form-input input-style">
 								<p>Style 1</p>
 								<p style="font-weight: normal;">Name</p>
 								<input type="text" name="style[0]">
@@ -185,7 +187,7 @@
 							</div>
 							<br>
 
-							<div class="form-input">
+							<div class="form-input input-option">
 								<p>Option 1</p>
 								<p style="font-weight: normal;">Name</p>
 								<input type="text" name="option[0]">
@@ -206,8 +208,8 @@
 							</div>
 							<br>
 
-							<div class="form-input count-input count-sub-image">
-								<p>Sub Image (Correct format: png, jpg, jpec, gif) - Upto 10 images</p>
+							<div class="form-input count-input count-sub-image input-sub-image">
+								<p>Sub Image (Correct format: png, jpg, jpec, gif) - Upto 5 images</p>
 								<input type="file" name="sub_image[0]">
 								<div class="sub_image_error"></div>
 							</div>
@@ -266,7 +268,6 @@
 		}
 	</script> -->
 
-	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
@@ -286,40 +287,49 @@
 
 	<?php require '../root/add_a_new_one.php' ?>
 	<script type="text/javascript">
+
+		let layout_height = 2000;
+		let number_of_count_input = 4;
+		let entry_index_label = 1;
+
 		function add_a_new_color(){
 			let element = 'card_insert_color';
+			let input_properties = 'input-color';
 			let label = 'Color';
 			let name = 'color';
 			let button_width = 150;
 
-			add_a_new_one(element, label, name, button_width);
+			add_a_new_one(element, label, name, button_width, input_properties);
 		}
 
 		function add_a_new_style(){
 			let element = 'card_insert_style';
+			let input_properties = 'input-style';
 			let label = 'Style';
 			let name = 'style';
 			let button_width = 150;
 
-			add_a_new_one(element, label, name, button_width);
+			add_a_new_one(element, label, name, button_width, input_properties);
 		}
 
 		function add_a_new_option(){
 			let element = 'card_insert_option';
+			let input_properties = 'input-option';
 			let label = 'Option';
 			let name = 'option';
 			let button_width = 160;
 
-			add_a_new_one(element, label, name, button_width);
+			add_a_new_one(element, label, name, button_width, input_properties);
 		}
 		
 		function add_a_new_sub_image(){
 			let element = 'card_insert_sub_image';
+			let input_properties = 'input-sub-image';
 			let label = 'Sub image';
 			let name = 'sub_image';
 			let button_width = 190;
 
-			add_a_new_one(element, label, name, button_width);
+			add_a_new_one(element, label, name, button_width, input_properties);
 		}
 	</script>
 	

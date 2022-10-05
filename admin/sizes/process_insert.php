@@ -4,6 +4,7 @@
 	
 	$form_file_name = 'form_insert.php?';
 	$table_name = 'sizes';
+	$action = 'insert';
 	$table_name_display = 'size';
 	require_once '../form_validation/backend_check/page_post.php';
 	

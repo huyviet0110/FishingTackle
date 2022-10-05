@@ -1,6 +1,6 @@
 <?php 
 
-	require 'get_id_max.php';
+	require '../root/get_id_max.php';
 
 	for ($i = 0; $i < count($array_input); $i++, $id++) { 
 

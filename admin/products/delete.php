@@ -20,8 +20,13 @@
 	mysqli_query($connect, $sql);
 	require '../form_validation/backend_check/query_error.php';
 
-	$sql = "delete from $table_name
+	$sql = "delete from products
 			where id = '$id'";
+	mysqli_query($connect, $sql);
+	require '../form_validation/backend_check/query_error.php';
+
+	$sql = "delete from sub_images
+			where product_id = '$id'";
 	mysqli_query($connect, $sql);
 	require '../form_validation/backend_check/query_error.php';
 

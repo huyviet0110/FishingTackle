@@ -1,6 +1,10 @@
 <?php 
-	
-	$sql = "select name from $table_name where name = '$name' and id <> '$id'";
+
+	if(strcmp($table_name, 'products') === 0 && strcmp($action, 'insert') === 0){
+		$sql = "select name from $table_name where name = '$name'";
+	} else {
+		$sql = "select name from $table_name where name = '$name' and id <> '$id'";
+	}
 	$result = mysqli_query($connect, $sql);
 	require '../form_validation/backend_check/query_error.php';
 	$result_num_rows = mysqli_num_rows($result);

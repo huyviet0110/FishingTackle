@@ -10,6 +10,7 @@
 	require_once '../form_validation/backend_check/description.php';
 
 	$table_name = 'products';
+	$action = 'insert';
 	$table_name_display = 'product';
 	require_once '../form_validation/backend_check/check_duplicates/name.php';
 
@@ -30,7 +31,7 @@
 	$styles_id = array();
 	$options_id = array();
 
-	require 'get_id_max.php';
+	require '../root/get_id_max.php';
 	$product_id = $id;
 	$sql = "insert into $table_name (id, image, name, description, manufacturer_id)
 			values ('$product_id', '$file_name', '$name', '$description', '$manufacturer_id')";
@@ -49,7 +50,8 @@
 	$file = $sub_images;
 	$folder = 'sub_images/';
 	for ($i=0; $i < count($file['tmp_name']); $i++) { 
-		if(empty($file['tmp_name'][$i])){
+
+		if(strcmp($file['tmp_name'][$i], '') === 0){
 			continue;
 		}
 
@@ -86,8 +88,26 @@
 	require '../root/add_multiple_records.php';
 	$options_id = $array_id;
 
-	$array_count = array(count($colors_id), count($styles_id), count($options_id), count($sizes_id));
-	$max_count = max($array_count);
+	$count_array = array(
+		count($colors_id),
+		count($styles_id),
+		count($options_id),
+		count($sizes_id)
+	);
+	$max_count = max($count_array);
+
+	for ($i = count($colors_id); $i < max($count_array); $i++) { 
+		$colors_id[$i] = 0;
+	}
+	for ($i = count($styles_id); $i < max($count_array); $i++) { 
+		$styles_id[$i] = 0;
+	}
+	for ($i = count($options_id); $i < max($count_array); $i++) { 
+		$options_id[$i] = 0;
+	}
+	for ($i = count($sizes_id); $i < max($count_array); $i++) { 
+		$sizes_id[$i] = 0;
+	}
 
 	if($max_count < 1) {
 		$sql = "insert into products_detail (product_id, color_id, style_id, option_id, size_id, price, quantity)
@@ -99,16 +119,27 @@
 				for ($i_3 = 0; $i_3 < $max_count; $i_3++) { 
 					for ($i_4 = 0; $i_4 < $max_count; $i_4++) { 
 
+						if($colors_id[$i_1] === 0){
+							$colors_id[$i_1] = 'null';
+						}
+						if($styles_id[$i_2] === 0){
+							$styles_id[$i_2] = 'null';
+						}
+						if($options_id[$i_3] === 0){
+							$options_id[$i_3] = 'null';
+						}
+						if($sizes_id[$i_4] === 0){
+							$sizes_id[$i_4] = 'null';
+						}
+
 						$sql = "insert into products_detail (product_id, color_id, style_id, option_id, size_id, price, quantity)
-						values ('$product_id', '$colors_id[$i_1]', '$styles_id[$i_2]', '$options_id[$i_3]', '$sizes_id[$i_4]', '$price', '$quantity')";
+								values ('$product_id', $colors_id[$i_1], $styles_id[$i_2], $options_id[$i_3], $sizes_id[$i_4], '$price', '$quantity')";
 						mysqli_query($connect, $sql);
-						
 					}
 				}
 			}
 		}
 	}
-
 	
 	$table_name = 'products';
 	require_once '../root/increase_page_after_insert_to_display.php';

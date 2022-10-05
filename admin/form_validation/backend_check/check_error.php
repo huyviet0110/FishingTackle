@@ -1,5 +1,5 @@
 <?php 
-
+	
 	function check_error($form_file_name, $input, $input_name, $regex, $number_of_characters){
 
 		if(preg_match($regex, $input) === 0){

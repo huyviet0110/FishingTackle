@@ -3,6 +3,7 @@
 	require_once '../connect.php';
 
 	$table_name = 'sizes';
+	$action = 'update';
 	$table_name_display = 'size';
 	require_once '../form_validation/backend_check/check_empty/id_post.php';
 	require_once '../form_validation/backend_check/check_empty/id.php';

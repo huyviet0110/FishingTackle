@@ -4,6 +4,7 @@
 	
 	$form_file_name = 'form_insert.php?';
 	$table_name = 'types';
+	$action = 'insert';
 	$table_name_display = 'type';
 	require_once '../form_validation/backend_check/page_post.php';
 	
