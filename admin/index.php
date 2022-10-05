@@ -10,6 +10,8 @@
 	<link rel="stylesheet" type="text/css" href="css/header.css">
 	<link rel="stylesheet" type="text/css" href="css/content.css">
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
+	
+	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<?php 
@@ -17,6 +19,5 @@
 		require_once 'dashboard.php';
 	?>
 
-	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
 </body>
 </html>

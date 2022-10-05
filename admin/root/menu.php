@@ -52,7 +52,7 @@
 				</a>
 			</li>
 			<li class="nav-item">
-				<a href="../contacts">
+				<a href="#">
 					<i class="fa-solid fa-message"></i>
 					<p>
 						Contacts
@@ -68,7 +68,7 @@
 				</a>
 			</li>
 			<li class="nav-item">
-				<a href="../news">
+				<a href="#">
 					<i class="fa-solid fa-newspaper"></i>
 					<p>
 						News

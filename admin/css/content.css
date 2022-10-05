@@ -22,19 +22,7 @@
 	color: white;
 	border-radius: 5px;
 }
-.content .above ul li [href='new_orders.php'] {
-	background-color: #17A2B8;
-}
-.content .above ul li [href='cancellationrate.php'] {
-	background-color: #28A745;
-}
-.content .above ul li [href='user_registrastrions.php'] {
-	background-color: #FFC107;
-}
-.content .above ul li [href='unique_visitors.php'] {
-	background-color: #DC3545;
-}
- .above .statistics {
+.above .statistics {
 	font-size: 40px;
 	margin-bottom: 20px;
 }

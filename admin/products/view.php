@@ -95,7 +95,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
 	<style type="text/css">
 		#layout {
-			height: 9500px;
+			height: 5000px;
 		}
 		#dashboard {
 			height: 100%;

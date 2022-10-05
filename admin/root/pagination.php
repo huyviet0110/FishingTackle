@@ -16,7 +16,5 @@
 			order by id asc
 			limit $number_of_records_per_page
 			offset $number_of_records_to_skip";
-
-	
 	$result = mysqli_query($connect, $sql);
 	$number_of_records = mysqli_num_rows($result);
