@@ -91,13 +91,7 @@
 
 			if(empty($_POST['color_name'])){
 				for ($i=0; $i < count($colors_id); $i++) { 
-					$sql = "update products_detail
-							set 
-								color_id = null
-							where 
-								product_id = '$product_id' and
-								color_id = '$colors_id[$i]'";
-					mysqli_query($connect, $sql);
+					array_splice($colors_id, $i, 1);
 				}
 			} else {
 				$colors_name = $_POST['color_name'];
@@ -110,13 +104,7 @@
 
 					for ($i = 0; $i < count($colors_id); $i++) { 
 						if(!in_array($i, $array_keys) || in_array($i, $array_keys) && strcmp($colors_name[$i], '') === 0){
-							$sql = "update products_detail
-									set
-										color_id = null
-									where 
-										product_id = '$product_id' and
-										color_id = '$colors_id[$i]'";
-							mysqli_query($connect, $sql);
+							array_splice($colors_id, $i, 1);
 						} else if(strcmp($colors_name[$i], '') !== 0){
 							$sql = "update colors
 									set
@@ -231,13 +219,7 @@
 
 			if(empty($_POST['style_name'])){
 				for ($i=0; $i < count($styles_id); $i++) { 
-					$sql = "update products_detail
-							set 
-								style_id = null
-							where 
-								product_id = '$product_id' and
-								style_id = '$styles_id[$i]'";
-					mysqli_query($connect, $sql);
+					array_splice($styles_id, $i, 1);
 				}
 			} else {
 				$styles_name = $_POST['style_name'];
@@ -250,20 +232,14 @@
 
 					for ($i = 0; $i < count($styles_id); $i++) { 
 						if(!in_array($i, $array_keys) || in_array($i, $array_keys) && strcmp($styles_name[$i], '') === 0){
-							$sql = "update products_detail
-									set
-										style_id = null
-									where 
-										product_id = '$product_id' and
-										style_id = '$styles_id[$i]'";
-							mysqli_query($connect, $sql);
+							array_splice($styles_id, $i, 1);
 						} else if(strcmp($styles_name[$i], '') !== 0){
 							$sql = "update styles
 									set
 										image = '$file_name_array[$i]',
 										name = '$styles_name[$i]'
 									where
-										id = '$styles_id[$i]'";
+										id = '$styles_id[$i]'";print_r($sql);
 							mysqli_query($connect, $sql);
 						}
 					}
@@ -371,13 +347,7 @@
 
 			if(empty($_POST['option_name'])){
 				for ($i=0; $i < count($options_id); $i++) { 
-					$sql = "update products_detail
-							set 
-								option_id = null
-							where 
-								product_id = '$product_id' and
-								option_id = '$options_id[$i]'";
-					mysqli_query($connect, $sql);
+					array_splice($options_id, $i, 1);
 				}
 			} else {
 				$options_name = $_POST['option_name'];
@@ -390,13 +360,7 @@
 
 					for ($i = 0; $i < count($options_id); $i++) { 
 						if(!in_array($i, $array_keys) || in_array($i, $array_keys) && strcmp($options_name[$i], '') === 0){
-							$sql = "update products_detail
-									set
-										option_id = null
-									where 
-										product_id = '$product_id' and
-										option_id = '$options_id[$i]'";
-							mysqli_query($connect, $sql);
+							array_splice($options_id, $i, 1);
 						} else if(strcmp($options_name[$i], '') !== 0){
 							$sql = "update options
 									set

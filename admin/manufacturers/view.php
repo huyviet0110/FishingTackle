@@ -1,7 +1,6 @@
 <?php 
 
 	$table_name = 'manufacturers';
-	$number_of_records_per_page = 4;
 	require_once '../root/get_data_from_id.php';
 ?>
 
@@ -33,11 +32,9 @@
 			<div class="card">
 				<div class="card-header" style="padding-top: 10px;">
 					<div class="card-title">
-						<h3 class="h3-format">Manufacturers Details</h3>
+						<h3 class="h3-format">Manufacturers Detail</h3>
 					</div>
 				</div>
-
-				<div id="notification"></div>
 
 				<div class="card-content">
 					<table width="97%">
@@ -81,8 +78,6 @@
 		<?php require_once '../root/footer.php' ?>
 
 	</div>
-	
-	<?php require_once '../root/notification.php' ?>
 	
 	<?php mysqli_close($connect) ?>
 
