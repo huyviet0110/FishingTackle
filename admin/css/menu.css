@@ -113,3 +113,13 @@
 	color: #F9FFFF;
 	background-color: rgb(255, 255, 255, 0.1);
 }
+
+.nav-bar .nav-item .sub-nav {
+	display: none;
+}
+.nav-bar .nav-item:hover .sub-nav {
+	display: block;
+}
+.nav-bar .nav-item .sub-nav .nav-item i{
+	padding-left: 20px;
+}

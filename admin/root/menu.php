@@ -8,7 +8,7 @@
 	</div>
 
 	<div class="profile">
-		<a href="profile.php">
+		<a href="#">
 			<i class="fa-solid fa-address-card"></i>
 			<span>Profile</span>
 			<!-- name -->
@@ -42,6 +42,25 @@
 						Products
 					</p>
 				</a>
+
+				<ul class="sub-nav">
+					<li class="nav-item">
+						<a href="../types">
+							<i class="fa-regular fa-circle"></i>
+							<p>
+								Types
+							</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="../sizes">
+							<i class="fa-regular fa-circle"></i>
+							<p>
+								Sizes
+							</p>
+						</a>
+					</li>
+				</ul>
 			</li>
 			<li class="nav-item">
 				<a href="../orders">
@@ -82,6 +101,17 @@
 						Staffs
 					</p>
 				</a>
+
+				<ul class="sub-nav">
+					<li class="nav-item">
+						<a href="../positions">
+							<i class="fa-regular fa-circle"></i>
+							<p>
+								Positions
+							</p>
+						</a>
+					</li>
+				</ul>
 			</li>
 		</ul>
 	</div>
