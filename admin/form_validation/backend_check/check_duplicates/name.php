@@ -1,6 +1,6 @@
 <?php 
-
-	if(strcmp($table_name, 'products') === 0 && strcmp($action, 'insert') === 0){
+	
+	if(strcmp($action, 'insert') === 0){
 		$sql = "select name from $table_name where name = '$name'";
 	} else {
 		$sql = "select name from $table_name where name = '$name' and id <> '$id'";

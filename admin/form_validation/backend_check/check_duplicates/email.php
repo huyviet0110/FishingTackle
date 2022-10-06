@@ -1,6 +1,11 @@
 <?php 
+	
+	if(strcmp($action, 'insert') === 0){
+		$sql = "select email from $table_name where email = '$email'";
+	} else {
+		$sql = "select email from $table_name where email = '$email' and id <> '$id'";
+	}
 
-	$sql = "select email from $table_name where email = '$email' and id <> '$id'";
 	$result = mysqli_query($connect, $sql);
 	require '../form_validation/backend_check/query_error.php';
 	$result_num_rows = mysqli_num_rows($result);

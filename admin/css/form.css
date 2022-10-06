@@ -70,3 +70,14 @@
 .form-content .create-button button:hover, .form-content .save-button button:hover {
 	background-color: #218838;
 }
+
+.input-radio {
+	padding-top: 20px;
+}
+.input-radio p {
+	font-weight: bold; 
+	padding-bottom: 20px;
+}
+.input-radio label {
+	margin-right: 16px;
+}

@@ -141,7 +141,7 @@
 									<?php endforeach ?>
 								</select>
 
-								<div id="type_error"></div>
+								<div id="size_error"></div>
 							</div>
 							<br>
 
