@@ -1,6 +1,8 @@
 <div class="header">
 	<div class="left">
-		<p>Dashboard</p>
+		<a href="../" style="text-decoration: none;">
+			<p>Home</p>
+		</a>
 	</div>
 	<div class="right">
 		<p>huyviet / </p>

@@ -14,6 +14,12 @@
 	font-size: 24px;
 	line-height: 61.44px;
 }
+.header .left a, .header .left a:visited {
+	color: rgba(0,0,0,.5);
+}
+.header .left a:hover {
+	color: #4F4F4F;
+}
 .header .right {
 	width: 20%;
 	height: 100%;

@@ -176,7 +176,7 @@
 						</tr>
 
 						<tr>
-							<td><?php echo trim($this_product['description']) ?></td>
+							<td><?php echo nl2br(trim($this_product['description'])) ?></td>
 						</tr>
 					</table>
 
@@ -219,7 +219,7 @@
 						</div>
 					</div>
 
-					<table width="50%">
+					<table width="40%">
 						<tr>
 							<th class="th-td-id">No</th>
 							<th class="th-td-image">Image</th>
@@ -253,7 +253,7 @@
 						</div>
 					</div>
 
-					<table width="50%">
+					<table width="40%">
 						<tr>
 							<th class="th-td-id">No</th>
 							<th class="th-td-image">Image</th>
@@ -287,7 +287,7 @@
 						</div>
 					</div>
 
-					<table width="50%">
+					<table width="40%">
 						<tr>
 							<th class="th-td-id">No</th>
 							<th class="th-td-image">Image</th>

@@ -113,6 +113,14 @@
 									where
 										id = '$colors_id[$i]'";
 							mysqli_query($connect, $sql);
+							$error = mysqli_error($connect);
+							if(!empty($error)){
+								$sql = "select id from options
+										where name = $colors_name[$i]";
+								$result = mysqli_query($connect, $sql);
+								$each = mysqli_fetch_array($result)['id'];
+								array_splice($colors_id, $i, 1);
+							}
 						}
 					}
 				}
@@ -166,6 +174,7 @@
 					$sql = "select id from colors
 							where name = '$new_colors_name[$i]'";
 					$result = mysqli_query($connect, $sql);
+					require '../form_validation/backend_check/query_error.php';
 					$each = mysqli_fetch_array($result)['id'];
 					array_push($colors_id, $each);
 				} else {
@@ -239,8 +248,16 @@
 										image = '$file_name_array[$i]',
 										name = '$styles_name[$i]'
 									where
-										id = '$styles_id[$i]'";print_r($sql);
+										id = '$styles_id[$i]'";
 							mysqli_query($connect, $sql);
+							$error = mysqli_error($connect);
+							if(!empty($error)){
+								$sql = "select id from options
+										where name = $styles_name[$i]";
+								$result = mysqli_query($connect, $sql);
+								$each = mysqli_fetch_array($result)['id'];
+								array_splice($styles_id, $i, 1);
+							}
 						}
 					}
 				}
@@ -294,6 +311,7 @@
 					$sql = "select id from styles
 							where name = '$new_styles_name[$i]'";
 					$result = mysqli_query($connect, $sql);
+					require '../form_validation/backend_check/query_error.php';
 					$each = mysqli_fetch_array($result)['id'];
 					array_push($styles_id, $each);
 				} else {
@@ -369,6 +387,14 @@
 									where
 										id = '$options_id[$i]'";
 							mysqli_query($connect, $sql);
+							$error = mysqli_error($connect);
+							if(!empty($error)){
+								$sql = "select id from options
+										where name = $options_name[$i]";
+								$result = mysqli_query($connect, $sql);
+								$each = mysqli_fetch_array($result)['id'];
+								array_splice($options_id, $i, 1);
+							}
 						}
 					}
 				}
@@ -422,6 +448,7 @@
 					$sql = "select id from options
 							where name = '$new_options_name[$i]'";
 					$result = mysqli_query($connect, $sql);
+					require '../form_validation/backend_check/query_error.php';
 					$each = mysqli_fetch_array($result)['id'];
 					array_push($options_id, $each);
 				} else {
@@ -480,6 +507,7 @@
 								product_id = '$product_id' and
 								id = '$subs_id[$i]'";
 					mysqli_query($connect, $sql);
+					require '../form_validation/backend_check/query_error.php';
 				} else {
 					$sql = "update sub_images
 							set 
@@ -488,6 +516,7 @@
 								product_id = '$product_id' and 
 								id = '$subs_id[$i]'";
 					mysqli_query($connect, $sql);
+					require '../form_validation/backend_check/query_error.php';
 				}
 
 			}
@@ -521,6 +550,7 @@
 			$sql = "insert into sub_images (image, product_id)
 					values ('$file_name_array[$i]', '$product_id')";
 			mysqli_query($connect, $sql);
+			require '../form_validation/backend_check/query_error.php';
 		}
 	}
 
@@ -534,12 +564,14 @@
 		$sql = "delete from products_types 
 				where product_id = '$product_id'";
 		mysqli_query($connect, $sql);
+		require '../form_validation/backend_check/query_error.php';
 
 		for ($i=0; $i < count($types_id); $i++) { 
 
 			$sql = "insert into products_types (type_id, product_id)
 					values ('$types_id[$i]', '$product_id')";
 			mysqli_query($connect, $sql);
+			require '../form_validation/backend_check/query_error.php';
 
 		}
 	}
@@ -582,15 +614,18 @@
 		$sql = "delete from products_detail
 				where product_id = '$product_id'";
 		mysqli_query($connect, $sql);
+		require '../form_validation/backend_check/query_error.php';
 
 		$sql = "insert into products_detail (product_id, color_id, style_id, option_id, size_id, price, quantity)
 				values ('$product_id', null, null, null, null, '$price', '$quantity')";
 		mysqli_query($connect, $sql);
+		require '../form_validation/backend_check/query_error.php';
 	} else {
 
 		$sql = "delete from products_detail 
 				where product_id = '$product_id'";
 		mysqli_query($connect, $sql);
+		require '../form_validation/backend_check/query_error.php';
 
 		for ($i_1=0; $i_1 < max($count_array); $i_1++) { 
 			for ($i_2=0; $i_2 < max($count_array); $i_2++) { 
@@ -613,6 +648,7 @@
 						$sql = "insert into products_detail (product_id, color_id, style_id, option_id, size_id, price, quantity)
 								values ('$product_id', $colors_id[$i_1], $styles_id[$i_2], $options_id[$i_3], $sizes_id[$i_4], '$price', '$quantity')";
 						mysqli_query($connect, $sql);
+						require '../form_validation/backend_check/query_error.php';
 
 					}
 				}

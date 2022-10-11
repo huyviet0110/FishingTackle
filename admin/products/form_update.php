@@ -114,7 +114,7 @@
 
 						<div class="form-textarea">
 							<p>Description</p>
-							<textarea name="description" id="input_description"><?php echo $this_product['description'] ?></textarea>
+							<textarea name="description" id="input_description"><?php echo trim($this_product['description']) ?></textarea>
 							<div id="description_error"></div>
 						</div>
 
@@ -455,25 +455,19 @@
 	</div>
 </div>
 	
-	<!-- <script src="../form_validation/frontend_check/check_error.js"></script>
+	<script src="../form_validation/frontend_check/check_error.js"></script>
 	<script src="../form_validation/frontend_check/image.js"></script>
 	<script src="../form_validation/frontend_check/update_image.js"></script>
 	<script src="../form_validation/frontend_check/name.js"></script>
 	<script src="../form_validation/frontend_check/description.js"></script>
-	<script src="../form_validation/frontend_check/phone_number.js"></script>
-	<script src="../form_validation/frontend_check/address.js"></script>
-	<script src="../form_validation/frontend_check/email.js"></script>
 
 	<script type="text/javascript">
 		function check() {
 			let count = 0;
 			const result_check = [
 				check_update_image(),
-				check_name(), 
-				check_description(), 
-				check_phone_number(), 
-				check_address(), 
-				check_email()
+				check_name(),
+				check_description()
 			];
 			for(let i = 0; i < result_check.length; i++){
 				if(result_check[i] === true){
@@ -482,7 +476,7 @@
 			}
 			return (count === result_check.length) ? true : false;
 		}
-	</script> -->
+	</script>
 
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
