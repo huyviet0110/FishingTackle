@@ -37,10 +37,11 @@
 }
 .main-content .product {
 	width: calc((100% / 4) - 30px);
-	height: 340px;
+	height: 360px;
 	margin: 0px 15px;
 	float: left;
 	text-align: center;
+	position: relative;
 }
 .main-content .product img {
 	width: 100%;
@@ -48,6 +49,7 @@
 }
 .main-content .product .sub-image {
 	display: none;
+	position: absolute;
 }
 .main-content .product a {
 	width: 100%;
@@ -55,4 +57,9 @@
 	display: inline-block;
 	color: #007580;
 	font-size: 18px;
+}
+.main-content .product:hover .sub-image {
+	display: block;
+	top: 0;
+	z-index: 1;
 }
