@@ -1,7 +1,5 @@
 <?php 
 
-	require 'admin/connect.php';
-
 	$sql = "SELECT 
 				image,
 				name,

@@ -49,3 +49,5 @@
 		</p>
 	</div>
 </div>
+
+<?php mysqli_close($connect) ?>

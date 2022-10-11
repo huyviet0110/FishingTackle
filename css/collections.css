@@ -1,0 +1,74 @@
+#collections {
+	width: 100%;
+	height: calc(100% - 450px - 160px);
+	background-color: #FCF9F4;
+	padding: 50px 74px;
+}
+
+hr {
+	border: none;
+	height: 1px;
+	background-color: #DFDEDE;
+}
+
+#collections .left {
+	width: calc((100% / 4) - 20px);
+	background-color: white;
+	padding: 50px 15px;
+	float: left;
+	color: #646569;
+}
+#collections .left .nav-item {
+	list-style-type: none;
+}
+#collections .left .nav-item a {
+	text-decoration: none;
+	color: #818185;
+}
+
+#collections .right {
+	width: calc(100% - ((100% / 4) - 20px));
+	height: 100%;
+	padding: 0px 15px;
+	text-align: center;
+	float: left;
+}
+#collections .right .above {
+	width: 100%;
+	height: 40px;
+}
+#collections .right .above .left {
+	width: 70%;
+	height: 40px;
+	float: left;
+	text-transform: uppercase;
+	color: #626545;
+	background-color: #FCF9F4;
+}
+#collections .right .above .right {
+	width: 30%;
+	height: 40px;
+	float: left;
+	background-color: #FCF9F4;
+}
+#collections .right .below {
+	width: 100%;
+	height: calc(100% - 40px);
+	background-color: #FCF9F4;
+}
+#collections .right .below .product {
+	width: calc((100% / 3) - 30px);
+	height: 335.27px;
+	margin: 30px 15px;
+	float: left;
+}
+#collections .right .below .product img {
+	width: 272.48px;
+	height: 272.48px;
+}
+#collections .right .below .product .sub-image {
+	display: none;
+}
+#collections .right .below .product:hover .sub-image {
+	display: block;
+}

@@ -1,3 +1,10 @@
+<?php 
+
+	$sql = "select * from types";
+	$result = mysqli_query($connect, $sql);
+
+?>
+
 <div id="menu">
 	<div class="left">
 		<a href="index.php">
@@ -8,21 +15,23 @@
 	<div class="right">
 		<ul	class="nav">
 			<li class="nav-item">
-				<a href="shop_all.php"> 
+				<a href="collections.php"> 
 					SHOP 
 					<i class="fa-solid fa-sort-down" style=""></i>
 				</a>
 				<ul class="sub-nav">
 					<li class="nav-item" style="border-top: 4px solid #D0D0CF;">
-						<a href="shop_all.php">  SHOP ALL  </a>
+						<a href=collections.php>  SHOP ALL  </a>
 					</li>
-					<li class="nav-item"><a href="camping.php">   APPAREL      </a></li>
-					<li class="nav-item"><a href="fishing.php">   KNIFE KITS   </a></li>
-					<li class="nav-item"><a href="knife_kits.php">CIVILiAN CONSERVATION CORPS</a></li>
-					<li class="nav-item"><a href="writing.php">   CAMPING      </a></li>
-					<li class="nav-item"><a href="gifts.php">     FISHING      </a></li>
-					<li class="nav-item"><a href="apparel.php">   WRITING      </a></li>
-					<li class="nav-item"><a href="apparel.php">   GIFTS        </a></li>
+
+					<?php foreach ($result as $each): ?>
+						<li class="nav-item">
+							<a href="collections.php?type_id=<?php echo $each['id'] ?>"
+								style="text-transform: uppercase;">
+								<?php echo $each['name'] ?>
+							</a>
+						</li>
+					<?php endforeach ?>
 				</ul>
 			</li>
 
