@@ -28,7 +28,7 @@
 	width: 50%;
 	height: 100%;
 	float: left;
-	padding-left: 350px;
+	padding-left: 30%;
 	box-sizing: border-box;
 }
 .above .right ul li {
@@ -52,5 +52,4 @@
 	background-color: #007580;
 	font-size: 16px;
 	line-height: 40px;
-	font-family: Montserrat;
 }

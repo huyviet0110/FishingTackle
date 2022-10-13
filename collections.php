@@ -18,7 +18,7 @@
 		$type_id = $_GET['type_id'];
 
 		$sql = "select id from types where id = $type_id";
-		$products = mysqli_close($connect, $sql);
+		$products = mysqli_query($connect, $sql);
 		$result_num_rows = mysqli_num_rows($products);
 		if($result_num_rows > 0){
 			$sql = "select product_id from products_types
@@ -90,12 +90,9 @@
 			require_once 'menu.php';
 		?>
 
-		<hr>
-
 		<div id="collections">
-			<div class="left">
-				<h4>BROWSE</h4>
-				<hr>
+			<div class="browse">
+				<h4 style="padding-bottom: 10px;">BROWSE</h4>
 
 				<ul class="nav-bar">
 
@@ -104,7 +101,7 @@
 					<?php foreach ($result as $each): ?>
 
 						<li class="nav-item">
-							<a href="collections.php?type=<?php echo $each['id'] ?>">
+							<a href="collections.php?type_id=<?php echo $each['id'] ?>">
 								<?php echo $each['name'] ?>
 							</a>
 						</li>
@@ -117,7 +114,7 @@
 			<div class="right">
 				<div class="above">
 					<div class="left">
-						<h1 style="font-size: 24px;"><?php echo $title ?></h1>
+						<h1 style="font-size: 24px; padding-left: 15px"><?php echo $title ?></h1>
 					</div>
 					<div class="right">
 						<label for="sort_by">Sort by</label>
@@ -130,7 +127,6 @@
 						</select>
 					</div>
 				</div>
-				<hr>
 
 				<div class="below">
 
@@ -138,21 +134,27 @@
 						
 						<div class="product">
 							<a href="product_detail.php?id=<?php echo $each['id'] ?>">
-								<img src="admin/products/images/<?php echo $each['image'] ?>"><?php echo $each['image']; ?>
+								<img src="admin/products/images/<?php echo $each['image'] ?>">
+								<p style="font-family: schoolbook-web,Georgia,serif;">
+									<?php echo $each['name'] ?>
+								</p>
+								<p style="color: #646569; padding-top: 4px; font-size: 18px;">
+									<?php 
+										$price = $each['price'];
+										$price = number_format($price, 2, '.', ',');
+										echo "\$" . $price;
+									?>
+								</p>
 							</a>
 
 							<a href="product_detail.php?id=<?php echo $each['id'] ?>" class="sub-image">
 								<img src="admin/products/sub_images/<?php echo $each['sub_image'] ?>">
 							</a>
-
-							<br>
-							<a href="product_detail.php?id=<?php echo $each['id'] ?>">
-								<p><?php echo $each['name'] ?></p><br>
-								<p><?php echo "\$" . $each['price'] ?></p>
-							</a>
 						</div>
 
 					<?php endforeach ?>
+
+				</div>
 
 					<?php 
 						if($number_of_records > 0){
@@ -160,7 +162,6 @@
 						}
 					?>
 
-				</div>
 			</div>
 		</div>
 

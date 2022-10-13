@@ -9,6 +9,10 @@
 	require_once '../form_validation/backend_check/check_empty/id.php';
 	require_once '../form_validation/backend_check/page_get.php';
 
+	$sql = "delete from products_types
+			where type_id = $id";
+	mysqli_query($connect, $sql);
+
 	$sql = "delete from $table_name
 			where id = '$id'";
 	mysqli_query($connect, $sql);

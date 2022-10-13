@@ -29,7 +29,7 @@
 	</div>
 
 	<div class="below">
-		<div class="center">
+		<div class="center" style="font-family: sans-serif; text-transform: uppercase;">
 			<p>Only $46.55 away from free shipping</p>
 		</div>
 	</div>

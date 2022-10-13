@@ -6,7 +6,7 @@
 ?>
 
 <div id="menu">
-	<div class="left">
+	<div class="left" >
 		<a href="index.php">
 			<img src="logo/logo.png">
 		</a>
@@ -35,8 +35,8 @@
 				</ul>
 			</li>
 
-			<li class="nav-item"><a href="about.php">   ABOUT   </a></li>
-			<li class="nav-item"><a href="contact.php"> CONTACT </a></li>
+			<li class="nav-item"><a href="#"> ABOUT   </a></li>
+			<li class="nav-item"><a href="#"> CONTACT </a></li>
 		</ul>
 	</div>
 </div>

@@ -28,9 +28,9 @@
 		exit();
 	}
 
-	$name = $_POST['name'];
-	$description = $_POST['description'];
-	$manufacturer_id = $_POST['manufacturer_id'];
+	$name = mysqli_real_escape_string($connect, $_POST['name']);
+	$description = mysqli_real_escape_string($connect, $_POST['description']);
+	$manufacturer_id = mysqli_real_escape_string($connect, $_POST['manufacturer_id']);
 
 	$sql = "update products
 			set

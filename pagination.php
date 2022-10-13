@@ -19,13 +19,13 @@
 
 		$sql = "select 
 					$table_name.*, 
-					sub_images.image as sub_image,
+					(SELECT sub_images.image FROM sub_images
+	 				 WHERE product_id = products.id
+	 				 LIMIT 1) as sub_image,
 					(select products_detail.price from products_detail
 					 where products_detail.product_id = $table_name.id
 					 limit 1) as price
 				from $table_name
-				join products_detail on products_detail.product_id = products.id
-				join sub_images on sub_images.product_id = products.id
 				order by id asc
 				limit $number_of_records_per_page
 				offset $number_of_records_to_skip";
