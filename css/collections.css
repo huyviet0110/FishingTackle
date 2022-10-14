@@ -2,7 +2,7 @@
 	width: 100%;
 	height: calc(100% - 450px - 160px);
 	background-color: #FCF9F4;
-	padding: 50px 80px;
+	padding: 50px 100px;
 }
 
 #collections .browse {
@@ -62,16 +62,9 @@
 	background-color: #FCF9F4;
 }
 #collections .right .below .product {
-	width: calc((100% / 3) - 30px);
+	width: 272.47;
 	height: 335.27px;
 	margin: 30px 15px;
-	float: left;
-	position: relative;
-}
-#collections .right .below .product {
-	width: calc((100% / 3) - 30px);
-	height: 335.27px;
-	margin: 30px 15px 10px 15px;
 	float: left;
 	position: relative;
 }

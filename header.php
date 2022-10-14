@@ -16,10 +16,10 @@
 					<a href="sign_in.php">Sign in</a>
 				</li>
 				<li>
-					<a href="sign_in.php">Sign up</a>
+					<a href="sign_up.php">Sign up</a>
 				</li>
 				<li>
-					<a href="sign_in.php">
+					<a href="view_cart.php">
 						<i class="fa-solid fa-cart-shopping"></i>
 						Cart
 					</a>
