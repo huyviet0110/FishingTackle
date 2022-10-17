@@ -18,6 +18,8 @@
 	<link rel="stylesheet" type="text/css" href="../css/card.css">
 	<link rel="stylesheet" type="text/css" href="../css/form.css">
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
+	
+	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -116,7 +118,6 @@
 		}
 	</script>
 
-	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
 	<?php require_once '../root/notification.php' ?>
 
 	<?php mysqli_close($connect) ?>

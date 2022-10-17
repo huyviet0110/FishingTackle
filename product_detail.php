@@ -1,6 +1,20 @@
 <?php 
 
+	session_start();
 	require_once 'admin/connect.php';
+
+	if(isset($_COOKIE['remember'])){
+		$token = $_COOKIE['remember'];
+		$sql = "select id, avatar, name from customers where token = '$token'";
+		$result = mysqli_query($connect, $sql);
+		$result_num_rows = mysqli_num_rows($result);
+		if($result_num_rows === 1){
+			$each = mysqli_fetch_array($result);
+			$_SESSION['id'] = $each['id'];
+			$_SESSION['avatar'] = $each['avatar'];
+			$_SESSION['name'] = $each['name'];
+		}
+	}
 
 	if(empty($_GET['id']) || !is_numeric($_GET['id'])){
 		header('location:' . $_SERVER['HTTP_REFERER']);
@@ -107,7 +121,7 @@
 
 					<div class="center">
 
-						<form method="post" action="add_to_cart.php">
+						<form method="get" action="add_to_cart.php">
 							<?php 
 								$table_name = 'color';
 								require 'product_attributes.php';
@@ -120,6 +134,8 @@
 							?>
 
 							<br>
+
+							<input type="hidden" name="id" value="<?php echo $id ?>">
 
 							<button>ADD TO CART</button>
 							<button formaction="view_cart.php">BUY IT NOW</button>
@@ -161,6 +177,8 @@
 		<?php require_once 'footer.php'; ?>
 
 	</div>
+
+	<?php mysqli_close($connect) ?>
 
 </body>
 </html>

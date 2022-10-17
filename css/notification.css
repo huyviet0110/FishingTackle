@@ -1,0 +1,10 @@
+#notification {
+	text-align: center;
+	margin-top: 10px;
+}
+.error {
+	color: red;
+}	
+.success {
+	color: green;
+}	

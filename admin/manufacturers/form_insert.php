@@ -17,6 +17,8 @@
 	<link rel="stylesheet" type="text/css" href="../css/notification.css">
 	<link rel="stylesheet" type="text/css" href="../css/form.css">
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
+	
+	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<?php require_once '../root/menu.php' ?>
@@ -108,8 +110,6 @@
 			return (count === result_check.length) ? true : false;
 		}
 	</script>
-
-	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
 	
 	<?php 
 		require '../connect.php';

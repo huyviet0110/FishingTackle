@@ -1,5 +1,19 @@
 <?php 
+	session_start();
 	require_once 'admin/connect.php';
+
+	if(isset($_COOKIE['remember'])){
+		$token = $_COOKIE['remember'];
+		$sql = "select id, avatar, name from customers where token = '$token'";
+		$result = mysqli_query($connect, $sql);
+		$result_num_rows = mysqli_num_rows($result);
+		if($result_num_rows === 1){
+			$each = mysqli_fetch_array($result);
+			$_SESSION['id'] = $each['id'];
+			$_SESSION['avatar'] = $each['avatar'];
+			$_SESSION['name'] = $each['name'];
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +43,8 @@
 			require_once 'content.php';
 			require_once 'footer.php';
 		?>
+
+		<?php mysqli_close($connect) ?>
 
 	</div>
 
