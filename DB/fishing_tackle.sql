@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
   `email` varchar(100) NOT NULL,
   `password` varchar(200) NOT NULL,
   `position_id` int NOT NULL,
+  `token` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `phone_number` (`phone_number`),
@@ -43,9 +44,9 @@ CREATE TABLE IF NOT EXISTS `admins` (
 
 -- Dumping data for table fishing_tackle.admins: ~2 rows (approximately)
 DELETE FROM `admins`;
-INSERT INTO `admins` (`id`, `avatar`, `name`, `date_of_birth`, `gender`, `phone_number`, `address`, `started_working_at`, `working_time_a_day`, `email`, `password`, `position_id`) VALUES
-	(1, '1666060076.png', 'test1', '2022-01-19 17:00:00', 1, '123', 'addtest', '2022-12-21 17:00:00', 8, 'fdsa@fdsa', 'fdasfafdsa', 3),
-	(4, '1666060084.png', 'test4', '2022-01-29 17:00:00', 1, '123123', 'test 4', '2022-01-29 17:00:00', 123, 'test4@gmail.com', 'test4@gmail.com', 6);
+INSERT INTO `admins` (`id`, `avatar`, `name`, `date_of_birth`, `gender`, `phone_number`, `address`, `started_working_at`, `working_time_a_day`, `email`, `password`, `position_id`, `token`) VALUES
+	(1, '1666106674.png', 'Viet Huy', '2022-01-19 17:00:00', 1, '09132131321', 'HN', '2022-12-21 17:00:00', 8, 'admin@gmail.com', 'admin', 4, 'admin_634eaa6df2b4f9.993206301666099821'),
+	(4, '1666105363.png', 'Nguyen Huy', '2022-01-29 17:00:00', 0, '43124312421', 'HCM', '2022-01-29 17:00:00', 123, 'techlead@gmail.com', 'techlead', 6, 'admin_634eadd038da60.386912271666100688');
 
 -- Dumping structure for table fishing_tackle.colors
 CREATE TABLE IF NOT EXISTS `colors` (
@@ -209,8 +210,8 @@ CREATE TABLE IF NOT EXISTS `customers` (
 -- Dumping data for table fishing_tackle.customers: ~2 rows (approximately)
 DELETE FROM `customers`;
 INSERT INTO `customers` (`id`, `avatar`, `email`, `password`, `name`, `date_of_birth`, `gender`, `address`, `phone_number`, `token`) VALUES
-	(1, '1666075678.png', 'user@gmail.com', 'user123', 'Huy Viet', '1995-01-16 17:00:00', 0, 'HN', '01234567890', 'user_634d0ce0a405f9.096985241665993952'),
-	(3, NULL, 'test2@gmail.com', '123', 'test2', '2022-09-27 17:00:00', 0, 'fsaf', '2432', 'user_634e54f687b032.427002031666077942');
+	(1, '1666105212.png', 'user@gmail.com', 'user123', 'Huy Viet', '1995-01-16 17:00:00', 1, 'HN', '01234567890', 'user_634eadfe15ddb6.859480951666100734'),
+	(3, '1666101265.png', 'user2@gmail.com', 'user2', 'Long', '2022-09-27 17:00:00', 0, 'HCM', '432432432', 'user_634e54f687b032.427002031666077942');
 
 -- Dumping structure for table fishing_tackle.manufacturers
 CREATE TABLE IF NOT EXISTS `manufacturers` (
@@ -341,12 +342,14 @@ CREATE TABLE IF NOT EXISTS `orders` (
   CONSTRAINT `FK_orders_customers` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table fishing_tackle.orders: ~3 rows (approximately)
+-- Dumping data for table fishing_tackle.orders: ~5 rows (approximately)
 DELETE FROM `orders`;
 INSERT INTO `orders` (`id`, `created_at`, `receiver_name`, `receiver_address`, `receiver_phone`, `total_payment`, `status`, `customer_id`) VALUES
 	(1, '2022-10-18 01:47:44', 'Huy Viet', 'HN', '01234567890', 234, 1, 1),
 	(2, '2022-10-18 02:00:19', 'Huy Viet', 'HN', '01234567890', 781.2, 0, 1),
-	(3, '2022-10-18 02:26:01', 'Huy Viet', 'HN', '01234567890', 49.5, 1, 1);
+	(3, '2022-10-18 02:26:01', 'Huy Viet', 'HN', '01234567890', 49.5, 1, 1),
+	(4, '2022-10-18 14:39:33', 'Huy Viet', 'HN', '01234567890', 345.8, 0, 1),
+	(5, '2022-10-18 14:40:39', 'Huy Viet', 'HN', '01234567890', 193.95, 0, 1);
 
 -- Dumping structure for table fishing_tackle.orders_products
 CREATE TABLE IF NOT EXISTS `orders_products` (
@@ -357,14 +360,22 @@ CREATE TABLE IF NOT EXISTS `orders_products` (
   CONSTRAINT `FK_orders_products_orders` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table fishing_tackle.orders_products: ~0 rows (approximately)
+-- Dumping data for table fishing_tackle.orders_products: ~13 rows (approximately)
 DELETE FROM `orders_products`;
 INSERT INTO `orders_products` (`order_id`, `product_id`, `quantity`) VALUES
 	(1, 83, 4),
 	(1, 102, 3),
 	(2, 83, 13),
 	(2, 85, 6),
-	(3, 83, 1);
+	(3, 83, 1),
+	(4, 83, 3),
+	(4, 85, 4),
+	(4, 87, 3),
+	(4, 93, 1),
+	(4, 107, 2),
+	(5, 83, 2),
+	(5, 85, 1),
+	(5, 86, 6);
 
 -- Dumping structure for table fishing_tackle.positions
 CREATE TABLE IF NOT EXISTS `positions` (
@@ -2680,7 +2691,7 @@ CREATE TABLE IF NOT EXISTS `types` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table fishing_tackle.types: ~7 rows (approximately)
+-- Dumping data for table fishing_tackle.types: ~6 rows (approximately)
 DELETE FROM `types`;
 INSERT INTO `types` (`id`, `name`) VALUES
 	(7, 'Apparel'),
