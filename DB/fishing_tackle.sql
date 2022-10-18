@@ -44,8 +44,8 @@ CREATE TABLE IF NOT EXISTS `admins` (
 -- Dumping data for table fishing_tackle.admins: ~2 rows (approximately)
 DELETE FROM `admins`;
 INSERT INTO `admins` (`id`, `avatar`, `name`, `date_of_birth`, `gender`, `phone_number`, `address`, `started_working_at`, `working_time_a_day`, `email`, `password`, `position_id`) VALUES
-	(1, '1665052022.png', 'test1', '2022-01-19 17:00:00', 1, '123', 'addtest', '2022-12-21 17:00:00', 8, 'fdsa@fdsa', 'fdasfafdsa', 3),
-	(4, '1665062376.png', 'test4', '2022-01-29 17:00:00', 1, '123123', 'test 4', '2022-01-29 17:00:00', 123, 'test4@gmail.com', 'test4@gmail.com', 6);
+	(1, '1666060076.png', 'test1', '2022-01-19 17:00:00', 1, '123', 'addtest', '2022-12-21 17:00:00', 8, 'fdsa@fdsa', 'fdasfafdsa', 3),
+	(4, '1666060084.png', 'test4', '2022-01-29 17:00:00', 1, '123123', 'test 4', '2022-01-29 17:00:00', 123, 'test4@gmail.com', 'test4@gmail.com', 6);
 
 -- Dumping structure for table fishing_tackle.colors
 CREATE TABLE IF NOT EXISTS `colors` (
@@ -204,12 +204,13 @@ CREATE TABLE IF NOT EXISTS `customers` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `avatar` (`avatar`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table fishing_tackle.customers: ~0 rows (approximately)
+-- Dumping data for table fishing_tackle.customers: ~2 rows (approximately)
 DELETE FROM `customers`;
 INSERT INTO `customers` (`id`, `avatar`, `email`, `password`, `name`, `date_of_birth`, `gender`, `address`, `phone_number`, `token`) VALUES
-	(1, '1665993117.png', 'user@gmail.com', 'user123', 'Huy Viet', '1995-01-16 17:00:00', 0, 'HN', '01234567890', 'user_634d0ce0a405f9.096985241665993952');
+	(1, '1666075678.png', 'user@gmail.com', 'user123', 'Huy Viet', '1995-01-16 17:00:00', 0, 'HN', '01234567890', 'user_634d0ce0a405f9.096985241665993952'),
+	(3, NULL, 'test2@gmail.com', '123', 'test2', '2022-09-27 17:00:00', 0, 'fsaf', '2432', 'user_634e54f687b032.427002031666077942');
 
 -- Dumping structure for table fishing_tackle.manufacturers
 CREATE TABLE IF NOT EXISTS `manufacturers` (
@@ -329,21 +330,23 @@ INSERT INTO `options` (`id`, `image`, `name`) VALUES
 CREATE TABLE IF NOT EXISTS `orders` (
   `id` int NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `receiver_name` varchar(100) NOT NULL,
-  `receiver_address` varchar(200) NOT NULL,
-  `receiver_phone` char(20) NOT NULL,
+  `receiver_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `receiver_address` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `receiver_phone` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `total_payment` float NOT NULL,
+  `status` int NOT NULL,
   `customer_id` int NOT NULL,
-  `order_status_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_orders_customers` (`customer_id`),
-  KEY `FK_orders_orders_status` (`order_status_id`),
-  CONSTRAINT `FK_orders_customers` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`),
-  CONSTRAINT `FK_orders_orders_status` FOREIGN KEY (`order_status_id`) REFERENCES `orders_status` (`id`)
+  CONSTRAINT `FK_orders_customers` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table fishing_tackle.orders: ~0 rows (approximately)
+-- Dumping data for table fishing_tackle.orders: ~3 rows (approximately)
 DELETE FROM `orders`;
+INSERT INTO `orders` (`id`, `created_at`, `receiver_name`, `receiver_address`, `receiver_phone`, `total_payment`, `status`, `customer_id`) VALUES
+	(1, '2022-10-18 01:47:44', 'Huy Viet', 'HN', '01234567890', 234, 1, 1),
+	(2, '2022-10-18 02:00:19', 'Huy Viet', 'HN', '01234567890', 781.2, 0, 1),
+	(3, '2022-10-18 02:26:01', 'Huy Viet', 'HN', '01234567890', 49.5, 1, 1);
 
 -- Dumping structure for table fishing_tackle.orders_products
 CREATE TABLE IF NOT EXISTS `orders_products` (
@@ -356,17 +359,12 @@ CREATE TABLE IF NOT EXISTS `orders_products` (
 
 -- Dumping data for table fishing_tackle.orders_products: ~0 rows (approximately)
 DELETE FROM `orders_products`;
-
--- Dumping structure for table fishing_tackle.orders_status
-CREATE TABLE IF NOT EXISTS `orders_status` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `status` tinyint NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `status` (`status`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Dumping data for table fishing_tackle.orders_status: ~0 rows (approximately)
-DELETE FROM `orders_status`;
+INSERT INTO `orders_products` (`order_id`, `product_id`, `quantity`) VALUES
+	(1, 83, 4),
+	(1, 102, 3),
+	(2, 83, 13),
+	(2, 85, 6),
+	(3, 83, 1);
 
 -- Dumping structure for table fishing_tackle.positions
 CREATE TABLE IF NOT EXISTS `positions` (

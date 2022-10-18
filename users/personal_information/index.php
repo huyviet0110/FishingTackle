@@ -81,19 +81,21 @@
 						<tr style="text-align: center;">
 							<td>
 								<?php if(!is_null($user['avatar'])) { ?>
-									<img src="avatars/<?php echo $user['avatar'] ?>" height="100px" width="100px" style="border: 1px solid white; border-radius: 50%;">
+									<img src="../avatars/<?php echo $user['avatar'] ?>" height="100px" width="100px" style="border: 1px solid white; border-radius: 50%;">
 								<?php } else { ?>
 									<i class="fa-solid fa-user" style="padding: 20px;font-size: 60px;border: 1px solid black; border-radius: 50%;"></i>
 								<?php } ?>
 							</td>
 
 							<td><?php echo $user['name'] ?></td>
-
-							<?php 
-								$date_of_birth = date_create($user['date_of_birth']);
-								$date_of_birth = date_format($date_of_birth, "d/m/Y");
-							?>
-							<td><?php echo $date_of_birth ?></td>
+							
+							<td>
+								<?php 
+									$date_of_birth = date_create($user['date_of_birth']);
+									$date_of_birth = date_format($date_of_birth, "d/m/Y");
+									echo $date_of_birth;
+								?>
+							</td>
 
 							<td>
 								<?php 

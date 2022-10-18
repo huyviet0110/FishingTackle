@@ -1,5 +1,16 @@
 <?php 
 
+	session_start();
+	if(empty($_SESSION['admin_id'])){
+		header('location:../index.php');
+		exit();
+	}
+
+	if($_SESSION['admin_level'] === 1){
+		header('location:../admin_page.php');
+		exit();
+	}
+
 	$table_name = 'products';
 	require '../root/get_data_from_id.php';
 

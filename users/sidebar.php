@@ -8,12 +8,12 @@
 	</div>
 
 	<div class="profile">
-		<a href="index.php">
+		<a href="../personal_information">
 			<?php if(empty($_SESSION['avatar'])) { ?>
 				<i class="fa-solid fa-user"></i>
 				<span>Profile</span>
 			<?php } else { ?>
-				<img src="avatars/<?php echo $_SESSION['avatar'] ?>" height="40px" width="40px" style="border: 1px solid white; border-radius: 50%; margin-top: 0px;">
+				<img src="../avatars/<?php echo $_SESSION['avatar'] ?>" height="40px" width="40px" style="border: 1px solid white; border-radius: 50%; margin-top: 0px;">
 				<span style="margin-left: 72px;">Profile</span>
 			<?php } ?>
 		</a>
@@ -32,7 +32,7 @@
 	<div class="nav-bar">
 		<ul>
 			<li class="nav-item">
-				<a href="index.php">
+				<a href="../personal_information">
 					<i class="fa-solid fa-address-card"></i>
 					<p>
 						Personal information

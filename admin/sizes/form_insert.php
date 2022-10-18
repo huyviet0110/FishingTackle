@@ -1,4 +1,15 @@
 <?php 
+	session_start();
+	if(empty($_SESSION['admin_id'])){
+		header('location:../index.php');
+		exit();
+	}
+
+	if($_SESSION['admin_level'] === 1){
+		header('location:../admin_page.php');
+		exit();
+	}
+
 	require_once '../form_validation/backend_check/page_get.php';
 ?>
 

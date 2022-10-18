@@ -1,4 +1,14 @@
 <?php
+	session_start();
+	if(empty($_SESSION['admin_id'])){
+		header('location:../index.php');
+		exit();
+	}
+
+	if($_SESSION['admin_level'] < 2){
+		header('location:../admin_page.php');
+		exit();
+	}
 	
 	require_once '../connect.php';
 
@@ -12,8 +22,8 @@
 	
 	$form_file_name = 'form_update.php?id=' . $id . '&';
 	require '../form_validation/backend_check/check_error.php';
-	if(!empty($_FILES['image']['tmp_name'])){
-		require '../form_validation/backend_check/image.php';
+	if(!empty($_FILES['avatar']['tmp_name'])){
+		require 'check_image.php';
 	}
 	require_once '../form_validation/backend_check/name.php';
 	require_once '../form_validation/backend_check/phone_number.php';
@@ -42,28 +52,42 @@
 		$gender = 0;
 	}
 
-	$sql = "update $table_name
-			set
-				avatar = '$file_name',
-				name = '$name',
-				date_of_birth = '$date_of_birth',
-				gender = '$gender',
-				phone_number = '$phone_number',
-				address = '$address',
-				started_working_at = '$started_working_at',
-				working_time_a_day = '$working_time_a_day',
-				email = '$email',
-				password = '$password',
-				position_id = '$position_id'
-			where id = '$id'";
-	mysqli_query($connect, $sql);
-	require '../form_validation/backend_check/query_error.php';
+	if(!empty($_FILES['avatar']['tmp_name'])){
+		$sql = "update $table_name
+				set
+					avatar = '$file_name',
+					name = '$name',
+					date_of_birth = '$date_of_birth',
+					gender = '$gender',
+					phone_number = '$phone_number',
+					address = '$address',
+					started_working_at = '$started_working_at',
+					working_time_a_day = '$working_time_a_day',
+					email = '$email',
+					password = '$password',
+					position_id = '$position_id'
+				where id = '$id'";
+		mysqli_query($connect, $sql);
+		require '../form_validation/backend_check/query_error.php';
 
-	mysqli_close($connect);
-
-	if(!empty($_FILES['image']['tmp_name'])){
 		move_uploaded_file($file['tmp_name'], $target_file);
-		unlink($file_name_old);
+		$_SESSION['admin_avatar'] = $file_name;
+	} else {
+		$sql = "update $table_name
+				set
+					name = '$name',
+					date_of_birth = '$date_of_birth',
+					gender = '$gender',
+					phone_number = '$phone_number',
+					address = '$address',
+					started_working_at = '$started_working_at',
+					working_time_a_day = '$working_time_a_day',
+					email = '$email',
+					password = '$password',
+					position_id = '$position_id'
+				where id = '$id'";
+		mysqli_query($connect, $sql);
+		require '../form_validation/backend_check/query_error.php';
 	}
 
 	header("location:index.php?success=Successfully updated $table_name_display!&page=$page");

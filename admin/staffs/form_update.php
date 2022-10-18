@@ -1,4 +1,14 @@
 <?php 
+	session_start();
+	if(empty($_SESSION['admin_id'])){
+		header('location:../index.php');
+		exit();
+	}
+
+	if($_SESSION['admin_level'] < 2){
+		header('location:../admin_page.php');
+		exit();
+	}
 	
 	$table_name = 'admins';
 	require_once 'get_data_from_id.php';
@@ -54,14 +64,14 @@
 						<input type="hidden" name="page" value="<?php echo $page ?>">
 
 						<div class="form-input">
-							<p>New image</p>
-							<input type="file" name="image" id="input_image">
+							<p>New avatar</p>
+							<input type="file" name="avatar" id="input_image">
 							<div id="image_error"></div>
 						</div>
 
 						<div class="form-old-image">
 							<p>Old image</p>
-							<img src="images/<?php echo $each['avatar'] ?>" height="180px" required>
+							<img src="avatars/<?php echo $each['avatar'] ?>" height="180px" required>
 						</div>
 
 						<div class="form-input">

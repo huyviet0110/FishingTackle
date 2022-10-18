@@ -48,6 +48,7 @@
 			<div class="cart">
 				<div class="above">
 					<h1>SHOPING CART</h1>
+					<?php require_once 'notification.php' ?>
 				</div>
 				<div class="center">
 					<table width="80%">

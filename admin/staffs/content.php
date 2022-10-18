@@ -44,7 +44,7 @@
 						<tr style="text-align: center;">
 							<td><?php echo trim($each['id']) ?></td>
 							<td>
-								<img src="images/<?php echo $each['avatar'] ?>" height="100px" width="100px">
+								<img src="avatars/<?php echo $each['avatar'] ?>" height="100px" width="100px" style="border: 1px solid white; border-radius: 50%;">
 							</td>
 							<td><?php echo trim($each['name']) ?></td>
 

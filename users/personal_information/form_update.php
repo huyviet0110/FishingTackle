@@ -77,7 +77,7 @@
 						<?php if(!empty($_SESSION['avatar'])){ ?>
 							<div class="form-old-image">
 								<p>Old avatar</p>
-								<img src="avatars/<?php echo $_SESSION['avatar'] ?>" height="180px" width="180px" style="border: 1px solid white; border-radius: 50%;">
+								<img src="../avatars/<?php echo $_SESSION['avatar'] ?>" height="180px" width="180px" style="border: 1px solid white; border-radius: 50%;">
 							</div>
 						<?php } else { ?>
 							<div class="form-old-image" style="height: 160px; padding-top: 20px;">

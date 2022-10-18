@@ -5,7 +5,9 @@
 		</a>
 	</div>
 	<div class="right">
-		<p>huyviet / </p>
+		<img src="../staffs/avatars/<?php echo $_SESSION['admin_avatar'] ?>" height="40px" width="40px" style="border: 1px solid white; border-radius: 50%;">
+		
+		<p><?php echo $_SESSION['admin_name'] ?></p>
 		<a href="sign_out.php">
 			Sign out
 		</a>

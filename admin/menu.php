@@ -1,6 +1,6 @@
 <div id="sidebar">
 	<div class="dashboard-logo">
-		<a href="../admin">
+		<a href="admin_page.php">
 			<i class="fa-solid fa-gauge-high"></i>
 			<span>Dashboard</span>
 		</a>
@@ -8,10 +8,10 @@
 	</div>
 
 	<div class="profile">
-		<a href="#">
-			<i class="fa-solid fa-address-card"></i>
-			<span>Profile</span>
-			<!-- name -->
+		<a href="admin_information.php">
+			<img src="staffs/avatars/<?php echo $_SESSION['admin_avatar'] ?>" height="40px" width="40px" style="border: 1px solid white; border-radius: 50%;">
+			
+			<span style="margin-left: 72px;">Profile</span>
 		</a>
 		<hr>
 	</div>
@@ -79,7 +79,7 @@
 				</a>
 			</li>
 			<li class="nav-item">
-				<a href="#">
+				<a href="customers">
 					<i class="fa-solid fa-users"></i>
 					<p>
 						Customers

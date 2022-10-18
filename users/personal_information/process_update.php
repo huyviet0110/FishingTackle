@@ -22,7 +22,7 @@
 	require '../../admin/form_validation/backend_check/check_error.php';
 	if(!empty($_FILES['avatar']['tmp_name'])){
 		$file = $_FILES['avatar'];
-		$folder = 'avatars/';
+		$folder = '../avatars/';
 		$file_element_array = explode('.', $file['name']);
 		$file_extension = end($file_element_array);
 
@@ -74,5 +74,9 @@
 	}
 	
 	move_uploaded_file($file['tmp_name'], $target_file);
+
+	$folder_in_management = '../../admin/customers/avatars/';
+	$target_file_in_management = $folder_in_management . $file_name;
+	copy($target_file, $target_file_in_management);
 
 	header("location:index.php?success=Successfully updated $table_name_display");

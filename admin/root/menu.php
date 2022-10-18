@@ -9,9 +9,9 @@
 
 	<div class="profile">
 		<a href="#">
-			<i class="fa-solid fa-address-card"></i>
-			<span>Profile</span>
-			<!-- name -->
+			<img src="../staffs/avatars/<?php echo $_SESSION['admin_avatar'] ?>" height="40px" width="40px" style="border: 1px solid white; border-radius: 50%;">
+			
+			<span style="margin-left: 72px;">Profile</span>
 		</a>
 		<hr>
 	</div>

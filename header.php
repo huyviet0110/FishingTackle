@@ -16,7 +16,7 @@
 					<?php if(!is_null($_SESSION['avatar'])){ ?>
 						<li style="padding-right: 8px;">
 							<a href="users">
-								<img src="users/personal_information/avatars/<?php echo $_SESSION['avatar'] ?>" height="40px" width="40px" style="border: 1px solid white; border-radius: 50%;">
+								<img src="users/avatars/<?php echo $_SESSION['avatar'] ?>" height="40px" width="40px" style="border: 1px solid white; border-radius: 50%;">
 							</a>
 						</li>
 					<?php } ?>

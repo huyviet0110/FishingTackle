@@ -1,14 +1,10 @@
 <?php 
-
-	require_once 'connect.php';
-	
 	$sql = "select 
 				products.* from products
 			order by id desc
 			limit 4";
 	$this_product = mysqli_query($connect, $sql);
 	$result_num_rows = mysqli_num_rows($this_product);
-
 ?>
 
 <div class="content">

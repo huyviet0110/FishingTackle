@@ -6,7 +6,7 @@
 	</div>
 	<div class="right">
 		<?php if(!empty($_SESSION['avatar'])){ ?>
-			<img src="avatars/<?php echo $_SESSION['avatar'] ?>" height="40px" width="40px" style="border: 1px solid white; border-radius: 50%;">
+			<img src="../avatars/<?php echo $_SESSION['avatar'] ?>" height="40px" width="40px" style="border: 1px solid white; border-radius: 50%;">
 		<?php } else { ?>
 			<i class="fa-solid fa-user"></i>
 		<?php } ?>

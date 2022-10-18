@@ -2,23 +2,32 @@
 	session_start();
 	require_once '../admin/connect.php';
 
-	if(isset($_COOKIE['remember'])){
-		$token = $_COOKIE['remember'];
-		$sql = "select id, avatar, name from customers where token = '$token'";
-		$result = mysqli_query($connect, $sql);
-		$result_num_rows = mysqli_num_rows($result);
-		if($result_num_rows === 1){
-			$each = mysqli_fetch_array($result);
-			$_SESSION['id'] = $each['id'];
-			$_SESSION['avatar'] = $each['avatar'];
-			$_SESSION['name'] = $each['name'];
+	if(empty($_SESSION['id'])){
+		if(isset($_COOKIE['remember'])){
+			$token = $_COOKIE['remember'];
+			$sql = "select id, avatar, name from customers where token = '$token'";
+			$result = mysqli_query($connect, $sql);
+			$result_num_rows = mysqli_num_rows($result);
+			if($result_num_rows === 1){
+				$each = mysqli_fetch_array($result);
+				$_SESSION['id'] = $each['id'];
+				$_SESSION['avatar'] = $each['avatar'];
+				$_SESSION['name'] = $each['name'];
+			}
+		} else {
+			header('location:../sign_in.php');
+			exit();
 		}
 	}
 
-	if(!isset($_SESSION['id'])){
-		header('location:../sign_in.php');
-		exit();
-	}
+	$id = $_SESSION['id'];
+
+	$sql = "select * from orders
+			where customer_id = '$id'
+			order by id desc
+			limit 1";
+	$result = mysqli_query($connect, $sql);
+	$result_num_rows = mysqli_num_rows($result);
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +62,7 @@
 					<i class="fa-solid fa-user"></i>
 					<span>Profile</span>
 				<?php } else { ?>
-					<img src="personal_information/avatars/<?php echo $_SESSION['avatar'] ?>" height="40px" width="40px" style="border: 1px solid white; border-radius: 50%; margin-top: 0px;">
+					<img src="avatars/<?php echo $_SESSION['avatar'] ?>" height="40px" width="40px" style="border: 1px solid white; border-radius: 50%; margin-top: 0px;">
 					<span style="margin-left: 72px;">Profile</span>
 				<?php } ?>
 			</a>
@@ -101,7 +110,7 @@
 			</div>
 			<div class="right">
 				<?php if(!empty($_SESSION['avatar'])){ ?>
-					<img src="personal_information/avatars/<?php echo $_SESSION['avatar'] ?>" height="40px" width="40px" style="border: 1px solid white; border-radius: 50%;">
+					<img src="avatars/<?php echo $_SESSION['avatar'] ?>" height="40px" width="40px" style="border: 1px solid white; border-radius: 50%;">
 				<?php } else { ?>
 					<i class="fa-solid fa-user"></i>
 				<?php } ?>
@@ -112,17 +121,6 @@
 			</div>
 		</div>
 
-		<?php 
-		
-			$sql = "select 
-					products.* from products
-					order by id desc
-					limit 4";
-			$this_product = mysqli_query($connect, $sql);
-			$result_num_rows = mysqli_num_rows($this_product);
-
-		?>
-
 		<div class="content">
 			<div class="above">
 				<ul>
@@ -131,7 +129,7 @@
 							<p class="statistics">25</p>
 							<i class="fa-solid fa-bag-shopping"></i>
 							<p>
-								New Orders
+								Total Orders
 							</p>
 						</a>
 					</li>
@@ -149,7 +147,7 @@
 							<p  class="statistics">1000</p>
 							<i class="fa-solid fa-user-plus"></i>
 							<p> 
-								User Registrations
+								Total Amount Purchased
 							</p>
 						</a>
 					</li>
@@ -158,7 +156,7 @@
 							<p  class="statistics">500</p>
 							<i class="fa-solid fa-eye"></i>
 							<p>
-								Unique Visitors
+								Number Of Products Ordered
 							</p>
 						</a>
 					</li>
@@ -168,7 +166,7 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="card-title">
-						<h3 class="h3-format">New products</h3>
+						<h3 class="h3-format">Newest order</h3>
 					</div>
 					<div class="card-search">
 						<form method="get" action="index.php">
@@ -187,55 +185,109 @@
 				<div class="card-content">
 					<table width="94%">
 						<tr style="text-align: center;">
+							<th>Order ID</th>
+							<th>Receiver name</th>
+							<th>Receiver address</th>
+							<th>Receiver phone</th>
+							<th>Total payment</th>
+							<th>Status</th>
+							<th>Created at</th>
+						</tr>
+
+						<?php if($result_num_rows > 0) { ?>
+
+							<?php $newest_order = mysqli_fetch_array($result); ?>
+
+							<tr style="text-align: center;">
+								<td><?php echo $newest_order['id'] ?></td>
+								<td><?php echo $newest_order['receiver_name'] ?></td>
+								<td><?php echo $newest_order['receiver_address'] ?></td>
+								<td><?php echo $newest_order['receiver_phone'] ?></td>
+								<td>
+									<?php 
+										$total_payment = $newest_order['total_payment'];
+										$total_payment = number_format($total_payment, 2, '.', ',');
+										echo "\$" . $total_payment;
+									?>
+								</td>
+								<td>
+									<?php 	
+										if($newest_order['status'] == 0){
+											$status = 'Pending';
+										} else if($newest_order['status'] == 1){
+											$status = 'Order processed';
+										}
+										echo $status; 
+									?>
+								</td>
+
+								<td>
+									<?php 
+										$created_at = date_create($newest_order['created_at']);
+										$created_at = date_format($created_at, "H:i:s d/m/Y");
+										echo $created_at;
+									?>
+								</td>
+							</tr>
+
+						<?php } ?>
+					</table>
+
+					<div class="card-header">
+						<div class="card-title">
+							<h3 class="h3-format">Products in order</h3>
+						</div>
+					</div>
+
+					<table width="80%">
+						<tr style="text-align: center;">
 							<th>No</th>
 							<th>Image</th>
 							<th>Name</th>
 							<th>Price</th>
 							<th>Quantity</th>
-							<th>created_at</th>
-						</tr>
+						</tr>		
 
-						<?php if($result_num_rows > 0) { ?>
+						<?php 
+							$order_id = $newest_order['id'];
+							$sql = "select 
+										orders_products.quantity,
+										products.image,
+										products.name,
+										(
+											select price from products_detail
+											where product_id = products.id 
+											limit 1
+										) as price
+									from orders_products
+									join products on products.id = orders_products.product_id
+									where orders_products.order_id = '$order_id'";
+							$result = mysqli_query($connect, $sql);
 
-							<?php $i = 1 ?>
+							$i = 1;
+						?>			
 
-							<?php foreach ($this_product as $each): ?>
-
-								<tr style="text-align: center;">
-									<td><?php echo $i ?></td>
-									<td>
-										<img src="products/images/<?php echo $each['image'] ?>" height="100px" width="100px">
-									</td>
-									<td><?php echo $each['name'] ?></td>
-
+						<?php foreach ($result as $each): ?>
+								
+							<tr style="text-align: center;">
+								<td><?php echo $i ?></td>
+								<td>
+									<img src="../admin/products/images/<?php echo $each['image'] ?>" height="100px" width="160px">
+								</td>
+								<td><?php echo $each['name'] ?></td>
+								<td>
 									<?php 
-									$product_id = $each['id'];
-									$sql = "select 
-									price, 
-									sum(quantity) as quantity
-									from products_detail
-									join products on products.id = products_detail.product_id
-									where product_id = '$product_id'
-									group by price";
-									$price_quantity = mysqli_query($connect, $sql);
-									$each_price_quantity = mysqli_fetch_array($price_quantity);
+										$price = $each['price'];
+										$price = number_format($price, 2, '.', ',');
+										echo "\$" . $price;
 									?>
+								</td>
+								<td><?php echo $each['quantity'] ?></td>
+							</tr>
 
-									<td><?php echo $each_price_quantity['price'] ?></td>
-									<td><?php echo $each_price_quantity['quantity'] ?></td>
+							<?php $i++ ?>
 
-									<?php 
-									$date = date_create($each['created_at']);
-									$created_at = date_format($date, "H:i:s d/m/Y");
-									?>
-									<td><?php echo $created_at ?></td>
-								</tr>
-
-								<?php $i++ ?>
-
-							<?php endforeach ?>
-
-						<?php } ?>
+						<?php endforeach ?>	
 					</table>
 				</div>
 			</div>

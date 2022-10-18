@@ -4,6 +4,8 @@
 			<?php 
 				if(isset($_GET['page']) && is_numeric($_GET['page'])) { 
 					$prev = $_GET['page'] - 1;
+				} else {
+					$prev = 1;
 				}
 			?>
 			<a href="index.php?page=<?php echo $prev ?>&search=<?php echo $search ?>">
@@ -31,6 +33,8 @@
 			<?php 
 				if(isset($_GET['page']) && is_numeric($_GET['page'])) { 
 					$next = $_GET['page'] + 1;
+				} else {
+					$next = $prev + 1;
 				}
 			?>
 			<a href="index.php?page=<?php echo $next ?>&search=<?php echo $search ?>">

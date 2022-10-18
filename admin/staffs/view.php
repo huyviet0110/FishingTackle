@@ -1,4 +1,14 @@
 <?php 
+	session_start();
+	if(empty($_SESSION['admin_id'])){
+		header('location:../index.php');
+		exit();
+	}
+
+	if($_SESSION['admin_level'] < 2){
+		header('location:../admin_page.php');
+		exit();
+	}
 
 	$table_name = 'admins';
 	require_once 'get_data_from_id.php';
@@ -65,7 +75,7 @@
 							<tr style="text-align: center;">
 								<td><?php echo $each['id'] ?></td>
 								<td>
-									<img src="images/<?php echo $each['avatar'] ?>" height="100px" width="100px">
+									<img src="avatars/<?php echo $each['avatar'] ?>" height="100px" width="100px" style="border: 1px solid white; border-radius: 50%;">
 								</td>
 								<td><?php echo trim($each['name']) ?></td>
 
