@@ -52,7 +52,7 @@
 	<div class="card">
 		<div class="card-header">
 			<div class="card-title">
-				<h3 class="h3-format">New products</h3>
+				<h3 class="h3-format">Newest products</h3>
 			</div>
 			<div class="card-search">
 				<form method="get" action="index.php">
