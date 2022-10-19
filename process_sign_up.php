@@ -47,6 +47,10 @@
 
 	$_SESSION['success'] = 'Successfully signing up!';
 
-	mysqli_close($connect);
+	$title = 'Successfully Sign up with HuyViet FishingTackle';
+	$content = 'You have successfully signed in, if this is not your sign in then change your password immediately';
+
+	require_once 'mail.php';
+	send_mail($email, $name, $title, $content);
 
 	header('location:sign_in.php');

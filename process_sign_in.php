@@ -15,7 +15,7 @@
 	$email = mysqli_real_escape_string($connect, $_POST['email']);
 	$password = mysqli_real_escape_string($connect, $_POST['password']);
 
-	$sql = "select id, avatar, name from customers
+	$sql = "select id, avatar, name, email from customers
 			where email = '$email' and password = '$password'";
 	$result = mysqli_query($connect, $sql);
 	$each = mysqli_fetch_array($result);
@@ -49,5 +49,13 @@
 	$_SESSION['id'] = $each['id'];
 	$_SESSION['avatar'] = $each['avatar'];
 	$_SESSION['name'] = $each['name'];
+
+	$email = $each['email'];
+	$name = $each['name'];
+	$title = 'Successfully Sign-in into HuyViet FishingTackle';
+	$content = 'You have successfully signed in, if this is not your sign in then change your password immediately';
+
+	require_once 'mail.php';
+	send_mail($email, $name, $title, $content);
 
 	header('location:users');

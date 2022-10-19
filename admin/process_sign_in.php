@@ -16,6 +16,7 @@
 				admins.id, 
 				admins.avatar, 
 				admins.name,
+				admins.email,
 				positions.level
 			from admins
 			join positions on positions.id = admins.position_id 
@@ -53,5 +54,13 @@
 	$_SESSION['admin_avatar'] = $each['avatar'];
 	$_SESSION['admin_name'] = $each['name'];
 	$_SESSION['admin_level'] = $each['level'];
+
+	$email = $each['email'];
+	$name = $each['name'];
+	$title = 'Successfully Sign-in into HuyViet FishingTackle';
+	$content = 'You have successfully signed in, if this is not your sign in then change your password immediately';
+
+	require_once 'mail.php';
+	send_mail($email, $name, $title, $content);
 
 	header('location:admin_page.php');
