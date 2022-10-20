@@ -5,8 +5,14 @@
 	if(empty($_SESSION['admin_id'])){
 		if(!empty($_COOKIE['admin_remember'])){
 			$token = $_COOKIE['admin_remember'];
-			$sql = "select id, avatar, name from admins
-					where token = '$token'";
+			$sql = "select 
+						admins.id, 
+						admins.avatar, 
+						admins.name, 
+						positions.level					
+					from admins
+					join positions on positions.id = admins.position_id
+					where admins.token = '$token'";
 			$result = mysqli_query($connect, $sql);
 			$result_num_rows = mysqli_num_rows($result);
 			if($result_num_rows === 1){
@@ -14,6 +20,7 @@
 				$_SESSION['admin_id'] = $each['id'];
 				$_SESSION['admin_avatar'] = $each['avatar'];
 				$_SESSION['admin_name'] = $each['name'];
+				$_SESSION['admin_level'] = $each['level'];
 			}
 		}
 	}
