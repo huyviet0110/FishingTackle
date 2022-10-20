@@ -54,24 +54,19 @@
 		<div id="container">
 			<div class="signing">
 				<div class="above">
-					<h1>SIGN IN</h1>
+					<h1>RESET YOUR PASSWORD</h1>
+					<p>We will send you an email to reset your password.</p>
 					<?php require_once 'notification.php' ?>
 				</div>
 				<div class="center">
-					<form method="post" action="process_sign_in.php">
+					<form method="post" action="process_forgot_password.php">
 
 						<label for="input_email">Email</label>
 						<br>
 						<input type="email" name="email" id="input_email">
 						<br>
 
-						<label for="input_password">Password</label>
-						<br>
-						<input type="password" name="password" id="input_password">
-						<br>
-
-						<button>SIGN IN</button>
-						<a href="forgot_password.php">Forgot your password?</a>
+						<button>SUBMIT</button>
 					</form>
 				</div>
 			</div>

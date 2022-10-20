@@ -23,6 +23,12 @@
 	color: #626545;
 	font-size: 36px;
 }
+.signing .above p {
+	text-align: center;
+	color: #646569;
+	font-size: 16px;
+	padding-top: 10px;
+}
 .signing .center {
 	width: 28%;
 	height: 80%;

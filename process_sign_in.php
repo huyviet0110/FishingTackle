@@ -1,7 +1,6 @@
 <?php 
 	
 	session_start();
-
 	require_once 'admin/connect.php';
 
 	if(empty($_POST['email']) || empty($_POST['password'])){

@@ -33,7 +33,7 @@ function send_mail($email, $name, $title, $content){
         $mail->CharSet = 'UTF-8';
 
         //Recipients
-        $mail->setFrom('huyvietfishingtackle2022@gmail.com', 'HuyViet FishingTackle');
+        $mail->setFrom('huyvietfishingtackle2022@gmail.com', 'HuyvietFishingTackle');
         $mail->addAddress($email, $name);     //Add a recipient
 
         //Content

@@ -22,6 +22,23 @@
 		header('location:users');
 		exit();
 	}
+
+	if(empty($_GET['token'])){
+		header('location:sign_in.php');
+		exit();
+	}
+
+	$token = $_GET['token'];
+
+	$sql = "select customer_id, created_at from forgot_password
+			where token = '$token'";
+	$result = mysqli_query($connect, $sql);
+	if(mysqli_num_rows($result) === 1){
+		require_once 'calculate_expired_time.php';
+	} else if(mysqli_num_rows($result) === 0){
+		header('location:sign_in.php');
+		exit();
+	}
 ?>
 
 <!DOCTYPE html>
@@ -54,24 +71,25 @@
 		<div id="container">
 			<div class="signing">
 				<div class="above">
-					<h1>SIGN IN</h1>
+					<h1>CHANGE NEW PASSWORD</h1>
 					<?php require_once 'notification.php' ?>
 				</div>
 				<div class="center">
-					<form method="post" action="process_sign_in.php">
+					<form method="post" action="process_change_new_password.php">
 
-						<label for="input_email">Email</label>
-						<br>
-						<input type="email" name="email" id="input_email">
-						<br>
-
-						<label for="input_password">Password</label>
+						<label for="input_password">New password</label>
 						<br>
 						<input type="password" name="password" id="input_password">
 						<br>
 
-						<button>SIGN IN</button>
-						<a href="forgot_password.php">Forgot your password?</a>
+						<label for="input_password">Confirm new password</label>
+						<br>
+						<input type="password" name="confirm_password" id="input_confirm_password">
+						<br>
+
+						<input type="hidden" name="token" value="<?php echo $token ?>">
+
+						<button>SUBMIT</button>
 					</form>
 				</div>
 			</div>

@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               8.0.30 - MySQL Community Server - GPL
+-- Server version:               8.0.29 - MySQL Community Server - GPL
 -- Server OS:                    Win64
 -- HeidiSQL Version:             12.1.0.6537
 -- --------------------------------------------------------
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
 -- Dumping data for table fishing_tackle.admins: ~2 rows (approximately)
 DELETE FROM `admins`;
 INSERT INTO `admins` (`id`, `avatar`, `name`, `date_of_birth`, `gender`, `phone_number`, `address`, `started_working_at`, `working_time_a_day`, `email`, `password`, `position_id`, `token`) VALUES
-	(1, '1666106674.png', 'Viet Huy', '2022-01-19 17:00:00', 1, '09132131321', 'HN', '2022-12-21 17:00:00', 8, 'admin@gmail.com', 'admin', 4, 'admin_634eaa6df2b4f9.993206301666099821'),
+	(1, '1666106674.png', 'Viet Huy', '2022-01-19 17:00:00', 1, '09132131321', 'HN', '2022-12-21 17:00:00', 8, 'admin@gmail.com', 'admin', 4, 'admin_634fb8efd4c4d8.526395771666169071'),
 	(4, '1666105363.png', 'Nguyen Huy', '2022-01-29 17:00:00', 0, '43124312421', 'HCM', '2022-01-29 17:00:00', 123, 'techlead@gmail.com', 'techlead', 6, 'admin_634eadd038da60.386912271666100688');
 
 -- Dumping structure for table fishing_tackle.colors
@@ -212,6 +212,18 @@ DELETE FROM `customers`;
 INSERT INTO `customers` (`id`, `avatar`, `email`, `password`, `name`, `date_of_birth`, `gender`, `address`, `phone_number`, `token`) VALUES
 	(1, '1666105212.png', 'user@gmail.com', 'user123', 'Huy Viet', '1995-01-16 17:00:00', 1, 'HN', '01234567890', 'user_634eadfe15ddb6.859480951666100734'),
 	(3, '1666101265.png', 'user2@gmail.com', 'user2', 'Long', '2022-09-27 17:00:00', 0, 'HCM', '432432432', 'user_634e54f687b032.427002031666077942');
+
+-- Dumping structure for table fishing_tackle.forgot_password
+CREATE TABLE IF NOT EXISTS `forgot_password` (
+  `customer_id` int NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`customer_id`),
+  UNIQUE KEY `token` (`token`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table fishing_tackle.forgot_password: ~0 rows (approximately)
+DELETE FROM `forgot_password`;
 
 -- Dumping structure for table fishing_tackle.manufacturers
 CREATE TABLE IF NOT EXISTS `manufacturers` (
