@@ -120,8 +120,6 @@
 					</div>
 
 					<div class="center">
-
-						<form method="get" action="add_to_cart.php">
 							<?php 
 								$table_name = 'color';
 								require 'product_attributes.php';
@@ -135,11 +133,8 @@
 
 							<br>
 
-							<input type="hidden" name="id" value="<?php echo $id ?>">
-
-							<button>ADD TO CART</button>
+							<button class="btn-add-to-cart" data-id="<?php echo $id ?>">ADD TO CART</button>
 							<button formaction="view_cart.php">BUY IT NOW</button>
-						</form>
 					</div>
 
 					<div class="below">
@@ -177,6 +172,28 @@
 		<?php require_once 'footer.php'; ?>
 
 	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".btn-add-to-cart").click(function() {
+				let id = $(this).data('id');
+				$.ajax({
+					url: 'add_to_cart.php',
+					type: 'POST',
+					// dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+					data: {id},
+				})
+				.done(function(response) {
+					if(response == 1){
+						alert('success');
+					} else {
+						alert(response);
+					}
+				});
+			});
+		});
+	</script>
 
 	<?php mysqli_close($connect) ?>
 

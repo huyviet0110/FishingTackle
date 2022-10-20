@@ -2,7 +2,7 @@
 	
 	session_start();
 
-	if(empty($_POST['id']) || empty($_SESSION['cart'][$_POST['id']]) || empty($_GET['button_type']) || empty($_POST['quantity'])){
+	if(empty($_POST['id']) || empty($_SESSION['cart'][$_POST['id']]) || empty($_POST['type'])){
 		header('location:view_cart.php');
 		exit();
 	}

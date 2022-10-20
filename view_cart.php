@@ -76,15 +76,18 @@
 										<img src="admin/products/images/<?php echo $each['image'] ?>" height="160px" width="160px">
 									</td>
 									<td style="text-align: left;  text-transform: uppercase; font-size: 18px;"><?php echo $each['name'] ?></td>
-									<td style="font-family: sans-serif;">
+									<!-- <td style="font-family: sans-serif;"> -->
 										<?php 
-											$price = $each['price'];
-											$price = number_format($price, 2, '.', ',');
-											echo "\$" . $price;
+											// $price = $each['price'];
+											// $price = number_format($price, 2, '.', ',');
+											// echo "\$" . $price;
 										?>
+									<!-- </td> -->
+									<td style="font-family: sans-serif;">
+										<span class="span-price"></span>
 									</td>
 									<td>
-										<form name="form_quantity" method="post" action="adjust_quantity_in_cart.php">
+										<!-- <form name="form_quantity" method="post" action="adjust_quantity_in_cart.php">
 											<button formaction="adjust_quantity_in_cart.php?button_type=minus">
 												-
 											</button>
@@ -93,16 +96,31 @@
 												+
 											</button>
 											<input type="hidden" name="id" value="<?php echo $product ?>">
+										</form> -->
+										<form name="form_quantity" method="post" action="adjust_quantity_in_cart.php">
+											<button class="btn-update-quantity" data-id="<?php echo $product ?>" data-type="0">
+												-
+											</button>
+											<span class="span-quantity"></span>
+											<button class="btn-update-quantity" data-id="<?php echo $product ?>"  data-type="1">
+												+
+											</button>
+											<input type="hidden" name="id" value="<?php echo $product ?>">
 										</form>
 									</td>
-									<td style="color: #007580; font-size: 18px; font-weight: 600; font-family: sans-serif;">
+									<!-- <td style="color: #007580; font-size: 18px; font-weight: 600; font-family: sans-serif;"> -->
 										<?php 
-											$total = $each['price'] * $each['quantity'];
-											$subtotal += $total;
-											$total = number_format($total, 2, '.', ',');
-											echo "\$" . $total;
+											// $total = $each['price'] * $each['quantity'];
+											// $subtotal += $total;
+											// $total = number_format($total, 2, '.', ',');
+											// echo "\$" . $total;
 										?>
+									<!-- </td> -->
+
+									<td style="color: #007580; font-size: 18px; font-weight: 600; font-family: sans-serif;">
+										<span class="sum"></span>
 									</td>
+
 									<td>
 										<div class="card-delete">
 											<form method="post" action="delete_product_in_cart.php">
@@ -178,6 +196,28 @@
 	</div>
 
 	<script src="admin/form_validation/frontend_check/confirm_delete.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".btn-update-quantity").click(function() {
+				let btn = $(this);
+				let id = btn.data('id');
+				let type = btn.data('type');
+				$.ajax({
+					url: 'update_quantity_in_cart.php',
+					type: 'POST',
+					data: {id, type},
+				})
+				.done(function() {
+					
+				})
+				.fail(function() {
+					console.log("error");
+				});
+				
+			});
+		});
+	</script>
 
 	<?php mysqli_close($connect) ?>
 
