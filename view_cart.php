@@ -205,11 +205,11 @@
 						}
 						if(quantity == 0){
 							parent_tr.remove();
+						} else {
+							parent_tr.find('.span-quantity').text(quantity);
+							let total = Math.round((price * quantity) * 100) / 100;
+							parent_tr.find('.span-total').text(total);
 						}
-						parent_tr.find('.span-quantity').text(quantity);
-						let total = Math.round((price * quantity) * 100) / 100;
-						parent_tr.find('.span-total').text(total);
-
 						let subtotal = 0;
 						$(".span-total").each(function() {
 							subtotal += parseFloat($(this).text());
@@ -238,16 +238,12 @@
 					.done(function(response) {
 						if(response == 1){
 								parent_tr = btn.parents('tr');
-								let total = parent_tr.find('.span-total').text();
+								parent_tr.remove();
 								let subtotal = 0;
 								$(".span-total").each(function() {
-									let value = parseFloat($(this).text());
-									console.log(value + '');
 									subtotal += parseFloat($(this).text());
 								});
-								subtotal -= total;
 								$("#span-subtotal").text(subtotal);
-								parent_tr.remove();
 						} else {
 							alert(response);
 						}
