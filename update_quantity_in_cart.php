@@ -1,23 +1,28 @@
 <?php 
-	
-	session_start();
 
-	if(empty($_POST['id']) || empty($_SESSION['cart'][$_POST['id']]) || empty($_POST['type'])){
-		header('location:view_cart.php');
-		exit();
+	try {
+		session_start();
+
+		$type_array = array('0', '1');
+
+		if(empty($_POST['id']) || empty($_SESSION['cart'][$_POST['id']]) || !in_array($_POST['type'], $type_array)){
+			throw new Exception("Invalid product ID", 1);
+		}
+
+		$id = $_POST['id'];
+		$type = $_POST['type'];
+
+		if($type == 0){
+			$_SESSION['cart'][$id]['quantity']--;
+		} else if($type == 1){
+			$_SESSION['cart'][$id]['quantity']++;
+		}
+
+		if($_SESSION['cart'][$id]['quantity'] === 0){
+			unset($_SESSION['cart'][$id]);
+		}
+
+		echo 1;
+	} catch (Exception $e) {
+		echo $e->getMessage();
 	}
-
-	$id = $_POST['id'];
-	$quantity = $_POST['quantity'];
-	$_SESSION['cart'][$id]['quantity'] = $quantity;
-
-	if(strcmp($_GET['button_type'], 'minus') === 0 && $_SESSION['cart'][$id]['quantity'] > 1){
-		$_SESSION['cart'][$id]['quantity']--;
-	} else if(strcmp($_GET['button_type'], 'plus') === 0){
-		$_SESSION['cart'][$id]['quantity']++;
-	} else {
-		header('location:view_cart.php');
-		exit();
-	}
-
-	header('location:view_cart.php');

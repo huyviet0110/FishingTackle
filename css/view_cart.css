@@ -46,19 +46,27 @@
 	padding: 10px;
 	font-size: 16px;
 }
-.cart .center td form[name="form_quantity"] button, .cart .center td input {
+.cart .center .btn-update-quantity, .cart .center td input {
 	width: 30px;
 	height: 30px;
 	border: 2px solid #bfbdbc;
 	background-color: white;
 	color: #646569;
 }
-.cart .center td form[name="form_quantity"] input[name="quantity"] {
+.cart .center .btn-update-quantity input[name="quantity"] {
 	width: 46px;
 	text-align: center;
 }
-.cart .center td form[name="form_quantity"] button:hover {
+.cart .center .btn-update-quantity:hover {
 	cursor: pointer;
+}
+.cart .center .span-quantity {
+	display: inline-block;
+	border: 2px solid #bfbdbc; 
+	padding: 3px;
+	width: 38px;
+	font-family: sans-serif;
+	line-height: 20px;
 }
 
 .cart .below {

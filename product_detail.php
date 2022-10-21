@@ -186,7 +186,7 @@
 				})
 				.done(function(response) {
 					if(response == 1){
-						alert('success');
+						alert('Add to cart successfully');
 					} else {
 						alert(response);
 					}
