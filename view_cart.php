@@ -33,6 +33,7 @@
 	<link rel="stylesheet" type="text/css" href="css/view_cart.css">
 	<link rel="stylesheet" type="text/css" href="admin/css/card.css">
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
 </head>
@@ -70,7 +71,7 @@
 						<?php if(!empty($_SESSION['cart'])){ ?>
 
 							<?php foreach (($_SESSION['cart']) as $product => $each): ?>
-								<tr>
+								<tr class="cart-tr">
 									<td><?php echo $i ?></td>
 									<td width="180px">
 										<img src="admin/products/images/<?php echo $each['image'] ?>" height="160px" width="160px">
@@ -110,7 +111,7 @@
 										<div class="card-delete">
 											<button class="btn-delete-product-in-cart" data-id="<?php echo $product ?>">
 												<i class="fa-solid fa-trash"></i>
-												<p>Delete</p>
+												<p style="font-family: sans-serif;">Delete</p>
 											</button>
 										</div>
 									</td>
@@ -142,35 +143,41 @@
 									where id = '$id'";
 							$result = mysqli_query($connect, $sql);
 							$each = mysqli_fetch_array($result);
+						}
 					?>
 
-						<form name="form_checkout" method="post" action="checkout.php">
-							Receiver name:
-							<input type="text" name="receiver_name" value="<?php echo $_SESSION['name'] ?>">
-							<br>
-							Receiver address:
-							<input type="text" name="receiver_address" value="<?php echo $each['address'] ?>">
-							<br>
-							Receiver phone number:
-							<input type="number" name="receiver_phone" value="<?php echo $each['phone_number'] ?>">
-							<br>
-							<button>CHECK OUT</button>
-						</form>
+					<button type="button" data-toggle="modal" data-target="#modal-checkout">
+						CHECK OUT
+					</button>
 
-					<?php } else { ?>
-						<form name="form_checkout" method="post" action="checkout.php">
-							Receiver name:
-							<input type="text" name="receiver_name">
-							<br>
-							Receiver address:
-							<input type="text" name="receiver_address">
-							<br>
-							Receiver phone number:
-							<input type="number" name="receiver_phone">
-							<br>
-							<button>CHECK OUT</button>
-						</form>
-					<?php } ?>
+					<div class="modal fade" id="modal-checkout" role="dialog">
+    					<div class="modal-dialog">
+
+    						<div class="modal-content">
+    							<div class="modal-header">
+    								<button type="button" class="close" data-dismiss="modal">&times;</button>
+    								<h4 class="modal-title" style="font-family: sans-serif; text-align: center;">CHECK OUT</h4>
+    							</div>
+    							<div class="modal-body">
+    								<div class="alert alert-danger" style="display: none; font-family: sans-serif; text-align: center;">
+    								</div>
+
+    								<form name="form_checkout" id="form-checkout">
+    									Receiver name:
+    									<input type="text" name="receiver_name" value="<?php if(!empty($_SESSION['name'])){ echo $_SESSION['name'];} ?>" spellcheck="false">
+    									<br>
+    									Receiver address:
+    									<input type="text" name="receiver_address" value="<?php if(!empty($each['address'])){ echo $each['address'];} ?>" spellcheck="false">
+    									<br>
+    									Receiver phone:
+    									<input type="number" name="receiver_phone" value="<?php if(!empty($each['phone_number'])){ echo $each['phone_number'];} ?>" spellcheck="false">
+    									<br>
+    									<button>SUBMIT</button>
+    								</form>
+    							</div>
+    						</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -181,6 +188,10 @@
 
 	<script src="admin/form_validation/frontend_check/confirm_delete.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
+
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$(".btn-update-quantity").click(function() {
@@ -246,6 +257,59 @@
 								$("#span-subtotal").text(subtotal);
 						} else {
 							alert(response);
+						}
+					});
+				}
+			});
+		});
+
+		$(document).ready(function() {
+			$("#form-checkout").validate({
+				rules: {
+					"receiver_name": {
+						required: true,
+						maxlength: 100
+					},
+					"receiver_address": {
+						required: true,
+						maxlength: 200
+					},
+					"receiver_phone": {
+						required: true,
+						maxlength: 20,
+						digits: true
+					}
+				},
+				messages: {
+					"receiver_name": {
+						required: "Receiver name cannot be empty",
+						maxlength: "Receiver name cannot be exceed 100 characters"
+					},
+					"receiver_address": {
+						required: "Receiver address cannot be empty",
+						maxlength: "Receiver address cannot be exceed 200 characters"
+					},
+					"receiver_phone": {
+						required: "Receiver phone cannot be empty",
+						maxlength: "Receiver phone cannot be exceed 20 characters",
+						digits: "Wrong format of receiver phone number"
+					}
+				},
+				submitHandler: function() {
+					$.ajax({
+						url: 'checkout.php',
+						type: 'POST',
+						dataType: 'html',
+						data: $("#form-checkout").serializeArray(),
+					})
+					.done(function(response) {
+						if(response !== '1'){
+							$(".alert-danger").text(response);
+							$(".alert-danger").show();
+						} else {
+							$("#modal-checkout").modal("hide");
+							$(".cart-tr").remove();
+							$("#span-subtotal").text('0');
 						}
 					});
 				}

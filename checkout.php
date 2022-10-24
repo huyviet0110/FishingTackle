@@ -4,14 +4,12 @@
 	require_once 'admin/connect.php';
 
 	if(empty($_SESSION['id'])){
-		$_SESSION['error'] = 'You must signin to order!';
-		header('location:view_cart.php');
+		echo "You must signin to order!";
 		exit();
 	}
 
 	if(empty($_POST['receiver_name']) || empty($_POST['receiver_address']) || empty($_POST['receiver_phone']) || empty($_SESSION['cart'])){
-		$_SESSION['error'] = 'You must fill in all the information!';
-		header('location:view_cart.php');
+		echo "You must fill in all the information!";
 		exit();
 	}
 
@@ -35,8 +33,7 @@
 	mysqli_query($connect, $sql);
 	$error = mysqli_error($connect);
 	if(!empty($error)){
-		$_SESSION['error'] = 'Please, try again!';
-		header('location:view_cart.php');
+		echo "Please, try again!';";
 		exit();
 	}
 
@@ -49,4 +46,6 @@
 
 	unset($_SESSION['cart']);
 
-	header('location:users');
+	mysqli_close($connect);
+
+	echo 1;

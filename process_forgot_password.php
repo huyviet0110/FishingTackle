@@ -1,5 +1,7 @@
 <?php 
 
+	session_start();
+
 	if(empty($_POST['email'])){
 		header('location:sign_in.php');
 		exit();
@@ -24,9 +26,10 @@
 	$sql = "select count(*), created_at from forgot_password
 			where customer_id = '$customer_id'";
 	$result = mysqli_query($connect, $sql);
-	$check = mysqli_fetch_array($result)['count(*)'];
+	$each = mysqli_fetch_array($result);
+	$check = $each['count(*)'];
 	if($check == 1){
-		$created_at = mysqli_fetch_array($result)['created_at'];
+		$created_at = $each['created_at'];
 		$created_at = date_create($created_at);
 		$current_timestamp = date("Y/m/d H:i:s");
 		$current_timestamp = date_create($current_timestamp);
@@ -54,8 +57,7 @@
 	$title = "Change new password | HuyViet FishingTackle";
 	$link = get_current_url() . "/change_new_password.php?token=$token";
 	$content = "To change your new password, <a href='$link'>Click here</a>";
-	$email = "nguyenluonghuy88@gmail.com";
 	send_mail($email, $name, $title, $content);
 
-	// $_SESSION['success'] = 'Check your email';
-	// header('location:sign_in.php');
+	$_SESSION['success'] = 'Check your email';
+	header('location:sign_in.php');

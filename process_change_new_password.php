@@ -10,10 +10,10 @@
 
 	$token = mysqli_real_escape_string($connect, $_POST['token']);
 
-	$sql = "select customer_id, created_at from forgor_password
+	$sql = "select customer_id, created_at from forgot_password
 			where token = '$token'";
 	$result = mysqli_query($connect, $sql);
-	if($mysqli_num_rows($result) === 1){
+	if(mysqli_num_rows($result) === 1){
 		require_once 'calculate_expired_time.php';
 	} else if(mysqli_num_rows($result) === 0){
 		header('location:sign_in.php');
@@ -34,7 +34,7 @@
 	$password = mysqli_real_escape_string($connect, $_POST['password']);
 	$confirm_password = mysqli_real_escape_string($connect, $_POST['confirm_password']);
 
-	if(strcmp($password, $confirm_password) === 0){
+	if(strcmp($password, $confirm_password) !== 0){
 		$_SESSION['error'] = 'New password and confirm new password do not match!';
 		header('location:change_new_password.php');
 		exit();
@@ -45,3 +45,8 @@
 				password = '$password'
 			where id = $customer_id";
 	mysqli_query($connect, $sql);
+
+	mysqli_close($connect);
+
+	$_SESSION['success'] = 'Change new password successfully!';
+	header('location:sign_in.php');

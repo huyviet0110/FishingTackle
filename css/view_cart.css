@@ -40,6 +40,7 @@
 .cart .center th, .cart .center td {
 	color: #646569;
 	padding: 10px;
+	text-align: center;
 }
 .cart .center td {
 	color: #646569;
@@ -85,22 +86,33 @@
 	font-size: 24px;
 	font-weight: 600;
 }
-.cart .below form[name="form_checkout"] button {
+.cart .below form[name="form_checkout"] button, button[data-target="#modal-checkout"] {
 	margin-top: 16px;
 	width: 120px;
 	height: 40px;
 	background-color: #007580;
 	color: white;
 	border: none;
+	font-family: sans-serif;
 }
-.cart .below form[name="form_checkout"] button:hover {
+.cart .below form[name="form_checkout"] {
+	text-align: right;
+}
+button[data-target="#modal-checkout"] {
+	margin-top: 0;
+}
+.cart .below form[name="form_checkout"] button:hover, button[data-target="#modal-checkout"]:hover {
 	background-color: #002f34;
 	cursor: pointer;
 }
 .cart .below form[name="form_checkout"] input {
 	height: 30px;
-	padding-left: 10px;
+	padding-left: 6px;
 	margin-bottom: 10px;
-	width: 240px;
+	width: 420px;
 	font-size: 16px;
+	font-family: sans-serif;
+}
+.cart .below .error {
+	color: red;
 }
