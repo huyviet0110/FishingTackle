@@ -8,6 +8,11 @@
 		exit();
 	}
 
+	if(empty($_SESSION['cart'])){
+		echo "Cart is empty!";
+		exit();
+	}
+
 	if(empty($_POST['receiver_name']) || empty($_POST['receiver_address']) || empty($_POST['receiver_phone']) || empty($_SESSION['cart'])){
 		echo "You must fill in all the information!";
 		exit();

@@ -49,8 +49,10 @@
 			<div class="cart">
 				<div class="above">
 					<h1>SHOPING CART</h1>
+					<div class="alert alert-success" style="display: none; font-family: sans-serif; text-align: center;"></div>
 					<?php require_once 'notification.php' ?>
 				</div>
+				<br><br>
 				<div class="center">
 					<table width="80%">
 						<tr>
@@ -201,7 +203,6 @@
 				$.ajax({
 					url: 'update_quantity_in_cart.php',
 					type: 'POST',
-					// dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
 					data: {id, type},
 				})
 				.done(function(response) {
@@ -243,7 +244,6 @@
 					$.ajax({
 						url: 'delete_product_in_cart.php',
 						type: 'POST',
-						// dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
 						data: {id},
 					})
 					.done(function(response) {
@@ -307,6 +307,8 @@
 							$(".alert-danger").text(response);
 							$(".alert-danger").show();
 						} else {
+							$(".alert-success").text('Your order has been placed successfully!');
+							$(".alert-success").show();
 							$("#modal-checkout").modal("hide");
 							$(".cart-tr").remove();
 							$("#span-subtotal").text('0');
