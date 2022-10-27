@@ -1,5 +1,5 @@
 #page {
-	height: 2450px;
+	height: 3200px;
 }
 
 #product_detail {
@@ -11,7 +11,7 @@
 
 .main-detail {
 	width: 100%;
-	height: 72%;
+	height: 52%;
 	background-color: #fcf9f4;
 }
 .main-detail .all-the-images {
@@ -111,7 +111,7 @@
 
 .related-products {
 	width: 100%;
-	height: 32%;
+	height: 16%;
 }
 .related-products .title {
 	width: 100%;
@@ -151,4 +151,81 @@
 	display: inline-block;
 	top: 0;
 	position: absolute;
+}
+
+#rating {
+	width: 100%;
+	height: calc(100% - 52% - 16%);
+}
+#rating h1 {
+	color: #646569;
+	font-size: 28px;
+	font-family: schoolbook-web,Georgia,serif;
+}
+#rating textarea {
+	resize: none;
+	outline: 2px solid #c1c1c3;
+	border: none;
+	color: #646569;
+	padding: 4px;
+	font-size: 16px;
+	width: 660px;
+	height: 120px;
+}
+#rating button {
+	background-color: #007580;
+	color: white;
+	width: 100px;
+	height: 36px;
+	border: none;
+	font-family: sans-serif;
+	font-size: 16px;
+	cursor: pointer;
+	margin-left: calc(660px - 100px);
+	outline: 2px solid #007580;
+}
+
+#recent-reviews {
+	width: 100%;
+	height: calc(100% - 50%);
+}
+.customer-review {
+	margin-top: 20px;
+	width: calc((100% / 3) - 20px);
+	height: calc(100% - 40%);
+	color: #646569;
+	float: left;
+	margin: 20px 10px;
+}
+.avatar-name {
+	width: 100%;
+	height: 50px;
+	position: relative;
+	margin-bottom: 10px;
+}
+.avatar-name img {
+	border: white;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+}
+.avatar-name p {
+	font-family: schoolbook-web,Georgia,serif;
+	display: inline-block;
+	position: absolute;
+	top: calc((50px - 16px) / 2);
+	margin-left: 8px;
+}
+.created-at {
+	width: 100%;
+	height: 30px;
+	font-size: 15px;
+}
+.rating-star {
+	width: 100%;
+	height: 56px;
+}
+.review-content {
+	width: 100%;
+	height: calc(100% - 110px);
 }

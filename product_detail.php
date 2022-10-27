@@ -79,8 +79,44 @@
 	<link rel="stylesheet" type="text/css" href="css/banner.css">
 	<link rel="stylesheet" type="text/css" href="css/product_detail.css">
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
-
 	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+	<style type="text/css">
+		.rating { 
+		  border: none;
+		  float: left;
+		}
+
+		.rating > input { display: none; } 
+		.rating > label:before { 
+		  margin: 5px;
+		  font-size: 1.6em;
+		  font-family: FontAwesome;
+		  display: inline-block;
+		  content: "\f005";
+		}
+
+		.rating > .half:before { 
+		  content: "\f089";
+		  position: absolute;
+		}
+
+		.rating > label { 
+		  color: #ddd; 
+		 float: right; 
+		}
+
+		/***** CSS Magic to Highlight Stars on Hover *****/
+
+		.rating > input:checked ~ label, /* show gold star when clicked */
+		.rating:not(:checked) > label:hover, /* hover current star */
+		.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+		.rating > input:checked + label:hover, /* hover current star when changing rating */
+		.rating > input:checked ~ label:hover,
+		.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+		.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+	</style>
 </head>
 <body>
 	<div id="page">
@@ -143,6 +179,40 @@
 				</div>
 			</div>
 
+			<?php if (!empty($_SESSION['id'])): ?>
+				<div id="rating">
+					<h1>Rating for the product</h1>
+					<form id="form-rating">
+						<fieldset class="rating">
+							<input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+							<input type="radio" id="star4.5" name="rating" value="4.5"/><label class="half" for="star4.5" title="Pretty good - 4.5 stars"></label>
+							<input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+							<input type="radio" id="star3.5" name="rating" value="3.5" /><label class="half" for="star3.5" title="Meh - 3.5 stars"></label>
+							<input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+							<input type="radio" id="star2.5" name="rating" value="2.5" /><label class="half" for="star2.5" title="Kinda bad - 2.5 stars"></label>
+							<input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+							<input type="radio" id="star1.5" name="rating" value="1.5" /><label class="half" for="star1.5" title="Meh - 1.5 stars"></label>
+							<input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+							<input type="radio" id="star0.5" name="rating" value="0.5" /><label class="half" for="star0.5" title="Sucks big time - 0.5 stars"></label>
+						</fieldset>
+						<br><br><br>
+
+						<textarea name="review" spellcheck="false" placeholder="Please write a review about this product"></textarea>
+						<br><br>
+
+						<input type="hidden" name="product_id" value="<?php echo $id ?>">
+						<input type="hidden" name="customer_id" value="<?php echo $_SESSION['id'] ?>">
+						<button>SEND</button>
+					</form>
+
+					<br><br>
+
+					<h1>Recent reviews</h1>
+					<div id="recent-reviews"></div>
+				</div>
+			<?php endif ?>
+			
+
 			<div class="related-products">
 				<div class="title">
 					<h3>YOU MAY ALSO LIKE ...</h3>
@@ -174,14 +244,62 @@
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
 	<script type="text/javascript">
+		function htmlDecode(input) {
+			var doc = new DOMParser().parseFromString(input, "text/html");
+			return doc.documentElement.textContent;
+		}
+
+		function get_recent_reviews(id) {
+			$.ajax({
+				url: 'get_recent_reviews.php',
+				type: 'POST',
+				dataType: 'json',
+				data: {id},
+			})
+			.done(function(response) {
+				const recent_reviews =Object.values(response);
+
+				recent_reviews.forEach((each) => {
+					$("#recent-reviews").append(`
+						<div class="customer-review">
+							<div class="avatar-name">
+								<img src="users/avatars/${each.avatar}"/>
+								<p>${each.name}</p>
+							</div>
+
+							<div class="created-at">
+								<p>Review at ${each.created_at}</p>
+							</div>
+
+							<div class="rating-star">
+								<fieldset class="rating">
+									` + htmlDecode(each.rating) + `
+								</fieldset>
+							</div>
+
+							<div class="review-content">
+								<p>${each.review}</p>
+							</div>
+						</div>
+					`);
+				});
+			});
+		}
+
+		$(document).ready(function() {
+			const id = <?php echo $id ?>;
+			get_recent_reviews(id);
+		});
+
 		$(document).ready(function() {
 			$(".btn-add-to-cart").click(function() {
 				let id = $(this).data('id');
 				$.ajax({
 					url: 'add_to_cart.php',
 					type: 'POST',
-					// dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
 					data: {id},
 				})
 				.done(function(response) {
@@ -191,6 +309,27 @@
 						alert(response);
 					}
 				});
+			});
+		});
+
+		$(document).ready(function() {
+			$("#form-rating").validate({
+				submitHandler: function() {
+					$.ajax({
+						url: 'insert_rating.php',
+						type: 'POST',
+						data: $("#form-rating").serializeArray(),
+					})
+					.done(function(response) {
+						const id = <?php echo $id ?>;
+						if(response == 1){
+							$("#recent-reviews").text('');
+							get_recent_reviews(id);
+						} else {
+							alert('Rating failed!');
+						}
+					});
+				}
 			});
 		});
 	</script>

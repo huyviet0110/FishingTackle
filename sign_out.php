@@ -6,4 +6,4 @@
 	unset($_SESSION['avatar']);
 	unset($_SESSION['name']);
 
-	header('location:../index.php');
+	header('location:index.php');
