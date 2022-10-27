@@ -1,14 +1,14 @@
 <div id="header">
 	<div class="above">
 		<div class="left">
-			<form>
+			<!-- <form>
 				<div>
 					<a href="#">
 						<i class="fa-solid fa-magnifying-glass"></i>
 						Search
 					</a>
 				</div>
-			</form>
+			</form> -->
 		</div>
 		<div class="right">
 			<ul>

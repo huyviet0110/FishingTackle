@@ -93,6 +93,7 @@
 	<link rel="stylesheet" type="text/css" href="css/collections.css">
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<link rel="stylesheet" type="text/css" href="admin/css/pagination.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
 	<script src="https://kit.fontawesome.com/9741b0bef5.js" crossorigin="anonymous"></script>
 </head>
@@ -131,14 +132,10 @@
 						<h1 style="font-size: 24px; padding-left: 15px"><?php echo $title ?></h1>
 					</div>
 					<div class="right">
-						<label for="sort_by">Sort by</label>
-						<select name="sort_by" id="input_sort_by">
-							<option value="featured">Fetured</option>
-							<option value="price">Price, low to hight</option>
-							<option value="price">Price, hight to low</option>
-							<option value="date">Date, new to old</option>
-							<option value="date">Date, old to new</option>
-						</select>
+						<i id="search-icon" class="fa-solid fa-magnifying-glass"></i>
+						<img id="project-icon" src="" class="ui-state-default" alt  height="100px">
+						<input id="project" placeholder="Search">
+						<input type="hidden" id="project-id">
 					</div>
 				</div>
 
@@ -182,6 +179,31 @@
 		<?php require_once 'footer.php'; ?>
 
 	</div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+	<script>
+		$( function() {
+			$( "#project" ).autocomplete({
+				source: "search.php",
+				focus: function( event, ui ) {
+					$( "#project" ).val( ui.item.name );
+					return false;
+				}
+			})
+			.autocomplete( "instance" )._renderItem = function( ul, item ) {
+				return $( "<li>" )
+				.append( `<div class="product-detail-jquery-ui"> 
+										<a href="product_detail.php?id=${item.id}"> 
+											<p>${item.name}</p>
+											<br> 
+											<img src="admin/products/images/${item.image}" height="100px"/> 
+										</a> 
+								  </div>` )
+				.appendTo( ul );
+			};
+		} );
+	</script>
 
 	<?php mysqli_close($connect) ?>
 </body>

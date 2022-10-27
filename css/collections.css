@@ -37,7 +37,7 @@
 	float: left;
 }
 #collections .right .above .left {
-	width: 70%;
+	width: 60%;
 	height: 40px;
 	float: left;
 	text-transform: uppercase;
@@ -46,15 +46,11 @@
 	border-bottom: 1px solid #DFDEDE;
 }
 #collections .right .above .right {
-	width: 30%;
+	width: 40%;
 	height: 40px;
 	float: left;
 	background-color: #FCF9F4;
 	border-bottom: 1px solid #DFDEDE;
-}
-#collections .right .above .right select {
-	font-size: 16px;
-	background-color: #FCF9F4;
 }
 #collections .right .below {
 	width: 100%;
@@ -90,4 +86,28 @@
 	display: block;
 	position: absolute;
 	top: 0;
+}
+
+#project {
+	outline: 2px solid #c1c1c3;
+	color: #646569;
+	font-size: 14px;
+	width: 240px;
+	height: 30px;
+	border: none;
+	text-transform: uppercase;
+	padding-left: 4px;
+}
+#search-icon {
+	color: #646569;
+	font-size: 18px;
+}
+
+.product-detail-jquery-ui a {
+	display: inline;
+	text-decoration: none;
+	color: #646569;
+}
+.product-detail-jquery-ui img {
+	border: none;
 }
