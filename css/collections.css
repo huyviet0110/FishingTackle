@@ -104,7 +104,7 @@
 }
 
 .product-detail-jquery-ui a {
-	display: inline;
+	display: block;
 	text-decoration: none;
 	color: #646569;
 }

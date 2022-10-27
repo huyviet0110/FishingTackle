@@ -133,9 +133,7 @@
 					</div>
 					<div class="right">
 						<i id="search-icon" class="fa-solid fa-magnifying-glass"></i>
-						<img id="project-icon" src="" class="ui-state-default" alt  height="100px">
-						<input id="project" placeholder="Search">
-						<input type="hidden" id="project-id">
+						<input id="project" placeholder="Search"">
 					</div>
 				</div>
 
@@ -186,20 +184,16 @@
 		$( function() {
 			$( "#project" ).autocomplete({
 				source: "search.php",
-				focus: function( event, ui ) {
-					$( "#project" ).val( ui.item.name );
-					return false;
-				}
 			})
 			.autocomplete( "instance" )._renderItem = function( ul, item ) {
 				return $( "<li>" )
 				.append( `<div class="product-detail-jquery-ui"> 
-										<a href="product_detail.php?id=${item.id}"> 
-											<p>${item.name}</p>
-											<br> 
-											<img src="admin/products/images/${item.image}" height="100px"/> 
-										</a> 
-								  </div>` )
+								<a href="product_detail.php?id=${item.id}"> 
+									<p>${item.name}</p>
+									<br> 
+									<img src="admin/products/images/${item.image}" height="100px"/> 
+								</a> 
+						  </div>` )
 				.appendTo( ul );
 			};
 		} );
