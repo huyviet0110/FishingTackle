@@ -13,7 +13,7 @@
 			from products_reviews
 			join customers on customers.id = products_reviews.customer_id
 			where products_reviews.product_id = '$id'
-			order by products_reviews.created_at asc
+			order by products_reviews.created_at desc
 			limit 3";
 	$result = mysqli_query($connect, $sql);
 
