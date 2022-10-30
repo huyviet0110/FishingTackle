@@ -45,8 +45,8 @@ CREATE TABLE IF NOT EXISTS `admins` (
 -- Dumping data for table fishing_tackle.admins: ~2 rows (approximately)
 DELETE FROM `admins`;
 INSERT INTO `admins` (`id`, `avatar`, `name`, `date_of_birth`, `gender`, `phone_number`, `address`, `started_working_at`, `working_time_a_day`, `email`, `password`, `position_id`, `token`) VALUES
-	(1, '1666106674.png', 'Viet Huy', '2022-01-19 17:00:00', 1, '09132131321', 'HN', '2022-12-21 17:00:00', 8, 'admin@gmail.com', 'admin', 4, 'admin_634fb8efd4c4d8.526395771666169071'),
-	(4, '1666105363.png', 'Nguyen Huy', '2022-01-29 17:00:00', 0, '43124312421', 'HCM', '2022-01-29 17:00:00', 123, 'techlead@gmail.com', 'techlead', 6, 'admin_634eadd038da60.386912271666100688');
+	(1, '1666106674.png', 'Viet Huy', '2022-01-19 17:00:00', 1, '09132131321', 'HN', '2022-12-21 17:00:00', 8, 'admin@gmail.com', 'admin', 4, 'admin_6357d97078cc42.442481291666701680'),
+	(4, '1666105363.png', 'Nguyen Huy', '2022-01-29 17:00:00', 0, '43124312421', 'HCM', '2022-01-29 17:00:00', 123, 'superadmin@gmail.com', 'superadmin', 6, 'admin_63511f12cccfa2.531992631666260754');
 
 -- Dumping structure for table fishing_tackle.colors
 CREATE TABLE IF NOT EXISTS `colors` (
@@ -207,11 +207,12 @@ CREATE TABLE IF NOT EXISTS `customers` (
   UNIQUE KEY `avatar` (`avatar`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table fishing_tackle.customers: ~2 rows (approximately)
+-- Dumping data for table fishing_tackle.customers: ~3 rows (approximately)
 DELETE FROM `customers`;
 INSERT INTO `customers` (`id`, `avatar`, `email`, `password`, `name`, `date_of_birth`, `gender`, `address`, `phone_number`, `token`) VALUES
-	(1, '1666105212.png', 'user@gmail.com', 'user123', 'Huy Viet', '1995-01-16 17:00:00', 1, 'HN', '01234567890', 'user_634eadfe15ddb6.859480951666100734'),
-	(3, '1666101265.png', 'user2@gmail.com', 'user2', 'Long', '2022-09-27 17:00:00', 0, 'HCM', '432432432', 'user_634e54f687b032.427002031666077942');
+	(1, '1666105212.png', 'user@gmail.com', 'user@1', 'Huy Viet', '1995-01-16 17:00:00', 1, 'HN', '01234567890', 'user_635aa0d33cfcd0.196186621666883795'),
+	(2, '1666864578.png', 'user2@gmail.com', 'user@2', 'Viet', '2022-10-26 17:00:00', 1, 'DN', '12312321312', 'user_635b3292766d94.679261311666921106'),
+	(3, '1666101265.png', 'user3@gmail.com', 'user@3', 'Long', '2022-09-27 17:00:00', 0, 'HCM', '432432432', 'user_634e54f687b032.427002031666077942');
 
 -- Dumping structure for table fishing_tackle.forgot_password
 CREATE TABLE IF NOT EXISTS `forgot_password` (
@@ -219,11 +220,14 @@ CREATE TABLE IF NOT EXISTS `forgot_password` (
   `token` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`customer_id`),
-  UNIQUE KEY `token` (`token`)
+  UNIQUE KEY `token` (`token`),
+  CONSTRAINT `FK_customers_forgot_password` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table fishing_tackle.forgot_password: ~0 rows (approximately)
 DELETE FROM `forgot_password`;
+INSERT INTO `forgot_password` (`customer_id`, `token`, `created_at`) VALUES
+	(1, 'forgot_password_635615ea183e67.652910341666586090', '2022-10-24 04:34:50');
 
 -- Dumping structure for table fishing_tackle.manufacturers
 CREATE TABLE IF NOT EXISTS `manufacturers` (
@@ -354,14 +358,30 @@ CREATE TABLE IF NOT EXISTS `orders` (
   CONSTRAINT `FK_orders_customers` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table fishing_tackle.orders: ~5 rows (approximately)
+-- Dumping data for table fishing_tackle.orders: ~21 rows (approximately)
 DELETE FROM `orders`;
 INSERT INTO `orders` (`id`, `created_at`, `receiver_name`, `receiver_address`, `receiver_phone`, `total_payment`, `status`, `customer_id`) VALUES
 	(1, '2022-10-18 01:47:44', 'Huy Viet', 'HN', '01234567890', 234, 1, 1),
 	(2, '2022-10-18 02:00:19', 'Huy Viet', 'HN', '01234567890', 781.2, 0, 1),
 	(3, '2022-10-18 02:26:01', 'Huy Viet', 'HN', '01234567890', 49.5, 1, 1),
 	(4, '2022-10-18 14:39:33', 'Huy Viet', 'HN', '01234567890', 345.8, 0, 1),
-	(5, '2022-10-18 14:40:39', 'Huy Viet', 'HN', '01234567890', 193.95, 0, 1);
+	(5, '2022-10-18 14:40:39', 'Huy Viet', 'HN', '01234567890', 193.95, 0, 1),
+	(6, '2022-10-24 03:21:18', 'Huy Viet', 'HN', '01234567890', 891, 0, 1),
+	(7, '2022-10-24 03:45:39', 'Huy Viet', 'HN', '01234567890', 49.5, 0, 1),
+	(8, '2022-10-24 03:49:31', 'Huy Viet', 'HN', '01234567890', 22.95, 0, 1),
+	(9, '2022-10-24 03:49:56', 'Huy Viet', 'HN', '01234567890', 545.85, 0, 1),
+	(10, '2022-10-24 03:52:31', 'Huy Viet', 'HN', '01234567890', 487.8, 0, 1),
+	(11, '2022-10-24 03:55:20', 'Huy Viet', 'HN', '01234567890', 1118, 0, 1),
+	(12, '2022-10-25 14:26:34', 'Huy Viet', 'HN', '01234567890', 49.5, 0, 1),
+	(13, '2022-10-27 02:37:17', 'Huy Viet', 'HN', '01234567890', 474.5, 0, 1),
+	(14, '2022-10-27 03:27:28', 'Huy Viet', 'HN', '01234567890', 247.5, 0, 1),
+	(15, '2022-10-27 03:28:57', 'Huy Viet', 'HN', '01234567890', 49.5, 0, 1),
+	(16, '2022-10-27 03:29:30', 'Huy Viet', 'HN', '01234567890', 49.5, 0, 1),
+	(17, '2022-10-27 03:31:24', 'Huy Viet', 'HN', '01234567890', 22.95, 0, 1),
+	(18, '2022-10-27 03:31:54', 'Huy Viet', 'HN', '01234567890', 22.95, 0, 1),
+	(19, '2022-10-27 03:32:34', 'Huy Viet', 'HN', '01234567890', 12, 0, 1),
+	(20, '2022-10-27 03:33:07', 'Huy Viet', 'HN', '01234567890', 28.5, 0, 1),
+	(21, '2022-10-27 15:23:58', 'Viet', 'DN', '12312321312', 150, 0, 2);
 
 -- Dumping structure for table fishing_tackle.orders_products
 CREATE TABLE IF NOT EXISTS `orders_products` (
@@ -372,7 +392,7 @@ CREATE TABLE IF NOT EXISTS `orders_products` (
   CONSTRAINT `FK_orders_products_orders` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table fishing_tackle.orders_products: ~13 rows (approximately)
+-- Dumping data for table fishing_tackle.orders_products: ~33 rows (approximately)
 DELETE FROM `orders_products`;
 INSERT INTO `orders_products` (`order_id`, `product_id`, `quantity`) VALUES
 	(1, 83, 4),
@@ -387,7 +407,27 @@ INSERT INTO `orders_products` (`order_id`, `product_id`, `quantity`) VALUES
 	(4, 107, 2),
 	(5, 83, 2),
 	(5, 85, 1),
-	(5, 86, 6);
+	(5, 86, 6),
+	(6, 83, 18),
+	(7, 83, 1),
+	(8, 85, 1),
+	(9, 83, 5),
+	(9, 85, 13),
+	(10, 83, 8),
+	(10, 85, 4),
+	(11, 83, 10),
+	(11, 84, 7),
+	(12, 83, 1),
+	(13, 83, 7),
+	(13, 91, 8),
+	(14, 83, 5),
+	(15, 83, 1),
+	(16, 83, 1),
+	(17, 85, 1),
+	(18, 85, 1),
+	(19, 86, 1),
+	(20, 89, 1),
+	(21, 92, 6);
 
 -- Dumping structure for table fishing_tackle.positions
 CREATE TABLE IF NOT EXISTS `positions` (
@@ -2447,6 +2487,26 @@ INSERT INTO `products_detail` (`id`, `product_id`, `color_id`, `style_id`, `opti
 	(45303, 101, NULL, 87, NULL, NULL, 8, 100),
 	(45304, 101, NULL, 87, NULL, NULL, 8, 100),
 	(45305, 101, NULL, 87, NULL, NULL, 8, 100);
+
+-- Dumping structure for table fishing_tackle.products_reviews
+CREATE TABLE IF NOT EXISTS `products_reviews` (
+  `product_id` int NOT NULL,
+  `customer_id` int NOT NULL,
+  `rating` double NOT NULL,
+  `review` text COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`product_id`,`customer_id`),
+  KEY `FK_products_reviews_customers` (`customer_id`),
+  CONSTRAINT `FK_products_reviews_customers` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `FK_products_reviews_products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table fishing_tackle.products_reviews: ~3 rows (approximately)
+DELETE FROM `products_reviews`;
+INSERT INTO `products_reviews` (`product_id`, `customer_id`, `rating`, `review`, `created_at`) VALUES
+	(83, 1, 4.5, 'As America traveled west, the frontiersmen carried the art form with them, applying it to their powder-horns, knives and other accoutrements. Checkout the examples from our customers', '2022-10-27 15:14:33'),
+	(83, 2, 5, 'During the many idle hours at sea, a whaler etched drawings of nautical themes on items that were readily available to him such as sperm whale teeth and bones. His primary etching instrument was a sail needle, nail or pocket knife.', '2022-10-28 01:41:51'),
+	(83, 3, 3.5, 'This kit includes all you\'ll need to complete the project and is a perfect starter introduction into scrimshaw.', '2022-10-27 09:03:33');
 
 -- Dumping structure for table fishing_tackle.products_types
 CREATE TABLE IF NOT EXISTS `products_types` (
