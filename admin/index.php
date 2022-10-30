@@ -131,7 +131,7 @@
 						<input type="password" name="password" id="input_password">
 						<br>
 
-						<button>CREATE</button>
+						<button>SIGN IN</button>
 						<a href="forgot_password.php">Forgot your password?</a>
 					</form>
 				</div>

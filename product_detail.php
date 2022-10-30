@@ -170,7 +170,9 @@
 							<br>
 
 							<button class="btn-add-to-cart" data-id="<?php echo $id ?>">ADD TO CART</button>
-							<button formaction="view_cart.php">BUY IT NOW</button>
+							<form action="view_cart.php">
+								<button>BUY IT NOW</button>
+							</form>
 					</div>
 
 					<div class="below">

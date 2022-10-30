@@ -2,7 +2,7 @@
 	width: 100%;
 	height: calc(100% - 450px - 160px);
 	background-color: #FCF9F4;
-	padding: 50px 100px;
+	padding: 50px 50px;
 }
 
 #collections .browse {
@@ -76,8 +76,8 @@
 	padding-bottom: 6px;
 }
 #collections .right .below .product img {
-	width: 272.48px;
-	height: 272.48px;
+	width: 250px;
+	height: 250px;
 }
 #collections .right .below .product .sub-image {
 	display: none;
