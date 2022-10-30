@@ -3,7 +3,7 @@
 [Developed by huyviet0110](https://www.linkedin.com/in/huy-nguyễn-733a23246)
 
 # ERD
-DB/ERD.png
+[ERD](DB/ERD.png)
 
 # All FishingTackle Shop features
 
