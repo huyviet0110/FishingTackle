@@ -16,10 +16,12 @@
 
 
 -- Dumping database structure for fishing_tackle
+DROP DATABASE IF EXISTS `fishing_tackle`;
 CREATE DATABASE IF NOT EXISTS `fishing_tackle` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `fishing_tackle`;
 
 -- Dumping structure for table fishing_tackle.admins
+DROP TABLE IF EXISTS `admins`;
 CREATE TABLE IF NOT EXISTS `admins` (
   `id` int NOT NULL AUTO_INCREMENT,
   `avatar` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
@@ -49,6 +51,7 @@ INSERT INTO `admins` (`id`, `avatar`, `name`, `date_of_birth`, `gender`, `phone_
 	(4, '1666105363.png', 'Nguyen Huy', '2022-01-29 17:00:00', 0, '43124312421', 'HCM', '2022-01-29 17:00:00', 123, 'superadmin@gmail.com', 'superadmin', 6, 'admin_63511f12cccfa2.531992631666260754');
 
 -- Dumping structure for table fishing_tackle.colors
+DROP TABLE IF EXISTS `colors`;
 CREATE TABLE IF NOT EXISTS `colors` (
   `id` int NOT NULL,
   `image` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
@@ -191,6 +194,7 @@ INSERT INTO `colors` (`id`, `image`, `name`) VALUES
 	(135, '16654567541.png', 'American frontier');
 
 -- Dumping structure for table fishing_tackle.customers
+DROP TABLE IF EXISTS `customers`;
 CREATE TABLE IF NOT EXISTS `customers` (
   `id` int NOT NULL AUTO_INCREMENT,
   `avatar` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
@@ -215,6 +219,7 @@ INSERT INTO `customers` (`id`, `avatar`, `email`, `password`, `name`, `date_of_b
 	(3, '1666101265.png', 'user3@gmail.com', 'user@3', 'Long', '2022-09-27 17:00:00', 0, 'HCM', '432432432', 'user_634e54f687b032.427002031666077942');
 
 -- Dumping structure for table fishing_tackle.forgot_password
+DROP TABLE IF EXISTS `forgot_password`;
 CREATE TABLE IF NOT EXISTS `forgot_password` (
   `customer_id` int NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
@@ -224,12 +229,13 @@ CREATE TABLE IF NOT EXISTS `forgot_password` (
   CONSTRAINT `FK_customers_forgot_password` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fishing_tackle.forgot_password: ~0 rows (approximately)
+-- Dumping data for table fishing_tackle.forgot_password: ~1 rows (approximately)
 DELETE FROM `forgot_password`;
 INSERT INTO `forgot_password` (`customer_id`, `token`, `created_at`) VALUES
 	(1, 'forgot_password_635615ea183e67.652910341666586090', '2022-10-24 04:34:50');
 
 -- Dumping structure for table fishing_tackle.manufacturers
+DROP TABLE IF EXISTS `manufacturers`;
 CREATE TABLE IF NOT EXISTS `manufacturers` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
@@ -255,6 +261,7 @@ INSERT INTO `manufacturers` (`id`, `name`, `image`, `description`, `phone_number
 	(36, 'BETA', '1663639549.png', 'BETA supports a wide variety of athletic events throughout the U.S. and Canada—including cycling, running, skiing, and triathlon. Our online event management and registration platforms are backed by knowledgeable industry professionals dedicated to helping make your next event a success.', '547408304', 'Las Vegas', 'BETA@gmail.com');
 
 -- Dumping structure for table fishing_tackle.options
+DROP TABLE IF EXISTS `options`;
 CREATE TABLE IF NOT EXISTS `options` (
   `id` int NOT NULL,
   `image` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
@@ -344,6 +351,7 @@ INSERT INTO `options` (`id`, `image`, `name`) VALUES
 	(77, '16654573331.png', 'One bar + Washcloth soap bag $18');
 
 -- Dumping structure for table fishing_tackle.orders
+DROP TABLE IF EXISTS `orders`;
 CREATE TABLE IF NOT EXISTS `orders` (
   `id` int NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -384,6 +392,7 @@ INSERT INTO `orders` (`id`, `created_at`, `receiver_name`, `receiver_address`, `
 	(21, '2022-10-27 15:23:58', 'Viet', 'DN', '12312321312', 150, 0, 2);
 
 -- Dumping structure for table fishing_tackle.orders_products
+DROP TABLE IF EXISTS `orders_products`;
 CREATE TABLE IF NOT EXISTS `orders_products` (
   `order_id` int NOT NULL,
   `product_id` int NOT NULL,
@@ -430,6 +439,7 @@ INSERT INTO `orders_products` (`order_id`, `product_id`, `quantity`) VALUES
 	(21, 92, 6);
 
 -- Dumping structure for table fishing_tackle.positions
+DROP TABLE IF EXISTS `positions`;
 CREATE TABLE IF NOT EXISTS `positions` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
@@ -450,6 +460,7 @@ INSERT INTO `positions` (`id`, `name`, `salary`, `level`) VALUES
 	(8, 'Tech leader', 5000, 2);
 
 -- Dumping structure for table fishing_tackle.products
+DROP TABLE IF EXISTS `products`;
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int NOT NULL,
   `image` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
@@ -494,6 +505,7 @@ INSERT INTO `products` (`id`, `image`, `name`, `description`, `created_at`, `man
 	(107, '1665457333.png', 'Hunting camp soap', 'Inspired by men of the hunt. The custom-recipe Portland General Store soap mixes grit with luxury for a rugged, deep exfoliating bar for men—especially for hands and feet. Using the traditional cold process soap making method, HUNTING CAMP is made with pumice, sandalwood exfoliating powder, frankincense powder, spikenard powder and moisturizing natural oils. Just right for the sink at your riverside cabin—but looks and works great at home too. HUNTING CAMP has a deep sandalwood fragrance and is slate black in color, from the addition of activated charcoal, which naturally lifts toxins from the skin.\r\n\r\n* Optional natural woven soap bag - extends the life of your bar.  One side is open weave, the other - dense weave like a washcloth.  Excellent for travel and camp.\r\n\r\nMade in the USA.', '2022-10-11 03:02:13', 33);
 
 -- Dumping structure for table fishing_tackle.products_detail
+DROP TABLE IF EXISTS `products_detail`;
 CREATE TABLE IF NOT EXISTS `products_detail` (
   `id` int NOT NULL AUTO_INCREMENT,
   `product_id` int NOT NULL,
@@ -2489,6 +2501,7 @@ INSERT INTO `products_detail` (`id`, `product_id`, `color_id`, `style_id`, `opti
 	(45305, 101, NULL, 87, NULL, NULL, 8, 100);
 
 -- Dumping structure for table fishing_tackle.products_reviews
+DROP TABLE IF EXISTS `products_reviews`;
 CREATE TABLE IF NOT EXISTS `products_reviews` (
   `product_id` int NOT NULL,
   `customer_id` int NOT NULL,
@@ -2509,6 +2522,7 @@ INSERT INTO `products_reviews` (`product_id`, `customer_id`, `rating`, `review`,
 	(83, 3, 3.5, 'This kit includes all you\'ll need to complete the project and is a perfect starter introduction into scrimshaw.', '2022-10-27 09:03:33');
 
 -- Dumping structure for table fishing_tackle.products_types
+DROP TABLE IF EXISTS `products_types`;
 CREATE TABLE IF NOT EXISTS `products_types` (
   `type_id` int NOT NULL,
   `product_id` int NOT NULL,
@@ -2558,6 +2572,7 @@ INSERT INTO `products_types` (`type_id`, `product_id`) VALUES
 	(12, 105);
 
 -- Dumping structure for table fishing_tackle.sizes
+DROP TABLE IF EXISTS `sizes`;
 CREATE TABLE IF NOT EXISTS `sizes` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
@@ -2577,6 +2592,7 @@ INSERT INTO `sizes` (`id`, `name`) VALUES
 	(5, 'XXL');
 
 -- Dumping structure for table fishing_tackle.styles
+DROP TABLE IF EXISTS `styles`;
 CREATE TABLE IF NOT EXISTS `styles` (
   `id` int NOT NULL,
   `image` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
@@ -2677,6 +2693,7 @@ INSERT INTO `styles` (`id`, `image`, `name`) VALUES
 	(88, '16654571000.png', 'Unliend pages');
 
 -- Dumping structure for table fishing_tackle.sub_images
+DROP TABLE IF EXISTS `sub_images`;
 CREATE TABLE IF NOT EXISTS `sub_images` (
   `id` int NOT NULL AUTO_INCREMENT,
   `image` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
@@ -2756,6 +2773,7 @@ INSERT INTO `sub_images` (`id`, `image`, `product_id`) VALUES
 	(111, '16654573332.png', 107);
 
 -- Dumping structure for table fishing_tackle.types
+DROP TABLE IF EXISTS `types`;
 CREATE TABLE IF NOT EXISTS `types` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
