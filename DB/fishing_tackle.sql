@@ -22,25 +22,25 @@ USE `fishing_tackle`;
 -- Dumping structure for table fishing_tackle.admins
 CREATE TABLE IF NOT EXISTS `admins` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `avatar` varchar(50) NOT NULL,
-  `name` varchar(100) NOT NULL,
+  `avatar` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `date_of_birth` timestamp NOT NULL,
   `gender` tinyint NOT NULL,
-  `phone_number` char(20) NOT NULL,
-  `address` varchar(200) NOT NULL,
+  `phone_number` char(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `address` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
   `started_working_at` timestamp NOT NULL,
   `working_time_a_day` int NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(200) NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
   `position_id` int NOT NULL,
-  `token` varchar(200) DEFAULT NULL,
+  `token` varchar(200) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `phone_number` (`phone_number`),
   UNIQUE KEY `avatar` (`avatar`),
   KEY `FK_admins_positions` (`position_id`),
   CONSTRAINT `FK_admins_positions` FOREIGN KEY (`position_id`) REFERENCES `positions` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table fishing_tackle.admins: ~2 rows (approximately)
 DELETE FROM `admins`;
@@ -51,12 +51,12 @@ INSERT INTO `admins` (`id`, `avatar`, `name`, `date_of_birth`, `gender`, `phone_
 -- Dumping structure for table fishing_tackle.colors
 CREATE TABLE IF NOT EXISTS `colors` (
   `id` int NOT NULL,
-  `image` varchar(50) NOT NULL,
-  `name` varchar(100) NOT NULL,
+  `image` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   UNIQUE KEY `image` (`image`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table fishing_tackle.colors: ~128 rows (approximately)
 DELETE FROM `colors`;
@@ -193,19 +193,19 @@ INSERT INTO `colors` (`id`, `image`, `name`) VALUES
 -- Dumping structure for table fishing_tackle.customers
 CREATE TABLE IF NOT EXISTS `customers` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `avatar` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(200) NOT NULL,
-  `name` varchar(100) NOT NULL,
+  `avatar` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `date_of_birth` timestamp NOT NULL,
   `gender` tinyint NOT NULL,
-  `address` varchar(200) NOT NULL,
-  `phone_number` char(20) NOT NULL,
-  `token` varchar(200) DEFAULT NULL,
+  `address` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `phone_number` char(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `token` varchar(200) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `avatar` (`avatar`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table fishing_tackle.customers: ~3 rows (approximately)
 DELETE FROM `customers`;
@@ -232,17 +232,17 @@ INSERT INTO `forgot_password` (`customer_id`, `token`, `created_at`) VALUES
 -- Dumping structure for table fishing_tackle.manufacturers
 CREATE TABLE IF NOT EXISTS `manufacturers` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `image` varchar(50) NOT NULL,
-  `description` text NOT NULL,
-  `phone_number` char(20) NOT NULL,
-  `address` varchar(200) NOT NULL,
-  `email` varchar(100) NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `image` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `description` text COLLATE utf8mb4_general_ci NOT NULL,
+  `phone_number` char(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `address` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `name` (`name`),
   UNIQUE KEY `image` (`image`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table fishing_tackle.manufacturers: ~6 rows (approximately)
 DELETE FROM `manufacturers`;
@@ -257,12 +257,12 @@ INSERT INTO `manufacturers` (`id`, `name`, `image`, `description`, `phone_number
 -- Dumping structure for table fishing_tackle.options
 CREATE TABLE IF NOT EXISTS `options` (
   `id` int NOT NULL,
-  `image` varchar(50) NOT NULL,
-  `name` varchar(100) NOT NULL,
+  `image` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `image` (`image`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table fishing_tackle.options: ~75 rows (approximately)
 DELETE FROM `options`;
@@ -347,16 +347,16 @@ INSERT INTO `options` (`id`, `image`, `name`) VALUES
 CREATE TABLE IF NOT EXISTS `orders` (
   `id` int NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `receiver_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `receiver_address` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `receiver_phone` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `receiver_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `receiver_address` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `receiver_phone` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `total_payment` float NOT NULL,
   `status` int NOT NULL,
   `customer_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_orders_customers` (`customer_id`),
   CONSTRAINT `FK_orders_customers` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table fishing_tackle.orders: ~21 rows (approximately)
 DELETE FROM `orders`;
@@ -390,7 +390,7 @@ CREATE TABLE IF NOT EXISTS `orders_products` (
   `quantity` int NOT NULL,
   PRIMARY KEY (`order_id`,`product_id`),
   CONSTRAINT `FK_orders_products_orders` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table fishing_tackle.orders_products: ~33 rows (approximately)
 DELETE FROM `orders_products`;
@@ -432,12 +432,12 @@ INSERT INTO `orders_products` (`order_id`, `product_id`, `quantity`) VALUES
 -- Dumping structure for table fishing_tackle.positions
 CREATE TABLE IF NOT EXISTS `positions` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `salary` double NOT NULL DEFAULT '0',
   `level` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table fishing_tackle.positions: ~6 rows (approximately)
 DELETE FROM `positions`;
@@ -452,9 +452,9 @@ INSERT INTO `positions` (`id`, `name`, `salary`, `level`) VALUES
 -- Dumping structure for table fishing_tackle.products
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int NOT NULL,
-  `image` varchar(50) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `description` text NOT NULL,
+  `image` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `description` text COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `manufacturer_id` int NOT NULL,
   PRIMARY KEY (`id`),
@@ -462,7 +462,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   UNIQUE KEY `main_image` (`image`),
   KEY `FK_products_manufacturers` (`manufacturer_id`),
   CONSTRAINT `FK_products_manufacturers` FOREIGN KEY (`manufacturer_id`) REFERENCES `manufacturers` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table fishing_tackle.products: ~25 rows (approximately)
 DELETE FROM `products`;
@@ -514,7 +514,7 @@ CREATE TABLE IF NOT EXISTS `products_detail` (
   CONSTRAINT `FK_products_detail_products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
   CONSTRAINT `FK_products_detail_sizes` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`id`),
   CONSTRAINT `FK_products_detail_styles` FOREIGN KEY (`style_id`) REFERENCES `styles` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=45306 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45306 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table fishing_tackle.products_detail: ~1,968 rows (approximately)
 DELETE FROM `products_detail`;
@@ -2516,7 +2516,7 @@ CREATE TABLE IF NOT EXISTS `products_types` (
   KEY `FK_products_types_products` (`product_id`),
   CONSTRAINT `FK_products_types_products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
   CONSTRAINT `FK_products_types_types` FOREIGN KEY (`type_id`) REFERENCES `types` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table fishing_tackle.products_types: ~35 rows (approximately)
 DELETE FROM `products_types`;
@@ -2560,10 +2560,10 @@ INSERT INTO `products_types` (`type_id`, `product_id`) VALUES
 -- Dumping structure for table fishing_tackle.sizes
 CREATE TABLE IF NOT EXISTS `sizes` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table fishing_tackle.sizes: ~7 rows (approximately)
 DELETE FROM `sizes`;
@@ -2579,12 +2579,12 @@ INSERT INTO `sizes` (`id`, `name`) VALUES
 -- Dumping structure for table fishing_tackle.styles
 CREATE TABLE IF NOT EXISTS `styles` (
   `id` int NOT NULL,
-  `image` varchar(50) NOT NULL,
-  `name` varchar(100) NOT NULL,
+  `image` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `image` (`image`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table fishing_tackle.styles: ~86 rows (approximately)
 DELETE FROM `styles`;
@@ -2679,11 +2679,11 @@ INSERT INTO `styles` (`id`, `image`, `name`) VALUES
 -- Dumping structure for table fishing_tackle.sub_images
 CREATE TABLE IF NOT EXISTS `sub_images` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `image` varchar(50) NOT NULL,
+  `image` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `product_id` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `image` (`image`)
-) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table fishing_tackle.sub_images: ~66 rows (approximately)
 DELETE FROM `sub_images`;
@@ -2758,10 +2758,10 @@ INSERT INTO `sub_images` (`id`, `image`, `product_id`) VALUES
 -- Dumping structure for table fishing_tackle.types
 CREATE TABLE IF NOT EXISTS `types` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table fishing_tackle.types: ~6 rows (approximately)
 DELETE FROM `types`;
