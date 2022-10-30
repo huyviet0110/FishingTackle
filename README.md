@@ -2,8 +2,11 @@
 
 [Developed by huyviet0110](https://www.linkedin.com/in/huy-nguyễn-733a23246)
 
+
 # ERD
+
 ![ERD](DB/ERD.png)
+
 
 # All FishingTackle Shop features
 
@@ -39,6 +42,7 @@
 
 # How to use
 
+
 With the HTML file, you can download and open it with any Browser right away. But with PHP file, you must watch this video to know [how to run PHP file](https://www.facebook.com/groups/j2team.community/permalink/709597696039020/)
 
 
@@ -53,6 +57,7 @@ Technology I use
 * JavaScript
 * jQuery
 * PHP
+
 
 # License
 
