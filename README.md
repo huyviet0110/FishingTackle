@@ -1,8 +1,8 @@
 # FishingTackle Shop
 
-[Developed by huyviet0110](https://www.linkedin.com/in/huy-nguyễn-733a23246)
+![Developed by huyviet0110](https://www.linkedin.com/in/huy-nguyễn-733a23246)
 
-## ERD
+## Entity relationship diagram
 ![ERD](DB/ERD.png)
 
 # All FishingTackle Shop features
