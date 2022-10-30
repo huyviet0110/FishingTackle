@@ -2,6 +2,9 @@
 
 [Developed - by huyviet0110](https://www.linkedin.com/in/huy-nguyễn-733a23246)
 
+# ERD
+
+
 # How to use
 
 With the HTML file, you can download and open it with any Browser right away. But with PHP file, you must watch this video to know [how to run PHP file](https://www.facebook.com/groups/j2team.community/permalink/709597696039020/)
@@ -19,7 +22,7 @@ Technology I use
 * jQuery
 * PHP
 
-# All FishingTackle Shop features
+## All FishingTackle Shop features
 
 ### All actors
 - Guest
@@ -27,24 +30,24 @@ Technology I use
 - Admin
 - Super Admin
 
-A. Admin
+### A. Admin
 - Order management: View orders, order processing (approve, delete)
 - Customer management
 - Product management
 - Order statistics
 - Product statistics
 
-B. Super Admin
+### B. Super Admin
 - All admin features
 - Manufacturer management
 - Staff management
 
-B. Guest
+### C. Guest
 - Live search
 - Add to cart, view cart
 - Sign up, sign in, forgot password
 
-C. User
+### D. User
 - All guest features
 - Rating & review
 - Checkout
