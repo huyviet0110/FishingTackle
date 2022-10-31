@@ -42,7 +42,14 @@
 								<?php include '../root/card_update.php' ?>
 							</td>
 							<td class="th-td-action">
-								<?php include '../root/card_delete.php' ?>
+								<div class="card-delete">
+									<form id="form-delete-size">
+										<button class="btn-delete-size" data-id="<?php echo $each['id'] ?>">
+											<i class="fa-solid fa-trash"></i>
+											<p>Delete</p>
+										</button>
+									</form>
+								</div>
 							</td>
 						</tr>
 					<?php endforeach ?>

@@ -11,20 +11,32 @@
 		exit();
 	}
 
-	require_once '../form_validation/backend_check/check_empty/id_get.php';
+	if(empty($_POST['id'])){
+		echo 0;
+		exit();
+	}
+	$id = $_POST['id'];
 	
 	require_once '../connect.php';
 
 	$table_name = 'sizes';
-	$table_name_display = 'size';
-	require_once '../form_validation/backend_check/check_empty/id.php';
-	require_once '../form_validation/backend_check/page_get.php';
+	$sql = "select id from $table_name where id = '$id'";
+	$result = mysqli_query($connect, $sql);
+	$result_num_rows = mysqli_num_rows($result);
+	if($result_num_rows < 1){
+		echo 0;
+		exit();
+	}
 
 	$sql = "delete from $table_name
 			where id = '$id'";
 	mysqli_query($connect, $sql);
-	require '../form_validation/backend_check/query_error.php';
+	$error = mysqli_error($connect);
+	if(!empty($error)){
+		echo 0;
+		exit();
+	}
 
 	mysqli_close($connect);
 
-	header("location:index.php?success=Successfully deleted the $table_name_display!&page=$page");
+	echo 1;
