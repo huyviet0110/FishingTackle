@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `colors` (
   UNIQUE KEY `image` (`image`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fishing_tackle.colors: ~5 rows (approximately)
+-- Dumping data for table fishing_tackle.colors: ~128 rows (approximately)
 DELETE FROM `colors`;
 INSERT INTO `colors` (`id`, `image`, `name`) VALUES
 	(131, '16654553550.png', 'Riverside teal'),
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `forgot_password` (
   CONSTRAINT `FK_customers_forgot_password` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fishing_tackle.forgot_password: ~1 rows (approximately)
+-- Dumping data for table fishing_tackle.forgot_password: ~0 rows (approximately)
 DELETE FROM `forgot_password`;
 INSERT INTO `forgot_password` (`customer_id`, `token`, `created_at`) VALUES
 	(1, 'forgot_password_635615ea183e67.652910341666586090', '2022-10-24 04:34:50');
@@ -148,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `options` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fishing_tackle.options: ~19 rows (approximately)
+-- Dumping data for table fishing_tackle.options: ~75 rows (approximately)
 DELETE FROM `options`;
 INSERT INTO `options` (`id`, `image`, `name`) VALUES
 	(59, '16653871710.png', 'Knife and stone gift set'),
@@ -2401,7 +2401,7 @@ CREATE TABLE IF NOT EXISTS `sizes` (
   `name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table fishing_tackle.sizes: ~7 rows (approximately)
 DELETE FROM `sizes`;
@@ -2425,7 +2425,7 @@ CREATE TABLE IF NOT EXISTS `styles` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fishing_tackle.styles: ~12 rows (approximately)
+-- Dumping data for table fishing_tackle.styles: ~86 rows (approximately)
 DELETE FROM `styles`;
 INSERT INTO `styles` (`id`, `image`, `name`) VALUES
 	(77, '16653772220.png', 'Trapper knife'),
