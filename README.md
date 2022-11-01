@@ -3,10 +3,9 @@
 [Developed - by huyviet0110](https://www.linkedin.com/in/huy-nguyễn-733a23246)
 
 ### Entity Relationship Diagram
-
+![ERD](DB/ERD.png)
 
 ### Database Diagram
-![database_diagram](DB/database_diagram.png)
 
 # All FishingTackle Shop features
 
