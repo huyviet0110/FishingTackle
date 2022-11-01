@@ -6,6 +6,7 @@
 ![ERD](DB/ERD.png)
 
 ### Database Diagram
+![database_diagram](DB/database_diagram.png)
 
 # All FishingTackle Shop features
 
