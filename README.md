@@ -10,7 +10,7 @@
 
 # All FishingTackle Shop features
 
-### All actors
+### Actors
 - Guest
 - User
 - Admin
