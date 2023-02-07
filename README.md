@@ -10,7 +10,7 @@
 
 # All FishingTackle Shop features
 
-### All actors
+### Actors
 - Guest
 - User
 - Admin
@@ -40,15 +40,7 @@
 - Edit personal information
 - View payment history
 
-# How to use
-
-With the HTML file, you can download and open it with any Browser right away. But with PHP file, you must watch this video to know [how to run PHP file](https://www.facebook.com/groups/j2team.community/permalink/709597696039020/)
-
-
-### Feel free asking if there any bug or something you want me to do
-Follow me or this git to see more
-
-Technology I use
+# Technology I use
 
 * HTML
 * Bootstrap
