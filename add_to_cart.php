@@ -35,7 +35,7 @@
 			$_SESSION['cart'][$id]['quantity']++;
 		}
 		
-		echo 10;
+		echo brand_11;
 	} catch (Exception $e) {
 		echo $e->getMessage();
 	}
