@@ -34,7 +34,8 @@
 		} else {
 			$_SESSION['cart'][$id]['quantity']++;
 		}
-		echo false;
+		
+		echo '1';
 	} catch (Exception $e) {
 		echo $e->getMessage();
 	}
